@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GridController : MonoBehaviour 
@@ -18,6 +19,12 @@ public class GridController : MonoBehaviour
         {"transporter", new List<Vector2Int>()},
         {"combiner", new List<Vector2Int>()},
     };
+
+    //Initializes the grid on startup
+    void init_grid()
+    {
+
+    }
 
     //Sends update calls to all machines in the grid according to the update_order, which is an array of machine type strings
     void update_machines(string[] update_order)
