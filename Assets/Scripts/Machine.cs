@@ -5,18 +5,18 @@ using UnityEngine;
 public abstract class Machine
 {
 
-    Vector2Int grid_coord;
+    public Vector2Int grid_coord;
 
     public string machine_type;
 
-    public float process_time;
+    public float process_time = 3;
 
     //Tester entries
     public Dictionary<string, int> inventory = new Dictionary<string, int>() {
 
-        {"Wood", 0},
-        {"Stone", 0},
-        {"Metal", 0}
+        {"wood", 0},
+        {"stone", 0},
+        {"metal", 0}
     
     };
 
@@ -27,15 +27,15 @@ public abstract class Machine
     public Vector2Int[] input_directions;
 
     //When true, it means that the machine is currently performing a process, and doesn't need to be updated.
-    bool processing = false;
+    public bool processing = false;
 
 
     //Class Contructor
-    Machine(Vector2Int center_grid_coord) {grid_coord = center_grid_coord;}
+    public Machine(Vector2Int center_grid_coord) {grid_coord = center_grid_coord;}
 
 
 
-    //Activates when grid_handler sends and update call to this machine, only activates when processing is false.
+    //Activates when grid_handler sends and update call to this machine
     public abstract void update_machine();
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
@@ -52,7 +52,8 @@ public abstract class Machine
     public abstract void process();
 
 
-    IEnumerator process_timer()
+    //A timer for the process, only manipulated inventory in the process() function, custom to each machine.
+    public IEnumerator process_timer()
     {
         processing = true;
         yield return new WaitForSeconds(process_time);
@@ -83,7 +84,7 @@ public abstract class Machine
     }
 
     //Used to output an item to a nearby machine, calls input_item method on the inputting device.
-    bool output_item(Vector2Int output_direction, string item_type)
+    public bool output_item(Vector2Int output_direction, string item_type)
     {
 
         GameObject target = check_output_connnection(output_direction);
@@ -105,7 +106,7 @@ public abstract class Machine
 
     //Used to output an item to a nearby machine, calls input_item method on the inputting device.
     //Output point refers to the local coord on the machine from which the output is occuring, meant for larger machines.
-    bool output_item(Vector2Int output_direction, Vector2Int output_point, string item_type)
+    public bool output_item(Vector2Int output_direction, Vector2Int output_point, string item_type)
     {
         GameObject target = check_output_connnection(output_direction, output_point);
 
@@ -125,7 +126,7 @@ public abstract class Machine
     }
 
     //Checks if the inventory is currently full, if full return true
-    bool check_inventory_full()
+    public bool check_inventory_full()
     {
         int inventory_count = 0;
 
