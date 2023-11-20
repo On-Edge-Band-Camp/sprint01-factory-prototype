@@ -19,7 +19,7 @@ public class collector : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
 
-        if (!processing) { process_timer(); }
+        if (!processing && !check_inventory_full()) { StartCoroutine("process_timer");}
 
         if (inventory[collected_item] > 0)
         {
@@ -62,7 +62,8 @@ public class collector : Machine
         {
             Debug.Log(grid_coord + ": Inventory Full");
         }
-    
+
+        //Debug.Log("Collector process complete");
     }
 
 }

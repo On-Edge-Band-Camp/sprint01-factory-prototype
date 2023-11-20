@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Machine
+public abstract class Machine: MonoBehaviour
 {
 
     public Vector2Int grid_coord;
@@ -10,6 +10,8 @@ public abstract class Machine
     public string machine_type;
 
     public float process_time = 3;
+
+    public int inventory_total; //FOR TESTING ONLY REMOVE
 
     //Tester entries
     public Dictionary<string, int> inventory = new Dictionary<string, int>() {
@@ -31,7 +33,11 @@ public abstract class Machine
 
 
     //Class Contructor
-    public Machine(Vector2Int center_grid_coord) {grid_coord = center_grid_coord;}
+    public Machine(Vector2Int center_grid_coord) {
+        
+        grid_coord = center_grid_coord;
+    
+    }
 
 
 
@@ -50,6 +56,25 @@ public abstract class Machine
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public abstract void process();
+
+
+    //FOR TESTING ONLY REMOVE!!!!
+    private void Update()
+    {
+        inventory_total = check_inventory_amount();
+    }
+
+    //idk why, but dictionaries need to be declared at runtime
+    private void Start()
+    {
+        inventory = new Dictionary<string, int>() {
+
+            {"wood", 0},
+            {"stone", 0},
+            {"metal", 0}
+
+        };
+    }
 
 
     //A timer for the process, only manipulated inventory in the process() function, custom to each machine.
@@ -141,6 +166,19 @@ public abstract class Machine
         }
 
         return false;
+    }
+
+    //FOR TESTING ONLY
+    int check_inventory_amount()
+    {
+        int inventory_count = 0;
+
+        foreach (var item in inventory)
+        {
+            inventory_count += item.Value;
+        }
+
+        return inventory_count;
     }
 
     //Checks if any of the inputs connect to the outputting machine, if one does connect, returns the value of that input point, if no matching point is found, returns empty vector
