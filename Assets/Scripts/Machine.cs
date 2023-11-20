@@ -9,6 +9,8 @@ public abstract class Machine
 
     public string machine_type;
 
+    public float process_time;
+
     //Tester entries
     public Dictionary<string, int> inventory = new Dictionary<string, int>() {
 
@@ -24,15 +26,16 @@ public abstract class Machine
     //Input locations relative to center of machine
     public Vector2Int[] input_directions;
 
-    //If this machine has been updated
-    bool updated = false;
+    //When true, it means that the machine is currently performing a process, and doesn't need to be updated.
+    bool processing = false;
+
 
     //Class Contructor
     Machine(Vector2Int center_grid_coord) {grid_coord = center_grid_coord;}
 
 
 
-    //Activates when grid_handler sends and update call to this machine.
+    //Activates when grid_handler sends and update call to this machine, only activates when processing is false.
     public abstract void update_machine();
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
@@ -45,6 +48,17 @@ public abstract class Machine
     //includes local output point
     public abstract void handle_output(Vector2Int output_direction, Vector2Int output_point, string item_type);
 
+    //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
+    public abstract void process();
+
+
+    IEnumerator process_timer()
+    {
+        processing = true;
+        yield return new WaitForSeconds(process_time);
+        process();
+        processing = false;
+    }
 
 
     //Called when an intem is being input to this machine.
