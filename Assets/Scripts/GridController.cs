@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GridController : MonoBehaviour 
 {
+    protected Vector2[,] cell_center_pos;
+    protected Vector2[,] line_center_pos;
+    Vector2 cell_center_top_left;
+    Vector2 line_center_top_left;
 
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
@@ -57,7 +61,33 @@ public class GridController : MonoBehaviour
         add_machine(new Vector2Int(4, 1), transporter_prefab);
         add_machine(new Vector2Int(5, 1), storage_prefab);
 
+    }
 
+    public void center_positions()
+    {
+        cell_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
+        line_center_pos = new Vector2[grid_dimensions.x - 1, grid_dimensions.y - 1];
+
+        cell_center_top_left = new Vector2(-(grid_dimensions.x * cell_dimensions.x - cell_dimensions.x) / 2,
+            (grid_dimensions.y * cell_dimensions.y - cell_dimensions.y) / 2);
+        line_center_top_left = new Vector2(-(grid_dimensions.x - 1 * cell_dimensions.x - cell_dimensions.x) / 2,
+            (grid_dimensions.y - 1 * cell_dimensions.y - cell_dimensions.y) / 2);
+
+        //Calculating center positions for both cell and line centers
+        for (int i = 0; i < grid_dimensions.y; i++)
+        {
+            for (int j = 0; j < grid_dimensions.x; j++)
+            {
+                cell_center_pos[j, i].Set(cell_center_top_left.x + cell_dimensions.x * j, cell_center_top_left.y - cell_dimensions.y * i);
+            }
+        }
+        for (int i = 0; i < grid_dimensions.y - 1; i++)
+        {
+            for (int j = 0; j < grid_dimensions.x - 1; j++)
+            {
+                line_center_pos[j, i] = new Vector2(line_center_top_left.x + cell_dimensions.x * j, line_center_top_left.y - cell_dimensions.y * i);
+            }
+        }
     }
 
     //Sends update calls to all machines in the grid according to the update_order, which is an array of machine type strings

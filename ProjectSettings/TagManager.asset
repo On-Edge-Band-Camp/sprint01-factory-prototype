@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Grid
+    uniqueID: 4262456495
+    locked: 0
+  - name: GameWorldObject
+    uniqueID: 2062307355
+    locked: 0
+  - name: Menu
+    uniqueID: 2025292113
+    locked: 0
