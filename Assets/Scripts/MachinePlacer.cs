@@ -25,6 +25,10 @@ public class MachinePlacer : GridController
         {
             for(int j = 0; j < grid_dimensions.x; j++)
             {
+                if (grid[j,i] != null)
+                {
+                    continue;
+                }
                 distance = Vector2.Distance(mousePos, cell_center_pos[j, i]);
                 if(i == 0 && j == 0)
                 {
@@ -41,9 +45,15 @@ public class MachinePlacer : GridController
         if (current_selection != null)
         {
             current_selection.transform.position = newMachinePos;
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                //add_machine(newMachinePos, current_selection);
+            }
         }
 
     }
+
 
     void MachineSelect()
     {

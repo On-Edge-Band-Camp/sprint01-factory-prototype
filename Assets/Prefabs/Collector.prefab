@@ -100,6 +100,7 @@ MonoBehaviour:
   grid_coord: {x: 0, y: 0}
   machine_type: collector
   process_time: 3
+  inventory_total: 0
   inventory_max: 10
   input_directions: []
   processing: 0
