@@ -48,7 +48,9 @@ public class MachinePlacer : GridController
 
             if(Input.GetMouseButtonDown(0))
             {
-                //add_machine(newMachinePos, current_selection);
+                Vector2Int tempCoord = new Vector2Int((int)newMachinePos.x, (int)newMachinePos.y);
+                add_machine(tempCoord, current_selection);
+                Destroy(current_selection);
             }
         }
 
