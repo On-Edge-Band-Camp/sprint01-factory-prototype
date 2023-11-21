@@ -9,8 +9,8 @@ public class GridController : MonoBehaviour
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
-    //Initializer dimentions of the grid
-    public Vector2Int grid_dimentions;
+    //Initializer dimensions of the grid
+    public Vector2Int grid_dimensions;
 
     //How large cells appear in the scene
     public Vector2 cell_dimentions = new Vector2(1,1);
@@ -49,7 +49,7 @@ public class GridController : MonoBehaviour
     void init_grid()
     {
 
-        grid = new GameObject[grid_dimentions.x, grid_dimentions.y];
+        grid = new GameObject[grid_dimensions.x, grid_dimensions.y];
 
         add_machine(new Vector2Int(1, 1), collector_prefab);
         add_machine(new Vector2Int(2, 1), transporter_prefab);
