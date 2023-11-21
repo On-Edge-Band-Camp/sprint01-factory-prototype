@@ -13,7 +13,7 @@ public class GridController : MonoBehaviour
     public Vector2Int grid_dimensions;
 
     //How large cells appear in the scene
-    public Vector2 cell_dimentions = new Vector2(1,1);
+    public Vector2 cell_dimensions = new Vector2(1,1);
 
     //The center of the grid in the scene
     public Vector2 grid_origin = new Vector2();
@@ -86,7 +86,7 @@ public class GridController : MonoBehaviour
 
         grid[coord.x,coord.y] = new_machine;
 
-        new_machine.transform.position = new Vector3(cell_dimentions.x * coord.x, cell_dimentions.y * coord.y);
+        new_machine.transform.position = new Vector3(cell_dimensions.x * coord.x, cell_dimensions.y * coord.y);
 
         machines[new_machine.GetComponent<Machine>().machine_type].Add(coord);
 
