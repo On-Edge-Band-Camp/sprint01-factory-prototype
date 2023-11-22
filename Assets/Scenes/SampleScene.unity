@@ -317,7 +317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 337548984}
   - component: {fileID: 337548983}
-  - component: {fileID: 337548985}
   m_Layer: 0
   m_Name: MachineListMenu
   m_TagString: Untagged
@@ -392,23 +391,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &337548985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337548981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0d0ceefb12d8740823807b536a9a89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cell_dimensions: {x: 1, y: 1}
-  grid_origin: {x: 0, y: 0}
-  collector_prefab: {fileID: 2564455348920231410, guid: 3804c5fafeb769e4e88db01f346a8bea, type: 3}
-  transporter_prefab: {fileID: 5533581290755228803, guid: 61aec9b585c79e8428a94bdbcd0cccc7, type: 3}
-  storage_prefab: {fileID: 2731256711827608865, guid: b88f57332efafc94e9bff5e2408204f1, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell_dimensions: {x: 1, y: 1}
-  grid_origin: {x: 0, y: 0}
+  grid_origin: {x: 5, y: 5}
   collector_prefab: {fileID: 2564455348920231410, guid: 3804c5fafeb769e4e88db01f346a8bea, type: 3}
   transporter_prefab: {fileID: 5533581290755228803, guid: 61aec9b585c79e8428a94bdbcd0cccc7, type: 3}
   storage_prefab: {fileID: 2731256711827608865, guid: b88f57332efafc94e9bff5e2408204f1, type: 3}

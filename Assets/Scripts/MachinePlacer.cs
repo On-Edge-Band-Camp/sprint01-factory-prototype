@@ -13,7 +13,7 @@ public class MachinePlacer : GridController
     float closestDistance;
     void Start()
     {
-        base.center_positions();
+        //base.center_positions();
     }
 
 
