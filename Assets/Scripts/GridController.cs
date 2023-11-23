@@ -6,10 +6,6 @@ using UnityEngine;
 public class GridController : MonoBehaviour 
 {
 
-    //DEPRICATED
-    protected Vector2[,] cell_center_pos;
-    protected Vector2[,] line_center_pos;
-
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
@@ -61,8 +57,8 @@ public class GridController : MonoBehaviour
         add_machine(new Vector2Int(2, 1), transporter_prefab);
         add_machine(new Vector2Int(3, 1), transporter_prefab);
         add_machine(new Vector2Int(4, 1), transporter_prefab);
-        add_machine(new Vector2Int(5, 1), storage_prefab);
-        add_machine(new Vector2Int(8,8), storage_prefab);
+        add_machine(new Vector2Int(4, 1), storage_prefab);
+        add_machine(new Vector2Int(8, 8), storage_prefab);
 
 
     }
@@ -87,7 +83,7 @@ public class GridController : MonoBehaviour
 
     //Add a new machine to the grid
     //THIS VERSION OF THIS METHOD IS FOR TESTING ONLY, NOT COMPLETE
-    protected void add_machine(Vector2Int coord, GameObject machine_prefab)
+    public void add_machine(Vector2Int coord, GameObject machine_prefab)
     {
 
         GameObject new_machine = Instantiate(machine_prefab);
@@ -98,26 +94,11 @@ public class GridController : MonoBehaviour
 
         grid[coord.x, coord.y] = new_machine;
 
-        new_machine.transform.position = new Vector3(cell_dimensions.x * coord.x - Mathf.FloorToInt(grid_dimensions.x / 2), cell_dimensions.y * coord.y - Mathf.FloorToInt(grid_dimensions.y / 2));
+        new_machine.transform.position = new Vector3(cell_dimensions.x * coord.x - Mathf.FloorToInt(grid_dimensions.x / 2), 
+            cell_dimensions.y * coord.y - Mathf.FloorToInt(grid_dimensions.y / 2));
 
         machines[new_machine.GetComponent<Machine>().machine_type].Add(coord);
 
-
-        //DEPRICATED CODE
-
-        //center_positions();
-        //for(int i = 0; i < grid_dimensions.y; i++)
-        //{
-        //    for(int j = 0; j < grid_dimensions.x; j++)
-        //    {
-        //        if (cell_center_pos[j,i] == nonIntCoord)
-        //        {
-        //            grid[j,i] = new_machine;
-        //            machine_array_index = new Vector2Int(j,i);
-        //            new_machine.transform.position = new Vector3(cell_center_pos[j,i].x, cell_center_pos[j, i].y);
-        //        }
-        //    }
-        //}
     }
 
     //Remove a machine from the grid using coordinate
@@ -132,34 +113,70 @@ public class GridController : MonoBehaviour
 
     }
 
+    //Returns a 2D Vector2 array of center positions for individual grid cell in worldspace.
+        //To be used by ODD-GRID machines.
+    public Vector2[,] worldspace_odd_center()
+    {
 
-    //DEPRICATED
+        //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
+        Vector2[,] odd_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
 
-    //public void center_positions()
-    //{
-    //    cell_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
-    //    line_center_pos = new Vector2[grid_dimensions.x - 1, grid_dimensions.y - 1];
 
-    //    cell_center_top_left = new Vector2(-(grid_dimensions.x * cell_dimensions.x - cell_dimensions.x) / 2,
-    //        (grid_dimensions.y * cell_dimensions.y - cell_dimensions.y) / 2);
-    //    line_center_top_left = new Vector2(-(grid_dimensions.x - 1 * cell_dimensions.x - cell_dimensions.x) / 2,
-    //        (grid_dimensions.y - 1 * cell_dimensions.y - cell_dimensions.y) / 2);
+        //worldspace width and height of the entire grid
+        float grid_width = grid_dimensions.x * cell_dimensions.x;
+        float grid_height = grid_dimensions.y * cell_dimensions.y;
 
-    //    //Calculating center positions for both cell and line centers
-    //    for (int i = 0; i < grid_dimensions.y; i++)
-    //    {
-    //        for (int j = 0; j < grid_dimensions.x; j++)
-    //        {
-    //            cell_center_pos[j, i] = new Vector2(cell_center_top_left.x + cell_dimensions.x * j, cell_center_top_left.y - cell_dimensions.y * i);
-    //        }
-    //    }
-    //    for (int i = 0; i < grid_dimensions.y - 1; i++)
-    //    {
-    //        for (int j = 0; j < grid_dimensions.x - 1; j++)
-    //        {
-    //            line_center_pos[j, i] = new Vector2(line_center_top_left.x + cell_dimensions.x * j, line_center_top_left.y - cell_dimensions.y * i);
-    //        }
-    //    }
-    //}
+        //Position of top left corner center position to begin calculations from.
+        Vector2 odd_center_top_left = new Vector2(-(grid_width - cell_dimensions.x) / 2, (grid_height - cell_dimensions.y) / 2);
+
+
+        //Calculating and setting odd center positions for every cell.
+            //Begins from top left, increases X by cell width, decreases Y by cell height.
+        for (int i = 0; i < grid_dimensions.y; i++)
+        {
+            for (int j = 0; j < grid_dimensions.x; j++)
+            {
+
+                //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
+                odd_center_pos[j, i] = new Vector2(odd_center_top_left.x + cell_dimensions.x * j, odd_center_top_left.y - cell_dimensions.y * i);
+            }
+        }
+
+        return odd_center_pos;
+    }
+
+
+    //Returns a 2D Vector2 array of grid line intersections (EXCLUDING CORNERS AND EDGES) in worldspace.
+        //To be used by EVEN-GRID machines.
+    public Vector2[,] worldspace_even_center()
+    {
+
+        //The return variable. An array of world space center positions for even-grid machines (grid line intersection points).
+            //Always 1 index less than the base grid array for both x and y due to corners being unoccupiable. 
+        Vector2[,] even_center_pos = new Vector2[grid_dimensions.x - 1, grid_dimensions.y - 1];
+
+
+        //worldspace width and height of the REDUCED grid
+        float grid_width = grid_dimensions.x - 1 * cell_dimensions.x;
+        float grid_height = grid_dimensions.y - 1 * cell_dimensions.y;
+
+        //Position of top left corner center to begin calculations from.
+        Vector2 even_center_top_left = new Vector2(-(grid_width - cell_dimensions.x) / 2, (grid_height - cell_dimensions.y) / 2);
+
+
+        //Calculating and setting odd center positions for every cell.
+            //Begins from top left, increases X by cell width, decreases Y by cell height.
+        for (int i = 0; i < grid_dimensions.y - 1; i++)
+        {
+            for (int j = 0; j < grid_dimensions.x - 1; j++)
+            {
+
+                //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
+                even_center_pos[j, i] = new Vector2(even_center_top_left.x + cell_dimensions.x * j, even_center_top_left.y - cell_dimensions.y * i);
+            }
+        }
+
+        return even_center_pos;
+    }
 
 }
