@@ -62,13 +62,13 @@ public class MachinePlacer : MonoBehaviour
                         continue;
                     
                     //Distance between the mouse position and current worldspace cell position
-                    float distance = Vector2.Distance(mousePos, grid_control.worldspace_odd_center()[j, i]);
+                    float distance = Vector2.Distance(mousePos, grid_control.odd_worldspace_center()[j, i]);
 
                     //At iteration [0,0], initiallize closest distance and new position to the current cell parameters
                     if (i == 0 && j == 0)
                     {
                         closestDistance = distance;
-                        new_world_pos = grid_control.worldspace_odd_center()[j, i];
+                        new_world_pos = grid_control.odd_worldspace_center()[j, i];
                     }
 
                     //Through iteration, if a distance is found that is less than the current closest distance,
@@ -76,7 +76,7 @@ public class MachinePlacer : MonoBehaviour
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        new_world_pos = grid_control.worldspace_odd_center()[j, i];
+                        new_world_pos = grid_control.odd_worldspace_center()[j, i];
                         new_grid_coord = new Vector2Int(j, grid_control.grid_dimensions.y - (i + 1));
                     }
                 }

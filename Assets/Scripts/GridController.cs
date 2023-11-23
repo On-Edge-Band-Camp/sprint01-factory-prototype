@@ -115,7 +115,7 @@ public class GridController : MonoBehaviour
 
     //Returns a 2D Vector2 array of center positions for individual grid cell in worldspace.
         //To be used by ODD-GRID machines.
-    public Vector2[,] worldspace_odd_center()
+    public Vector2[,] odd_worldspace_center()
     {
 
         //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
@@ -148,7 +148,7 @@ public class GridController : MonoBehaviour
 
     //Returns a 2D Vector2 array of grid line intersections (EXCLUDING CORNERS AND EDGES) in worldspace.
         //To be used by EVEN-GRID machines.
-    public Vector2[,] worldspace_even_center()
+    public Vector2[,] even_worldspace_center()
     {
 
         //The return variable. An array of world space center positions for even-grid machines (grid line intersection points).
