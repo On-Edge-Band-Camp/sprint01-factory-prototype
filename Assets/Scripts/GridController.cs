@@ -57,7 +57,7 @@ public class GridController : MonoBehaviour
         add_machine(new Vector2Int(2, 1), transporter_prefab);
         add_machine(new Vector2Int(3, 1), transporter_prefab);
         add_machine(new Vector2Int(4, 1), transporter_prefab);
-        add_machine(new Vector2Int(4, 1), storage_prefab);
+        add_machine(new Vector2Int(5, 1), storage_prefab);
         add_machine(new Vector2Int(8, 8), storage_prefab);
 
 

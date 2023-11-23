@@ -31,12 +31,16 @@ public class MachinePlacer : MonoBehaviour
 
     }
 
-    //Basic tester code for ""Selecting"" a machine. Currently hardcoded to spawn a machine when 1 is pressed
+    //Basic tester code for ""Selecting"" a machine. Currently hardcoded to spawn a machine when a number key is pressed
     void machine_select()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
         }
     }
 
