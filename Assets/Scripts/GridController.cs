@@ -54,15 +54,6 @@ public class GridController : MonoBehaviour
 
         grid = new GameObject[grid_dimensions.x, grid_dimensions.y];
 
-        add_machine(new Vector2Int(), storage_prefab);
-        add_machine(new Vector2Int(1, 1), collector_prefab);
-        add_machine(new Vector2Int(2, 1), transporter_prefab);
-        add_machine(new Vector2Int(3, 1), transporter_prefab);
-        add_machine(new Vector2Int(4, 1), transporter_prefab);
-        add_machine(new Vector2Int(5, 1), storage_prefab);
-        add_machine(new Vector2Int(8, 8), storage_prefab);
-
-
     }
 
     //Sends update calls to all machines in the grid according to the update_order, which is an array of machine type strings

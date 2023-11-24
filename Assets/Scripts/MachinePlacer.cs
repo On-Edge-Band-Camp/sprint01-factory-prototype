@@ -37,12 +37,17 @@ public class MachinePlacer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Destroy(current_selection);
-            current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
+            current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             Destroy(current_selection);
-            current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
+            current_selection = Instantiate(grid_control.transporter_prefab, mousePos, Quaternion.identity);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Destroy(current_selection);
+            current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
         }
     }
 
