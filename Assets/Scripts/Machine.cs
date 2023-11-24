@@ -13,6 +13,8 @@ public abstract class Machine: MonoBehaviour
 
     public int inventory_total; //FOR TESTING ONLY REMOVE
 
+    GameObject EMPTY_GAME_OBJECT = new GameObject();
+
     //Tester entries
     public Dictionary<string, int> inventory = new Dictionary<string, int>() {
 
@@ -114,7 +116,7 @@ public abstract class Machine: MonoBehaviour
 
         GameObject target = check_output_connnection(output_direction);
 
-        if (target == new GameObject())
+        if (target == EMPTY_GAME_OBJECT)
         {
             return false; 
         }
@@ -135,7 +137,7 @@ public abstract class Machine: MonoBehaviour
     {
         GameObject target = check_output_connnection(output_direction, output_point);
 
-        if (target == new GameObject())
+        if (target == EMPTY_GAME_OBJECT)
         {
             return false;
         }

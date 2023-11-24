@@ -35,11 +35,13 @@ public class GridController : MonoBehaviour
     public GameObject transporter_prefab;
     public GameObject storage_prefab;
 
+    //Initialize Grid
     private void Start()
     {
         init_grid();
     }
 
+    //Runs each frame
     private void Update()
     {
         update_machines(new string[] {"collector","transporter"});
