@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        //Keyboard wasd/arrow input vector
         keyInputs = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 

@@ -28,26 +28,37 @@ public class MachinePlacer : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         machine_select();
         machine_placer();
-
+        //setting menu's buttonclick to false after click is resolved.
+        MachineSelectMenu.buttonClicked = false;
     }
 
-    //Basic tester code for ""Selecting"" a machine. Currently hardcoded to spawn a machine when a number key is pressed
+
+    //Takes static bool clicked and static string name from MachineSelectMenu script when button is pressed.
+    //If a machine is currently selected and button is pressed again, destroy current selection
     void machine_select()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Destroy(current_selection);
-            current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Destroy(current_selection);
-            current_selection = Instantiate(grid_control.transporter_prefab, mousePos, Quaternion.identity);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Destroy(current_selection);
-            current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
+        if (MachineSelectMenu.buttonClicked == true) 
+        { 
+            //Collector Selection
+            if (MachineSelectMenu.selectionName == "Collector")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
+            }
+
+            //Transporter Selection
+            if (MachineSelectMenu.selectionName == "Transporter")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(grid_control.transporter_prefab, mousePos, Quaternion.identity);
+            }
+
+            //Storage Selection
+            if (MachineSelectMenu.selectionName == "Storage")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
+            }
         }
     }
 
@@ -95,17 +106,21 @@ public class MachinePlacer : MonoBehaviour
 
             //Set the current selection's position to the new world position.
             current_selection.transform.position = new_world_pos;
-            
+
             //To place a machine down, send the new grid coordinate (index) to the method.
-            set_machine(new_grid_coord);
+            //Only called when menu buttonclick is false to not conflict with resetting selection.
+            if (MachineSelectMenu.buttonClicked == false) 
+            {
+                set_machine(new_grid_coord);
+            }
         }
     }
 
-    //Method to set a machine down on a grid with a left mouse click. Takes in the new grid coordinate (index) value.
+    //Method to set a machine down on a grid when left mouse click is RELEASED. Takes in the new grid coordinate (index) value.
     //Registers the machine in the abstract grid array.
     void set_machine(Vector2Int new_coord)
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             grid_control.add_machine(new_coord, current_selection);
             Destroy(current_selection);
