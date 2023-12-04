@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public abstract class Machine: MonoBehaviour
 {
 
     public Vector2Int grid_coord;
 
-    public string machine_type;
+    public machine_types machine_type;
 
     public float process_time = 3;
 
@@ -15,33 +17,32 @@ public abstract class Machine: MonoBehaviour
 
     GameObject EMPTY_GAME_OBJECT = new GameObject();
 
-    //Tester entries
-    public Dictionary<string, int> inventory = new Dictionary<string, int>() {
-
-        {"wood", 0},
-        {"stone", 0},
-        {"metal", 0}
-    
-    };
+    //Stores references to all items in game for this machine
+    public Dictionary<string, int> inventory = new Dictionary<string, int>();
 
     //Total amount of items able to be stored in inventory
     public int inventory_max = 10;
 
-    //Input locations relative to center of machine
-    public Vector2Int[] input_directions;
+    //Input locations relative to center of machine, by default inputs from all 1x1 directions
+    public Vector2Int[] input_directions = {
+    
+        new Vector2Int(0, 1),
+        new Vector2Int(1, 0),
+        new Vector2Int(0, -1),
+        new Vector2Int(-1, 0)
+    
+    };
+
+    //Output locations relative to center of machine, by default outputs to all directions
+    public Vector2Int[] output_directions = {         
+        new Vector2Int(0, 1),
+        new Vector2Int(1, 0),
+        new Vector2Int(0, -1),
+        new Vector2Int(-1, 0)
+    };
 
     //When true, it means that the machine is currently performing a process, and doesn't need to be updated.
     public bool processing = false;
-
-
-    //Class Contructor
-    public Machine(Vector2Int center_grid_coord) {
-        
-        grid_coord = center_grid_coord;
-    
-    }
-
-
 
     //Activates when grid_handler sends and update call to this machine
     public abstract void update_machine();
@@ -50,17 +51,13 @@ public abstract class Machine: MonoBehaviour
     public abstract void handle_input(Vector2Int input_direction, string item_type);
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    public abstract void handle_output(Vector2Int output_direction, string item_type);
-
-    //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    //includes local output point
-    public abstract void handle_output(Vector2Int output_direction, Vector2Int output_point, string item_type);
+    public abstract void handle_output(string item_type);
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public abstract void process();
 
 
-    //FOR TESTING ONLY REMOVE!!!!
+    //FOR TESTING ONLY, REMOVE!!!!
     private void Update()
     {
         inventory_total = check_inventory_amount();
@@ -69,11 +66,19 @@ public abstract class Machine: MonoBehaviour
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
+
+        //Initialize inventory
         inventory = new Dictionary<string, int>() {
 
-            {"wood", 0},
-            {"stone", 0},
-            {"metal", 0}
+            {"A", 0},
+            {"B", 0},
+            {"C", 0},
+            {"AA", 0},
+            {"AB", 0},
+            {"AC", 0},
+            {"BB", 0},
+            {"BC", 0},
+            {"CC", 0}
 
         };
     }
@@ -110,46 +115,84 @@ public abstract class Machine: MonoBehaviour
 
     }
 
-    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
-    public bool output_item(Vector2Int output_direction, string item_type)
+    //Check all output directions to see if a valid input is present
+    public bool output_item(string item_type)
     {
 
-        GameObject target = check_output_connnection(output_direction);
+        //All valid outputs are stored to this list, then chosen randomly
+        List<GameObject> valid_outputs = new List<GameObject>();
 
-        if (target == EMPTY_GAME_OBJECT)
-        {
-            return false; 
+        //Iterate through all output directions, if potential connection, add it to the valid_outputs list
+        foreach (Vector2Int direction in output_directions) {
+
+            GameObject target = check_output_connnection(direction);
+
+            if (target != EMPTY_GAME_OBJECT)
+            {
+                valid_outputs.Add(target);
+            }
+
         }
 
-        if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
-        {
-            handle_output(output_direction, item_type);
-            return true;
-        }
-
-        return false;
-
-    }
-
-    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
-    //Output point refers to the local coord on the machine from which the output is occuring, meant for larger machines.
-    public bool output_item(Vector2Int output_direction, Vector2Int output_point, string item_type)
-    {
-        GameObject target = check_output_connnection(output_direction, output_point);
-
-        if (target == EMPTY_GAME_OBJECT)
+        //If list is empty, return false
+        if (valid_outputs.Count == 0)
         {
             return false;
         }
 
-        if (target.GetComponent<Machine>().input_item(grid_coord + output_point, item_type))
+        //Randomize output
+        foreach (GameObject target in valid_outputs)
         {
-            inventory[item_type] -= 1;
-            handle_output(output_direction, output_point, item_type);
+            //Generate random point in outputs list
+            int random_int = Random.Range(0, valid_outputs.Count - 1);
+
+            //check if random point successfullly handshaked
+            if (output_check(valid_outputs[random_int], item_type))
+            {
+                return true;
+            }
+
+            //if didn't handshake, pop point from list
+            valid_outputs.Remove(target);
+
+        }
+
+        //If no output point is found, return false
+        return false;
+    }
+
+    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
+    public bool output_check(GameObject target, string item_type)
+    {
+
+        //if machine is not a transporter, can only output to a transporter.
+        if (machine_type != machine_types.Transporter)
+        {
+            //If target is a transporter
+            if (target.GetComponent<Machine>().machine_type == machine_types.Transporter)
+            {
+                //Handshake with transporter
+                if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
+                {
+                    handle_output(item_type);
+                    return true;
+                }
+            }
+
+            //else return false
+            return false;
+
+        }
+
+        //If machine is a transporter
+        if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
+        {
+            handle_output(item_type);
             return true;
         }
 
         return false;
+
     }
 
     //Checks if the inventory is currently full, if full return true
@@ -200,14 +243,6 @@ public abstract class Machine: MonoBehaviour
     GameObject check_output_connnection(Vector2Int output_direction)
     {
         return GridController.grid[grid_coord.x + output_direction.x, grid_coord.y + output_direction.y];
-    }
-
-
-    //Checks if the output direction given connects to any other gameobjects in the grid, and returns the gameobject, if empty returns empty gameobject
-    //includes local output point
-    GameObject check_output_connnection(Vector2Int output_direction, Vector2Int output_point)
-    { 
-        return GridController.grid[grid_coord.x + output_point.x + output_direction.x, grid_coord.y + output_point.y + output_direction.y];
     }
 
 

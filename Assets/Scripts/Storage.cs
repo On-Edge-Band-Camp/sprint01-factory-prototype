@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class Storage : Machine
 {
-    public Storage(Vector2Int grid_coord) : base(grid_coord)
-    {
-
-        machine_type = "storage";
-
-    }
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
@@ -25,16 +19,8 @@ public class Storage : Machine
     }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    public override void handle_output(Vector2Int output_direction, string item_type)
+    public override void handle_output(string item_type)
     {
-
-    }
-
-    //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    //includes local output point
-    public override void handle_output(Vector2Int output_direction, Vector2Int output_point, string item_type)
-    {
-        
 
     }
 

@@ -98,11 +98,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid_coord: {x: 0, y: 0}
-  machine_type: collector
+  machine_type: 101
   process_time: 3
   inventory_total: 0
   inventory_max: 10
   input_directions: []
+  output_directions:
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
   processing: 0
-  collected_item: wood
-  output_direction: {x: 1, y: 0}
+  collected_item: A

@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77557709928114e4b8375f3ce77d2ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid_dimensions: {x: 9, y: 9}
+  grid_dimensions: {x: 25, y: 25}
   cell_dimensions: {x: 1, y: 1}
   collector_prefab: {fileID: 2564455348920231410, guid: 3804c5fafeb769e4e88db01f346a8bea, type: 3}
   transporter_prefab: {fileID: 5533581290755228803, guid: 61aec9b585c79e8428a94bdbcd0cccc7, type: 3}

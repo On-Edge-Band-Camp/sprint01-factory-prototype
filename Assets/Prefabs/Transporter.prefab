@@ -46,11 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid_coord: {x: 0, y: 0}
-  machine_type: transporter
+  machine_type: 102
   process_time: 1
+  inventory_total: 0
   inventory_max: 1
   input_directions:
   - {x: -1, y: 0}
+  output_directions:
+  - {x: 1, y: 0}
   processing: 0
 --- !u!212 &1569042094519444132
 SpriteRenderer:

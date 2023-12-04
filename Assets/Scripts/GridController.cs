@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum machine_types
+{
+
+    Collector = 101,
+    Transporter = 102,
+    Constructor = 103,
+    Deconstructor = 104,
+    Storage = 105,
+    Splitter = 106,
+    Combiner = 107
+
+};
+
+
 public class GridController : MonoBehaviour 
 {
 
@@ -20,12 +34,16 @@ public class GridController : MonoBehaviour
     //public Vector2 grid_origin = new Vector2();
 
     //List dictionary for each individual type of machines coordinates, sorted by machine type
-    Dictionary<string, List<Vector2Int>> machines = new Dictionary<string, List<Vector2Int>>()
+    //see machine class for machine type id reference
+    Dictionary<machine_types, List<Vector2Int>> machines = new Dictionary<machine_types, List<Vector2Int>>()
     {
-        {"collector", new List<Vector2Int>()},
-        {"transporter", new List<Vector2Int>()},
-        {"combiner", new List<Vector2Int>()},
-        {"storage", new List<Vector2Int>()},
+        {machine_types.Collector, new List<Vector2Int>()},
+        {machine_types.Transporter, new List<Vector2Int>()},
+        {machine_types.Constructor, new List<Vector2Int>()},
+        {machine_types.Deconstructor, new List<Vector2Int>()},
+        {machine_types.Storage, new List<Vector2Int>()},
+        {machine_types.Splitter, new List<Vector2Int>()},
+        {machine_types.Combiner, new List<Vector2Int>()}
     };
 
 
@@ -44,7 +62,14 @@ public class GridController : MonoBehaviour
     //Runs each frame
     private void Update()
     {
-        update_machines(new string[] {"collector","transporter"});
+        machine_types[] update_order = {
+            
+            machine_types.Transporter,
+            machine_types.Collector
+        
+        };
+
+        update_machines(update_order);
     }
 
     //Initializes the grid on startup
@@ -58,10 +83,10 @@ public class GridController : MonoBehaviour
 
     //Sends update calls to all machines in the grid according to the update_order, which is an array of machine type strings
     //THIS VERSION OF THIS METHOD IS FOR TESTING ONLY, NOT COMPLETE
-    void update_machines(string[] update_order)
+    void update_machines(machine_types[] update_order)
     {
 
-        foreach(string machine_type in update_order)
+        foreach(machine_types machine_type in update_order)
         {
             foreach(Vector2Int coordinate in machines[machine_type])
             {
