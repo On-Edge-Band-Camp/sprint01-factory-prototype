@@ -63,8 +63,6 @@ public class GridController : MonoBehaviour
     //Runs each frame
     private void Update()
     {
-
-        update_machines(new string[] {"collector","transporter"});
         odd_worldcamera_center();
 
         machine_types[] update_order = {
