@@ -45,13 +45,7 @@ public class GridController : MonoBehaviour
         {machine_types.Splitter, new List<Vector2Int>()},
         {machine_types.Combiner, new List<Vector2Int>()}
     };
-
-
-    //All machine prefabs
-
-    public GameObject collector_prefab;
-    public GameObject transporter_prefab;
-    public GameObject storage_prefab;
+    
 
     //Initialize Grid
     private void Start()

@@ -17,6 +17,14 @@ public class MachinePlacer : MonoBehaviour
     //Index of the abstract grid to set the machine to when placed.
     Vector2Int new_grid_coord;
 
+    //All machine prefabs
+    public GameObject collector_prefab;
+    public GameObject transporter_left_prefab;
+    public GameObject transporter_right_prefab;
+    public GameObject transporter_up_prefab;
+    public GameObject transporter_down_prefab;
+    public GameObject storage_prefab;
+
     void Start()
     {
         grid_control = GetComponent<GridController>();
@@ -43,21 +51,39 @@ public class MachinePlacer : MonoBehaviour
             if (MachineSelectMenu.selectionName == "Collector")
             {
                 Destroy(current_selection);
-                current_selection = Instantiate(grid_control.collector_prefab, mousePos, Quaternion.identity);
+                current_selection = Instantiate(collector_prefab, mousePos, Quaternion.identity);
             }
 
             //Transporter Selection
-            if (MachineSelectMenu.selectionName == "Transporter")
+            if (MachineSelectMenu.selectionName == "TransporterLeft")
             {
                 Destroy(current_selection);
-                current_selection = Instantiate(grid_control.transporter_prefab, mousePos, Quaternion.identity);
+                current_selection = Instantiate(transporter_left_prefab, mousePos, Quaternion.identity);
+            }
+
+            if (MachineSelectMenu.selectionName == "TransporterRight")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(transporter_right_prefab, mousePos, Quaternion.identity);
+            }
+
+            if (MachineSelectMenu.selectionName == "TransporterUp")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(transporter_up_prefab, mousePos, Quaternion.identity);
+            }
+
+            if (MachineSelectMenu.selectionName == "TransporterDown")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(transporter_down_prefab, mousePos, Quaternion.identity);
             }
 
             //Storage Selection
             if (MachineSelectMenu.selectionName == "Storage")
             {
                 Destroy(current_selection);
-                current_selection = Instantiate(grid_control.storage_prefab, mousePos, Quaternion.identity);
+                current_selection = Instantiate(storage_prefab, mousePos, Quaternion.identity);
             }
         }
     }
