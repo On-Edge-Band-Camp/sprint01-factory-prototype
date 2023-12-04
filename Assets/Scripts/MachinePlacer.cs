@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MachinePlacer : MonoBehaviour
@@ -16,6 +17,10 @@ public class MachinePlacer : MonoBehaviour
 
     //Index of the abstract grid to set the machine to when placed.
     Vector2Int new_grid_coord;
+
+    List<Vector2> onScreenPositions = new List<Vector2>();
+
+    //float distance;
 
     void Start()
     {
@@ -74,33 +79,48 @@ public class MachinePlacer : MonoBehaviour
         if (current_selection != null)
         {
 
-            for (int i = 0; i < grid_control.grid_dimensions.y; i++)
+            for (int i = 0; i < grid_control.camera_grid.y; i++)
             {
-                for (int j = 0; j < grid_control.grid_dimensions.x; j++)
+                for (int j = 0; j < grid_control.camera_grid.x; j++)
                 {
 
-                    //If the current index of the abstract grid is occupied, skip iteration.
-                    if (GridController.grid[j, grid_control.grid_dimensions.y - (i + 1)] != null)
-                        continue;
-                    
-                    //Distance between the mouse position and current worldspace cell position
-                    float distance = Vector2.Distance(mousePos, grid_control.odd_worldspace_center()[j, i]);
+                    float distance = Vector2.Distance(mousePos, grid_control.camera_odd_center_pos[j, i]);
 
-                    //At iteration [0,0], initiallize closest distance and new position to the current cell parameters
                     if (i == 0 && j == 0)
                     {
                         closestDistance = distance;
-                        new_world_pos = grid_control.odd_worldspace_center()[j, i];
+                        new_world_pos = grid_control.camera_odd_center_pos[j, i];
                     }
 
-                    //Through iteration, if a distance is found that is less than the current closest distance,
-                    //set closest distance to this distance and world_pos and grid_coord to this location's parameters.
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        new_world_pos = grid_control.odd_worldspace_center()[j, i];
-                        new_grid_coord = new Vector2Int(j, grid_control.grid_dimensions.y - (i + 1));
+                        
+
+                        for(int k = 0; k < grid_control.grid_dimensions.y; k++)
+                        {
+                            for (int l = 0; l < grid_control.grid_dimensions.x; l++)
+                            {
+                                if (grid_control.entire_odd_center_pos[l, k] == grid_control.camera_odd_center_pos[j, i])
+                                {
+                                    //If the current index of the abstract grid is occupied, skip iteration.
+                                    if (GridController.grid[l, grid_control.grid_dimensions.y - (k + 1)] != null)
+                                    {
+                                        new_world_pos = new_world_pos;
+                                    }
+                                    else
+                                    {
+                                        new_world_pos = grid_control.camera_odd_center_pos[j, i];
+                                    }
+                                    new_grid_coord = new Vector2Int(l, grid_control.grid_dimensions.y - (k + 1));
+                                }
+                            }
+                        }
+     
+
                     }
+
+
                 }
             }
 

@@ -8,9 +8,15 @@ public class GridController : MonoBehaviour
 
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
+    public Vector2[,] camera_odd_center_pos;
+    public Vector2[,] entire_odd_center_pos;
 
     //Initializer dimensions of the grid
     public Vector2Int grid_dimensions = new Vector2Int(8, 8);
+
+    //TEMPORARY dimensions of grid visible within camera
+    //Will be changed later to accomodate zoom/size change
+    public Vector2Int camera_grid = new Vector2Int(21, 11);
 
     //How large cells appear in the scene
     public Vector2 cell_dimensions = new Vector2(1,1);
@@ -39,12 +45,14 @@ public class GridController : MonoBehaviour
     private void Start()
     {
         init_grid();
+        odd_worldspace_center();
     }
 
     //Runs each frame
     private void Update()
     {
         update_machines(new string[] {"collector","transporter"});
+        odd_worldcamera_center();
     }
 
     //Initializes the grid on startup
@@ -108,11 +116,11 @@ public class GridController : MonoBehaviour
 
     //Returns a 2D Vector2 array of center positions for individual grid cell in worldspace.
         //To be used by ODD-GRID machines.
-    public Vector2[,] odd_worldspace_center()
+    public void odd_worldspace_center()
     {
 
         //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
-        Vector2[,] odd_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
+        entire_odd_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
 
 
         //worldspace width and height of the entire grid
@@ -131,16 +139,46 @@ public class GridController : MonoBehaviour
             {
 
                 //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
-                odd_center_pos[j, i] = new Vector2(odd_center_top_left.x + cell_dimensions.x * j, odd_center_top_left.y - cell_dimensions.y * i);
+                entire_odd_center_pos[j, i] = new Vector2(odd_center_top_left.x + cell_dimensions.x * j, odd_center_top_left.y - cell_dimensions.y * i);
             }
         }
 
-        return odd_center_pos;
     }
 
 
+    //New method REMEMBER TO FIX COMMENTS
+    public void odd_worldcamera_center()
+    {
+
+        //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
+        camera_odd_center_pos = new Vector2[camera_grid.x, camera_grid.y];
+
+
+        //worldspace width and height of the entire grid
+        float grid_width = camera_grid.x * cell_dimensions.x;
+        float grid_height = camera_grid.y * cell_dimensions.y;
+
+        //Position of top left corner center position to begin calculations from.
+        Vector2 odd_center_top_left = new Vector2((-(grid_width - cell_dimensions.x) / 2) + (int)Camera.main.transform.position.x, 
+            ((grid_height - cell_dimensions.y) / 2) + (int)Camera.main.transform.position.y);
+
+
+        //Calculating and setting odd center positions for every cell.
+        //Begins from top left, increases X by cell width, decreases Y by cell height.
+        for (int i = 0; i < camera_grid.y; i++)
+        {
+            for (int j = 0; j < camera_grid.x; j++)
+            {
+
+                //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
+                camera_odd_center_pos[j, i] = new Vector2(odd_center_top_left.x + cell_dimensions.x * j, odd_center_top_left.y - cell_dimensions.y * i);
+            }
+        }
+
+    }
+
     //Returns a 2D Vector2 array of grid line intersections (EXCLUDING CORNERS AND EDGES) in worldspace.
-        //To be used by EVEN-GRID machines.
+    //To be used by EVEN-GRID machines.
     public Vector2[,] even_worldspace_center()
     {
 
