@@ -59,6 +59,7 @@ public class GridController : MonoBehaviour
         machine_types[] update_order = {
             
             machine_types.Transporter,
+            machine_types.Splitter,
             machine_types.Collector
         
         };
@@ -82,6 +83,7 @@ public class GridController : MonoBehaviour
 
         foreach(machine_types machine_type in update_order)
         {
+
             foreach(Vector2Int coordinate in machines[machine_type])
             {
                 grid[coordinate.x, coordinate.y].GetComponent<Machine>().update_machine();

@@ -24,6 +24,7 @@ public class MachinePlacer : MonoBehaviour
     public GameObject transporter_up_prefab;
     public GameObject transporter_down_prefab;
     public GameObject storage_prefab;
+    public GameObject splitter_prefab;
 
     void Start()
     {
@@ -84,6 +85,13 @@ public class MachinePlacer : MonoBehaviour
             {
                 Destroy(current_selection);
                 current_selection = Instantiate(storage_prefab, mousePos, Quaternion.identity);
+            }
+
+            //Splitter Selection
+            if (MachineSelectMenu.selectionName == "Splitter")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(splitter_prefab, mousePos, Quaternion.identity);
             }
         }
     }

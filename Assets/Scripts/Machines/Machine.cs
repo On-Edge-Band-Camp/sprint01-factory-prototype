@@ -15,7 +15,7 @@ public abstract class Machine: MonoBehaviour
 
     public int inventory_total; //FOR TESTING ONLY REMOVE
 
-    GameObject EMPTY_GAME_OBJECT = new GameObject();
+    GameObject EMPTY_GAME_OBJECT;
 
     //Stores references to all items in game for this machine
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
@@ -144,16 +144,13 @@ public abstract class Machine: MonoBehaviour
         foreach (GameObject target in valid_outputs)
         {
             //Generate random point in outputs list
-            int random_int = Random.Range(0, valid_outputs.Count - 1);
+            int random_int = Random.Range(0, valid_outputs.Count);
 
             //check if random point successfullly handshaked
             if (output_check(valid_outputs[random_int], item_type))
             {
                 return true;
             }
-
-            //if didn't handshake, pop point from list
-            valid_outputs.Remove(target);
 
         }
 
@@ -214,7 +211,7 @@ public abstract class Machine: MonoBehaviour
     }
 
     //FOR TESTING ONLY
-    int check_inventory_amount()
+    public int check_inventory_amount()
     {
         int inventory_count = 0;
 

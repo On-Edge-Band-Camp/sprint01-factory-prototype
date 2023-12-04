@@ -13,7 +13,7 @@ public class collector : Machine
 
         if (!processing && !check_inventory_full()) { StartCoroutine("process_timer");}
 
-        if (inventory[collected_item] > 0)
+        if (check_inventory_amount() != 0)
         {
             output_item(collected_item);
         }
@@ -26,10 +26,8 @@ public class collector : Machine
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
     public override void handle_output(string item_type) {
 
-        if (inventory[item_type] > 0)
-        {
-            inventory[item_type] -= 1;
-        }
+        
+        inventory[item_type] -= 1;
     
     }
 
