@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class collector : Machine
+public class Collector : Machine
 {
 
     public string collected_item = "A";

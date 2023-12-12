@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5791454237673926097}
   - component: {fileID: 4958116161864654839}
-  - component: {fileID: 2910289231025687287}
+  - component: {fileID: 639961721111429485}
   m_Layer: 0
   m_Name: Collector
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2910289231025687287
+--- !u!114 &639961721111429485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,11 +102,15 @@ MonoBehaviour:
   process_time: 3
   inventory_total: 0
   inventory_max: 10
-  input_directions: []
-  output_directions:
-  - {x: 1, y: 0}
-  - {x: -1, y: 0}
+  input_directions:
   - {x: 0, y: 1}
+  - {x: 1, y: 0}
   - {x: 0, y: -1}
+  - {x: -1, y: 0}
+  output_directions:
+  - {x: 0, y: 1}
+  - {x: 1, y: 0}
+  - {x: 0, y: -1}
+  - {x: -1, y: 0}
   processing: 0
   collected_item: A
