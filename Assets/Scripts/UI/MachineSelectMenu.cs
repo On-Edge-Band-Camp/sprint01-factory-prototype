@@ -6,6 +6,8 @@ public class MachineSelectMenu : MonoBehaviour
 {
     //Click bool to be set to true when button is clicked
     public static bool buttonClicked;
+    //bool for when anywhere in the floating menu is clicked. Prevents menu deletion from clicking the menu itself.
+    public static bool floatingMenuClicked;
     //Name string to be sent to placer script
     public static string selectionName;
 
@@ -20,6 +22,10 @@ public class MachineSelectMenu : MonoBehaviour
     {
         buttonClicked = true;
         selectionName = name;
+        if (name == "FloatingMenu")
+        {
+            floatingMenuClicked = true;
+        }
     }
 
 }

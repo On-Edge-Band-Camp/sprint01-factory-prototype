@@ -15,6 +15,7 @@ public class MachinePlacer : MonoBehaviour
     //World space position on the grid for the selected machine to snap to.
     Vector2 new_world_pos;
 
+    Vector2Int center_pos_index;
     //Index of the abstract grid to set the machine to when placed.
     Vector2Int new_grid_coord;
 
@@ -28,7 +29,7 @@ public class MachinePlacer : MonoBehaviour
     public GameObject storage_prefab;
     public GameObject splitter_prefab;
 
-
+    public Vector2 worldposcheck;
     void Start()
     {
         grid_control = GetComponent<GridController>();
@@ -104,60 +105,88 @@ public class MachinePlacer : MonoBehaviour
     void machine_placer()
     {
         //The distance between the mouse position and the currently closest cell position.
-        //Updates to the shortest distance through iterative checking with every cell position.  
+        //Updates to the shortest distance through iterative checking of cell positions.  
         float closestDistance = 0;
 
-        //Only if a machine is currently selected,
+        //If a machine is currently selected,
         if (current_selection != null)
         {
+            //Get new position for selected machine by simply flooring mousePos + 0.5 (half cell size). Would probably change to a varible when cells
+                //bigger than 1x1 are being implemented.
+            //Constrains within grid dimension bounds by using Clamp.
+            new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2), 
+                Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
 
-            for (int i = 0; i < grid_control.camera_grid.y; i++)
+            //Matches current calculated new position with that same position stored in the odd center position list.
+            int listIndex = GridController.oddCenterPosList.IndexOf(new_world_pos);
+
+            //Calculation of converting the list index to the 2D array index. Matches the index of entire_odd_center_pos
+            center_pos_index = new Vector2Int(listIndex % grid_control.grid_dimensions.x, ((listIndex - (listIndex % grid_control.grid_dimensions.x)) / grid_control.grid_dimensions.x));
+
+            //Calculation of converting entire_odd_center_pos' index to gameObject grid index.
+            new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
+
+
+            //If a machine already exists at the current potential placement position,
+            if (GridController.grid[new_grid_coord.x, new_grid_coord.y] != null)
             {
-                for (int j = 0; j < grid_control.camera_grid.x; j++)
+                //To be used as calculated index of a neighbouring cell in 3x3 grid around the current potential position.
+                Vector2Int checkingIndex;
+
+                //Nested loop going over the 3x3 grid surrounding the current potential position that is already occupied.
+                for (int i = 0; i < 3; i++)
                 {
-
-                    float distance = Vector2.Distance(mousePos, grid_control.camera_odd_center_pos[j, i]);
-
-                    if (i == 0 && j == 0)
+                    for (int j = 0; j < 3; j++)
                     {
-                        closestDistance = distance;
-                        new_world_pos = grid_control.camera_odd_center_pos[j, i];
-                    }
+                        //1 is for cell size. Would probably work with a variable of other cell sizes. Check later.
+                        int xIncrement = -1;
+                        int yIncrement = -1;
 
-                    if (distance < closestDistance)
-                    {
-                        closestDistance = distance;
-                        
+                        //Skip iteration if both i,j = 0, since it changes nothing.
+                        if (i == 0 && j == 0)
+                            continue;
 
-                        for(int k = 0; k < grid_control.grid_dimensions.y; k++)
+                        //Loop calculations doing combinations of +x, -x, +y, -y, +0 to index.
+                        //Set current calculated position as checkingIndex.
+                        if (i == 0)
+                            xIncrement *= i;
+                        else
+                            xIncrement = (int)Mathf.Pow(-1, i);
+                        if (j == 0)
+                            yIncrement *= j;
+                        else
+                            yIncrement = (int)Mathf.Pow(-1, j);
+
+                        checkingIndex = new Vector2Int(Mathf.Clamp(center_pos_index.x + xIncrement, 0, GridController.gridDim.x - 1),
+                            Mathf.Clamp(center_pos_index.y + yIncrement, 0, GridController.gridDim.y - 1));
+
+                        //If that index is occupied, skip iteration and keep checking.
+                        if (GridController.grid[checkingIndex.x, GridController.gridDim.y - (checkingIndex.y + 1)] != null)
+                            continue;
+
+                        //Once unoccupied cell is found, get distance between mousePos and that cell.
+                        float distance = Vector2.Distance(mousePos, GridController.entire_odd_center_pos[checkingIndex.x, checkingIndex.y]);
+
+                        //If current closestDist is 0 or above distance is less than current closestDist, set closestDist to distance and 
+                            //center_pos_index to the new index of checkingIndex.
+                        if (closestDistance == 0 || distance < closestDistance)
                         {
-                            for (int l = 0; l < grid_control.grid_dimensions.x; l++)
-                            {
-                                if (grid_control.entire_odd_center_pos[l, k] == grid_control.camera_odd_center_pos[j, i])
-                                {
-                                    //If the current index of the abstract grid is occupied, skip iteration.
-                                    if (GridController.grid[l, grid_control.grid_dimensions.y - (k + 1)] != null)
-                                    {
-                                        new_world_pos = new_world_pos;
-                                    }
-                                    else
-                                    {
-                                        new_world_pos = grid_control.camera_odd_center_pos[j, i];
-                                    }
-                                    new_grid_coord = new Vector2Int(l, grid_control.grid_dimensions.y - (k + 1));
-                                }
-                            }
+                            closestDistance = distance;
+                            center_pos_index = checkingIndex;
                         }
-     
+
 
                     }
-
-
                 }
+                new_world_pos = GridController.entire_odd_center_pos[center_pos_index.x, center_pos_index.y];
+            }
+            //If cell unoccupied, simply set calculated new world pos as position.
+            else
+            {
+                //Set the current selection's position to the new world position.
+                current_selection.transform.position = new_world_pos;
             }
 
-            //Set the current selection's position to the new world position.
-            current_selection.transform.position = new_world_pos;
 
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
