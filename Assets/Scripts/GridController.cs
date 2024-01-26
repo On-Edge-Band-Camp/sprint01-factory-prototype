@@ -74,7 +74,7 @@ public class GridController : MonoBehaviour
     //Runs each frame
     private void Update()
     {
-
+        Debug.Log(CSVReader.Read("Test").Count);
         machine_types[] update_order = {
             
             machine_types.Transporter,

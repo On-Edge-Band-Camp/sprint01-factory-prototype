@@ -15,8 +15,6 @@ public abstract class Machine: MonoBehaviour
 
     public int inventory_total; //FOR TESTING ONLY REMOVE
 
-    GameObject EMPTY_GAME_OBJECT;
-
     //Stores references to all items in game for this machine
     public Dictionary<string, int> inventory = new Dictionary<string, int>();
 
@@ -127,7 +125,7 @@ public abstract class Machine: MonoBehaviour
 
             GameObject target = check_output_connnection(direction);
 
-            if (target != EMPTY_GAME_OBJECT)
+            if (target != null)
             {
                 valid_outputs.Add(target);
             }
