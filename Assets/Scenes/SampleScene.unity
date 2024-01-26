@@ -1807,7 +1807,7 @@ GameObject:
   - component: {fileID: 739948233}
   - component: {fileID: 739948235}
   m_Layer: 0
-  m_Name: GridController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1856,8 +1856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collector_prefab: {fileID: 2564455348920231410, guid: 3804c5fafeb769e4e88db01f346a8bea, type: 3}
-  transporter_left_prefab: {fileID: 5533581290755228803, guid: 61aec9b585c79e8428a94bdbcd0cccc7, type: 3}
-  transporter_right_prefab: {fileID: 5082883538581896612, guid: 31698d3cf7675574eb53c29f94a84f79, type: 3}
+  transporter_left_prefab: {fileID: 5082883538581896612, guid: 31698d3cf7675574eb53c29f94a84f79, type: 3}
+  transporter_right_prefab: {fileID: 5533581290755228803, guid: 61aec9b585c79e8428a94bdbcd0cccc7, type: 3}
   transporter_up_prefab: {fileID: 3836678946162418610, guid: 3b7d3f6ab64e8b948b31b07235e94f23, type: 3}
   transporter_down_prefab: {fileID: 3836678946162418610, guid: 8093783df0592344187535adccde5ff8, type: 3}
   storage_prefab: {fileID: 2731256711827608865, guid: b88f57332efafc94e9bff5e2408204f1, type: 3}
