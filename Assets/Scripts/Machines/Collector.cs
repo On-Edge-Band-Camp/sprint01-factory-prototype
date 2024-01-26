@@ -37,12 +37,7 @@ public class Collector : Machine
         if (!check_inventory_full())
         {
             inventory[collected_item] += 1;
-        } else
-        {
-            Debug.Log(grid_coord + ": Inventory Full");
-        }
-
-        //Debug.Log("Collector process complete");
+        } 
     }
 
 }
