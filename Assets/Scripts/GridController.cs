@@ -45,10 +45,6 @@ public class GridController : MonoBehaviour
     //How large cells appear in the scene
     public Vector2 cell_dimensions = new Vector2(1,1);
 
-    //DEPRICATED CODE
-    //The center of the grid in the scene
-    //public Vector2 grid_origin = new Vector2();
-
     //List dictionary for each individual type of machines coordinates, sorted by machine type
     //see machine class for machine type id reference
     Dictionary<machine_types, List<Vector2Int>> machines = new Dictionary<machine_types, List<Vector2Int>>()
@@ -107,9 +103,6 @@ public class GridController : MonoBehaviour
             foreach(Vector2Int coordinate in machines[machine_type])
             {
                 grid[coordinate.x, coordinate.y].GetComponent<Machine>().update_machine();
-
-                //DEPRICATED CODE
-                //grid[machine_array_index.x, machine_array_index.y].GetComponent<Machine>().update_machine();
             }
         }
 
@@ -213,37 +206,5 @@ public class GridController : MonoBehaviour
 
         return even_center_pos;
     }
-
-    //Deprecated. Check and remove later.
-    //New method REMEMBER TO FIX COMMENTS
-    /*    public void odd_worldcamera_center()
-        {
-
-            //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
-            camera_odd_center_pos = new Vector2[camera_grid.x, camera_grid.y];
-
-
-            //worldspace width and height of the entire grid
-            float grid_width = camera_grid.x * cell_dimensions.x;
-            float grid_height = camera_grid.y * cell_dimensions.y;
-
-            //Position of top left corner center position to begin calculations from.
-            Vector2 odd_center_top_left = new Vector2((-(grid_width - cell_dimensions.x) / 2) + (int)Camera.main.transform.position.x, 
-                ((grid_height - cell_dimensions.y) / 2) + (int)Camera.main.transform.position.y);
-
-
-            //Calculating and setting odd center positions for every cell.
-            //Begins from top left, increases X by cell width, decreases Y by cell height.
-            for (int i = 0; i < camera_grid.y; i++)
-            {
-                for (int j = 0; j < camera_grid.x; j++)
-                {
-
-                    //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
-                    camera_odd_center_pos[j, i] = new Vector2(odd_center_top_left.x + cell_dimensions.x * j, odd_center_top_left.y - cell_dimensions.y * i);
-                }
-            }
-
-        }*/
 
 }
