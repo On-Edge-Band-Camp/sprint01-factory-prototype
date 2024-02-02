@@ -28,6 +28,7 @@ public class MachinePlacer : MonoBehaviour
     public GameObject transporter_down_prefab;
     public GameObject storage_prefab;
     public GameObject splitter_prefab;
+    public GameObject constructor_prefab;
 
     public Vector2 worldposcheck;
     void Start()
@@ -96,6 +97,12 @@ public class MachinePlacer : MonoBehaviour
             {
                 Destroy(current_selection);
                 current_selection = Instantiate(splitter_prefab, mousePos, Quaternion.identity);
+            }
+
+            if (MachineSelectMenu.selectionName == "Constuctor")
+            {
+                Destroy(current_selection);
+                current_selection = Instantiate(constructor_prefab, mousePos, Quaternion.identity);
             }
         }
     }

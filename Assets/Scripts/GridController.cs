@@ -77,7 +77,8 @@ public class GridController : MonoBehaviour
             
             machine_types.Transporter,
             machine_types.Splitter,
-            machine_types.Collector
+            machine_types.Collector,
+            machine_types.Constructor
         
         };
 
