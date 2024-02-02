@@ -21,17 +21,18 @@ public class Constructor : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
         //checks if it has the mats it needs
-        for(int i = 0; i < materialNeeded.Length; i++)
-        {
-            if(inventory[materialNeeded[i]] > 0)
+
+        foreach (var item in materialNeeded) 
+        { 
+            if(inventory[item] > 0) 
             {
                 canCraft = true;
             }
             else
             {
-                Debug.Log("Needs more " + materialNeeded[i]);
+                Debug.Log("Needs more " + item);
                 canCraft = false;
-                i = materialNeeded.Length;
+                break;
             }
         }
 
@@ -54,7 +55,7 @@ public class Constructor : Machine
         // delete component items on export
         for (int i = 0; i < materialNeeded.Length; i++)
         {
-            inventory[item_type] -= 1;
+            inventory[materialNeeded[i]] -= 1;
         }
     }
 
@@ -92,7 +93,7 @@ public class Constructor : Machine
             {
                 finalProduct = recipes[i]["Product"];
                 i = recipes.Count;
-                Debug.Log(finalProduct);
+                Debug.Log("Product found! Making " + finalProduct); //DEBUG
             }
         }
 
@@ -100,10 +101,10 @@ public class Constructor : Machine
         if (finalProduct != null)
         {
             Debug.Log("Exporting!");
-            output_item(finalProduct.ToString());
+            output_item(finalProduct.ToString()); //DEBUG
         }
 
-        Debug.Log("Finished crafting!");
+        Debug.Log("Finished crafting!"); //DEBUG
         canCraft = false;
         isCrafting = false;
 
