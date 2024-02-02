@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 /*
 ---------------- BUGS TO FIX ----------------
 1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted
-2. if a recipe is input that is not valid, it has no way of knowing this untill it has already gone through the process timer
+2. if an input is not valid, it has no way of knowing this untill it has already gone through the process timer
 ----------------------------------------------
 */
 
@@ -20,8 +20,8 @@ public class Constructor : Machine
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
-        //checks if it has the mats it needs
 
+        //checks if it has the mats it needs
         foreach (var item in materialNeeded) 
         { 
             if(inventory[item] > 0) 
@@ -62,12 +62,30 @@ public class Constructor : Machine
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
 
+        SearchForProduct();
+
+        //Exports item
+        if (finalProduct != null)
+        {
+            Debug.Log("Exporting!");
+            output_item(finalProduct.ToString()); //DEBUG
+        }
+
+        Debug.Log("Finished crafting!"); //DEBUG
+        canCraft = false;
+        isCrafting = false;
+
+    }
+
+    //Finds the recipe the inputs make
+    private void SearchForProduct()
+    {
         finalProduct = null;
 
-        //Finds the item that is being made
+        //Checks the list of recipes for the inputs given, sets finalProduct to found recipe. Sets finalProduct to null if no recipe is found
         for (var i = 0; i < recipes.Count; i++)
         {
-            Debug.Log("Attempting to find product....");
+            Debug.Log("Attempting to find product...."); //DEBUG
             int part1Index = -1;
             int part2Index = -1;
 
@@ -96,17 +114,5 @@ public class Constructor : Machine
                 Debug.Log("Product found! Making " + finalProduct); //DEBUG
             }
         }
-
-        //Exports item
-        if (finalProduct != null)
-        {
-            Debug.Log("Exporting!");
-            output_item(finalProduct.ToString()); //DEBUG
-        }
-
-        Debug.Log("Finished crafting!"); //DEBUG
-        canCraft = false;
-        isCrafting = false;
-
     }
 }
