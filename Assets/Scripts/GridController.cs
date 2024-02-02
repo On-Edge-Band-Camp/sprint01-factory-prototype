@@ -19,7 +19,6 @@ public enum machine_types
 
 public class GridController : MonoBehaviour 
 {
-
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
@@ -61,11 +60,11 @@ public class GridController : MonoBehaviour
         {machine_types.Splitter, new List<Vector2Int>()},
         {machine_types.Combiner, new List<Vector2Int>()}
     };
-    
 
     //Initialize Grid
     private void Start()
     {
+
         gridDim = grid_dimensions;
         init_grid();
         odd_worldspace_center();
@@ -74,7 +73,6 @@ public class GridController : MonoBehaviour
     //Runs each frame
     private void Update()
     {
-        Debug.Log(CSVReader.Read("Test").Count);
         machine_types[] update_order = {
             
             machine_types.Transporter,

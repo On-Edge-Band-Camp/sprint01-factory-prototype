@@ -21,6 +21,9 @@ public abstract class Machine: MonoBehaviour
     //Total amount of items able to be stored in inventory
     public int inventory_max = 10;
 
+    //This will store all the possible recipies in the game
+    public List<Dictionary<string, object>> recipes = new List<Dictionary<string, object>>();
+
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
     
@@ -54,7 +57,6 @@ public abstract class Machine: MonoBehaviour
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public abstract void process();
 
-
     //FOR TESTING ONLY, REMOVE!!!!
     private void Update()
     {
@@ -64,6 +66,8 @@ public abstract class Machine: MonoBehaviour
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
+        //reads recipies into memory
+        recipes = CSVReader.Read("Recipes");
 
         //Initialize inventory
         inventory = new Dictionary<string, int>() {
