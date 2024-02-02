@@ -5,8 +5,8 @@ using static UnityEditor.Progress;
 
 /*
 ---------------- BUGS TO FIX ----------------
-1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted
-2. if an input is not valid, it has no way of knowing this untill it has already gone through the process timer
+1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted 
+2. if an input is not valid, it has no way of knowing this untill it has already gone through the process timer FIXED WITH UI INPUTS
 ----------------------------------------------
 */
 
