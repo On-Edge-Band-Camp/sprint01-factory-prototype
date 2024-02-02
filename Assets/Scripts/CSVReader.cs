@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 
 public class CSVReader
 {
+    // Script found online at https://bravenewmethod.com/2014/09/13/lightweight-csv-reader-for-unity/
+
     static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
     static char[] TRIM_CHARS = { '\"' };
