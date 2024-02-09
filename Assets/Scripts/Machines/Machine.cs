@@ -24,6 +24,8 @@ public abstract class Machine: MonoBehaviour
     //This will store all the possible recipies in the game
     public List<Dictionary<string, object>> recipes = new List<Dictionary<string, object>>();
 
+    GameManager gameManager = null;
+
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
     
@@ -63,11 +65,17 @@ public abstract class Machine: MonoBehaviour
         inventory_total = check_inventory_amount();
     }
 
+    private void Awake()
+    {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
+    }
+
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
+
         //reads recipies into memory
-        recipes = CSVReader.Read("Recipes");
+        recipes = gameManager.gameRecipes;
 
         //Initialize inventory
         //REMOVE
