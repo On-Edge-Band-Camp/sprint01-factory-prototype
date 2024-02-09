@@ -13,8 +13,8 @@ using static UnityEditor.Progress;
 public class Constructor : Machine
 {
     public string[] materialNeeded = new string[] {"A", "B"};
-
     private object finalProduct;
+
     private bool canCraft = false;
     private bool isCrafting = false;
 
