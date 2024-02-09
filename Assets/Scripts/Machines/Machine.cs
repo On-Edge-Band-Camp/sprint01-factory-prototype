@@ -70,6 +70,8 @@ public abstract class Machine: MonoBehaviour
         recipes = CSVReader.Read("Recipes");
 
         //Initialize inventory
+        //REMOVE
+        //PULL FROM SPREADSHEET INSTEAD
         inventory = new Dictionary<string, int>() {
 
             {"A", 0},
