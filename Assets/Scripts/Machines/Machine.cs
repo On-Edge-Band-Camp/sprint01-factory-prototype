@@ -24,6 +24,9 @@ public abstract class Machine: MonoBehaviour
     //This will store all the possible recipies in the game
     public List<Dictionary<string, object>> recipes = new List<Dictionary<string, object>>();
 
+    //This is the gameobject that holds all the particles in this object
+    private GameObject particleMaster;
+
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
     
@@ -61,11 +64,14 @@ public abstract class Machine: MonoBehaviour
     private void Update()
     {
         inventory_total = check_inventory_amount();
+        particleMaster.SetActive(processing);
     }
 
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
+        particleMaster = transform.Find("Particles").gameObject;
+        particleMaster.SetActive(false);
         //reads recipies into memory
         recipes = CSVReader.Read("Recipes");
 
