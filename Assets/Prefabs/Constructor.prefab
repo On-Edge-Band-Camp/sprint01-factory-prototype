@@ -102,6 +102,7 @@ MonoBehaviour:
   process_time: 3
   inventory_total: 0
   inventory_max: 10
+  gameManager: {fileID: 0}
   input_directions:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
@@ -113,3 +114,4 @@ MonoBehaviour:
   - {x: 0, y: -1}
   - {x: -1, y: 0}
   processing: 0
+  finalProductName: Test2

@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 /*
 ---------------- BUGS TO FIX ----------------
-1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted 
-2. if an input is not valid, it has no way of knowing this untill it has already gone through the process timer FIXED WITH UI INPUTS
+1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted (Kinda fixed with ratios, just compensate on input 2 by adding 1 more needed)
 ----------------------------------------------
+
+
 */
 
 public class Constructor : Machine
 {
-    public string[] materialNeeded = new string[] {"A", "B"};
-    private object finalProduct;
+    private string[] materialNeeded;
+    public string finalProductName;
 
     private bool canCraft = false;
     private bool isCrafting = false;
@@ -21,23 +23,14 @@ public class Constructor : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
 
-        //checks if it has the mats it needs
-        foreach (var item in materialNeeded) 
-        { 
-            if(inventory[item] > 0) 
-            {
-                canCraft = true;
-            }
-            else
-            {
-                Debug.Log("Needs more " + item);
-                canCraft = false;
-                break;
-            }
-        }
+        //checks what we need to make this
+        SearchForInputs();
+
+        //checks if we have what we need
+        inventoryCheck();
 
         //starts process once all needed mats are gathered
-        if (canCraft && !isCrafting)
+        if (canCraft && !isCrafting && finalProductName != null)
         { 
             StartCoroutine("process_timer");
             isCrafting = true;
@@ -55,63 +48,77 @@ public class Constructor : Machine
         // delete component items on export
         for (int i = 0; i < materialNeeded.Length; i++)
         {
-            inventory[materialNeeded[i]] -= 1;
+            inventory[materialNeeded[i]] -= 1 * gameManager.findItemByName(materialNeeded[i]).inputRatios[i];
         }
     }
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-        
-        SearchForProduct();
+        Debug.Log("Exporting!"); //Debug
+        output_item(finalProductName);
 
-        //Exports item
-        if (finalProduct != null)
-        {
-            Debug.Log("Exporting!");
-            output_item(finalProduct.ToString()); //DEBUG
-        }
-
-        Debug.Log("Finished crafting!"); //DEBUG
         canCraft = false;
         isCrafting = false;
         
     }
 
     //Finds the recipe the inputs make
-    private void SearchForProduct()
+    private void SearchForInputs()
     {
-        finalProduct = null;
-
+        materialNeeded = null;
         //Checks the list of recipes for the inputs given, sets finalProduct to found recipe. Sets finalProduct to null if no recipe is found
-        for (var i = 0; i < recipes.Count; i++)
+        for (int i = 0; i < gameManager.items.Length; i++)
         {
-            Debug.Log("Attempting to find product...."); //DEBUG
-            int part1Index = -1;
-            int part2Index = -1;
+            if (gameManager.items[i].Name == finalProductName)
+            {
+                materialNeeded = gameManager.items[i].inputNames;
+                break;
+            }
+        }
+        
+        if (materialNeeded == null)
+        {
+            Debug.LogWarning("No Buildable path found. Check your imput for crafted meterial for typos");
+        }
+    }
 
-            if (materialNeeded[0] == recipes[i]["Part1"].ToString())
-            {
-                part1Index = i;
-            }
-            else if (materialNeeded[0] == recipes[i]["Part2"].ToString())
-            {
-                part1Index = i;
-            }
+    private void inventoryCheck()
+    {
+        //Seting up booleans for inventory check
+        bool[] hasMateralsInInventory = new bool[materialNeeded.Length];
+        for (int i = 0; i < hasMateralsInInventory.Length; i++)
+        {
+            hasMateralsInInventory[i] = false;
+        }
 
-            if (materialNeeded[1] == recipes[i]["Part1"].ToString())
+        //checks if we have what we need in our inventory, sends error if it dose not reconize needed material
+        for (int i = 0; i < materialNeeded.Length; i++)
+        {
+            try
             {
-                part2Index = i;
+                if (inventory[materialNeeded[i]] >= 1 * gameManager.findItemByName(materialNeeded[i]).inputRatios[i])
+                {
+                    hasMateralsInInventory[i] = true;
+                }
+                else
+                {
+                    hasMateralsInInventory[i] = false;
+                }
             }
-            else if (materialNeeded[1] == recipes[i]["Part2"].ToString())
+            catch
             {
-                part2Index = i;
+                Debug.LogWarning("Needed material could not be found on constructor. Check the items spreadsheet for typos on input item names");
             }
+        }
 
-            if (part1Index == part2Index && part1Index != -1)
+        //chekcs if the boolean is fully true
+        for (int i = 0; i < hasMateralsInInventory.Length; i++)
+        {
+            canCraft = true;
+            if (!hasMateralsInInventory[i])
             {
-                finalProduct = recipes[i]["Product"];
-                i = recipes.Count;
-                Debug.Log("Product found! Making " + finalProduct); //DEBUG
+                canCraft = false;
+                break;
             }
         }
     }

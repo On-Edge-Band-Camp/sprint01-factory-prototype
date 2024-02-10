@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,12 +36,14 @@ public class GameManager : MonoBehaviour
         {
             string[] inputNames = new string[] { itemInport[i]["Input1"].ToString(), itemInport[i]["Input2"].ToString() };
 
-            items[i] = new Item(itemInport[i]["Index"], itemInport[i]["Name"].ToString(), inputNames, itemInport[i]["Sprite"].ToString());
+            items[i] = new Item(itemInport[i]["Index"], itemInport[i]["Name"].ToString(), inputNames, itemInport[i]["Sprite"].ToString(), itemInport[i]["Input1Ratio"], itemInport[i]["Input2Ratio"]);
         }
 
         //This takes the string names of the input items and finds thier Item and puts them in the proper array
         for (int i = 0; i < items.Length; i++)
         {
+            items[i].inputRatios = new int[] { Convert.ToInt32(items[i].Input1Ratio), Convert.ToInt32(items[i].Input2Ratio) };
+
             for (int j = 0; j < items.Length; j++)
             {
                 if (items[i].inputNames[0] == items[j].Name)
@@ -56,6 +60,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Will return the class of any itemName given, will return null if it cannot be found
+    public Item findItemByName(string itemName)
+    {
+        for (int i = 0;i < items.Length;i++)
+        {
+            if (items[i].Name == itemName)
+            {
+                return items[i];
+            }
+        }
+        Debug.LogWarning("Item dosen't exist. Check for any Typos in any input fields");
+        return null;
+    }
+
     //This is the class for all item information
     public class Item
     {
@@ -63,12 +81,16 @@ public class GameManager : MonoBehaviour
         public string Name;
         public Item[] inputs;
         public Sprite sprite;
+        public int[] inputRatios;
+        public object Input1Ratio;
+        public object Input2Ratio;
+        public int outputRatio;
 
         public string spriteName;
 
         //The inputNames veriable is not to be used outside of the constructor. Use inputs instead
         public string[] inputNames;
-        public Item(object index, string name, string[] inputs, string sprite)
+        public Item(object index, string name, string[] inputs, string sprite, object input1Ratio, object input2Ratio)
         {
             this.index = index;
             this.Name = name;
@@ -76,7 +98,9 @@ public class GameManager : MonoBehaviour
             this.spriteName = sprite;
             this.sprite = null;
             this.inputs = new Item[2];
-
+            this.Input1Ratio = input1Ratio;
+            this.Input2Ratio = input2Ratio;
+            this.inputRatios = new int[2];
         }
     }
 }
