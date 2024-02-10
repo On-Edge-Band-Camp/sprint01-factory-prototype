@@ -6,8 +6,9 @@ using static UnityEditor.Progress;
 
 public class Deconstructor : Machine
 {
-    private string neededMeterial = "AB";
-    private object[] finalProducts = null;
+
+    private string neededMeterial;
+    //private object[] finalProducts = null;
     
     private bool canDeconstruct = false;
     private bool isDeconstructing = false;
@@ -43,7 +44,7 @@ public class Deconstructor : Machine
 
     private void SearchForRecipe()
     {
-        finalProducts = null;
+        //finalProducts = null;
         for (var i = 0; i < recipes.Count; i++)
         {
             /*if (neededMeterial == recipes[i]["Product"].ToString)

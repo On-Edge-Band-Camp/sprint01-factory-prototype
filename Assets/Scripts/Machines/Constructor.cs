@@ -61,7 +61,7 @@ public class Constructor : Machine
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-
+        
         SearchForProduct();
 
         //Exports item
@@ -74,7 +74,7 @@ public class Constructor : Machine
         Debug.Log("Finished crafting!"); //DEBUG
         canCraft = false;
         isCrafting = false;
-
+        
     }
 
     //Finds the recipe the inputs make

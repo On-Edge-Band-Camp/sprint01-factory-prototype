@@ -6,7 +6,7 @@ using UnityEngine;
 public class Collector : Machine
 {
 
-    public string collected_item = "A";
+    public string collected_item = "Test";
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
@@ -17,7 +17,6 @@ public class Collector : Machine
         {
             output_item(collected_item);
         }
-
     }
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.

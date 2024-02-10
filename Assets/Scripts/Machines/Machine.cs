@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public abstract class Machine: MonoBehaviour
     //This will store all the possible recipies in the game
     public List<Dictionary<string, object>> recipes = new List<Dictionary<string, object>>();
 
-    GameManager gameManager = null;
+    public GameManager gameManager;
 
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
@@ -67,7 +68,7 @@ public abstract class Machine: MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     //idk why, but dictionaries need to be declared at runtime
@@ -80,7 +81,7 @@ public abstract class Machine: MonoBehaviour
         //Initialize inventory
         //REMOVE
         //PULL FROM SPREADSHEET INSTEAD
-        inventory = new Dictionary<string, int>() {
+        /*inventory = new Dictionary<string, int>() {
 
             {"A", 0},
             {"B", 0},
@@ -92,7 +93,13 @@ public abstract class Machine: MonoBehaviour
             {"BC", 0},
             {"CC", 0}
 
-        };
+        };*/
+
+        //Populates the inventroy with every possible item
+        for(int i = 0; i < gameManager.items.Length; i++)
+        {
+            inventory.Add(gameManager.items[i].Name, 0);
+        }
     }
 
 
@@ -156,7 +163,7 @@ public abstract class Machine: MonoBehaviour
         foreach (GameObject target in valid_outputs)
         {
             //Generate random point in outputs list
-            int random_int = Random.Range(0, valid_outputs.Count);
+            int random_int = UnityEngine.Random.Range(0, valid_outputs.Count);
 
             //check if random point successfullly handshaked
             if (output_check(valid_outputs[random_int], item_type))
