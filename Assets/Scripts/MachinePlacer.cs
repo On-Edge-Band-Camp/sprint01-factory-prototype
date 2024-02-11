@@ -23,10 +23,11 @@ public class MachinePlacer : MonoBehaviour
     Vector2Int world_pos_index;
     List<Vector2Int> world_pos_indeces = new List<Vector2Int>();
     List<Vector2Int> new_grid_coords = new List<Vector2Int>();
+    public static Vector2 evenPlacementPos;
     Vector2 prevPos;
 
     //String to check if machine's dimensions are odd or even
-    string machineDimension;
+    public static string machineDimension;
 
     //All machine prefabs
     public GameObject collector_prefab;
@@ -139,24 +140,42 @@ public class MachinePlacer : MonoBehaviour
             {
                 even_placer();
             }
-
+            print(new_grid_coords.Count);
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
             if (MachineSelectMenu.buttonClicked == false) 
             {
-                set_machine(new_grid_coord);
+                if (machineDimension == "Odd")
+                {
+                    set_machine(new_grid_coords);
+                }
+                else
+                {
+                    set_machine(new_grid_coords);
+                }
             }
         }
     }
 
     //Method to set a machine down on a grid when left mouse click is RELEASED. Takes in the new grid coordinate (index) value.
     //Registers the machine in the abstract grid array.
-    void set_machine(Vector2Int new_coord)
+    void set_machine(List<Vector2Int> new_coord)
     {
         if (Input.GetMouseButtonUp(0))
         {
-            grid_control.add_machine(new_coord, current_selection);
-            Destroy(current_selection);
+            if (machineDimension == "Odd")
+            {
+                grid_control.add_machine(new_coord, current_selection);
+                Destroy(current_selection);
+            } 
+            else
+            {
+                for(int i = 0; i < 4; i++)
+                {
+                    grid_control.add_machine(new_coord, current_selection);
+                }
+                Destroy(current_selection);
+            }
         }
     }
 
@@ -234,6 +253,7 @@ public class MachinePlacer : MonoBehaviour
                 }
             }
             new_world_pos = GridController.entire_odd_center_pos[center_pos_index.x, center_pos_index.y];
+            new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
         }
         //If cell unoccupied, simply set calculated new world pos as position.
         else
@@ -241,6 +261,9 @@ public class MachinePlacer : MonoBehaviour
             //Set the current selection's position to the new world position.
             current_selection.transform.position = new_world_pos;
         }
+        if (new_grid_coords.Count > 0)
+            new_grid_coords.RemoveRange(0, 1);
+        new_grid_coords.Add(new_grid_coord);
     }
 
     void even_placer()
@@ -270,7 +293,7 @@ public class MachinePlacer : MonoBehaviour
 
         //Calculation of converting the list index to the 2D array index. Matches the index of entire_even_center_pos
         center_pos_index = new Vector2Int(listIndex % (grid_control.grid_dimensions.x - 1), ((listIndex - (listIndex % (grid_control.grid_dimensions.x - 1))) / (grid_control.grid_dimensions.x - 1)));
-
+        evenPlacementPos = GridController.entire_even_center_pos[center_pos_index.x, center_pos_index.y];
         for(int i = 0; i < 2; i++)
         {
             for(int j = 0; j < 2; j++)
@@ -290,6 +313,7 @@ public class MachinePlacer : MonoBehaviour
                 new_grid_coords.Add(new_grid_coord);
             }
         }
+        //print(new_grid_coords[1]);
         Vector2Int checkingIndex;
         List<Vector2Int> checkingIndeces = new List<Vector2Int>();
         for (int i = 0; i < 4; i++) 

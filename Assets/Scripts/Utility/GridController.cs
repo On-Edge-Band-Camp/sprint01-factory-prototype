@@ -113,21 +113,31 @@ public class GridController : MonoBehaviour
 
     //Add a new machine to the grid
     //THIS VERSION OF THIS METHOD IS FOR TESTING ONLY, NOT COMPLETE
-    public void add_machine(Vector2Int coord, GameObject machine_prefab)
+    public void add_machine(List<Vector2Int> coord, GameObject machine_prefab)
     {
+        Vector2 nonIntCoord;
+        GameObject new_machine = machine_prefab;
+        if (MachinePlacer.machineDimension == "Odd")
+        {
+            new_machine = Instantiate(machine_prefab);
+            new_machine.GetComponent<Machine>().grid_coord = coord[0];
+            nonIntCoord = new Vector2(coord[0].x, coord[0].y);
 
-        GameObject new_machine = Instantiate(machine_prefab);
+            grid[coord[0].x, coord[0].y] = new_machine;
 
-        new_machine.GetComponent<Machine>().grid_coord = coord;
+            new_machine.transform.position = new Vector3(cell_dimensions.x * coord[0].x - Mathf.FloorToInt(grid_dimensions.x / 2),
+                cell_dimensions.y * coord[0].y - Mathf.FloorToInt(grid_dimensions.y / 2));
 
-        Vector2 nonIntCoord = new Vector2(coord.x, coord.y);
-
-        grid[coord.x, coord.y] = new_machine;
-
-        new_machine.transform.position = new Vector3(cell_dimensions.x * coord.x - Mathf.FloorToInt(grid_dimensions.x / 2), 
-            cell_dimensions.y * coord.y - Mathf.FloorToInt(grid_dimensions.y / 2));
-
-        machines[new_machine.GetComponent<Machine>().machine_type].Add(coord);
+            machines[new_machine.GetComponent<Machine>().machine_type].Add(coord[0]);
+        }
+        else if(MachinePlacer.machineDimension == "Even")
+        {
+            new_machine = Instantiate(machine_prefab, MachinePlacer.evenPlacementPos, Quaternion.identity);
+            for (int i = 0; i < 4; i++)
+            {
+                new_machine.GetComponent<Machine>().grid_coord = coord[i];
+            }
+        }
 
     }
 
