@@ -66,7 +66,7 @@ public abstract class Machine: MonoBehaviour
     private void Update()
     {
         inventory_total = check_inventory_amount();
-        particleMaster.SetActive(processing);
+        //particleMaster.SetActive(processing);
     }
 
     private void Awake()
@@ -78,8 +78,8 @@ public abstract class Machine: MonoBehaviour
     private void Start()
     {
 
-        particleMaster = transform.Find("Particles").gameObject;
-        particleMaster.SetActive(false);
+        //particleMaster = transform.Find("Particles").gameObject;
+        //particleMaster.SetActive(false);
         //reads recipies into memory
         recipes = gameManager.gameRecipes;
 
