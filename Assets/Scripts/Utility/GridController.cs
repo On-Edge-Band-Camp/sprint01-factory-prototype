@@ -26,11 +26,14 @@ public class GridController : MonoBehaviour
     //Center positions restricted to camera size.
     //public Vector2[,] camera_odd_center_pos;
 
-    //2D array mirroring the game grid that stores the world positions of every cell in the grid.
+    //2D array mirroring the game grid that stores the world positions of every cell-centers in the grid.
     public static Vector2[,] entire_odd_center_pos;
-    //List containing each cell position (starting from top left, moving right first and downwards)
+    //2D array mirroring the game grid that stores the world positions of every line-intersections in the grid.
+    public static Vector2[,] entire_even_center_pos;
+    //List containing each cell/line position (starting from top left, moving right first and downwards)
         //Used to match possible machine placement position in machinePlacer by using .IndexOf().
     public static List<Vector2> oddCenterPosList = new List<Vector2>();
+    public static List<Vector2> evenCenterPosList = new List<Vector2>();
 
     //Initializer dimensions of the grid
     public Vector2Int grid_dimensions = new Vector2Int(21, 25);
@@ -64,6 +67,7 @@ public class GridController : MonoBehaviour
         gridDim = grid_dimensions;
         init_grid();
         odd_worldspace_center();
+        even_worldspace_center();
     }
 
     //Runs each frame
@@ -175,12 +179,12 @@ public class GridController : MonoBehaviour
 
     //Returns a 2D Vector2 array of grid line intersections (EXCLUDING CORNERS AND EDGES) in worldspace.
     //To be used by EVEN-GRID machines.
-    public Vector2[,] even_worldspace_center()
+    public void even_worldspace_center()
     {
 
         //The return variable. An array of world space center positions for even-grid machines (grid line intersection points).
             //Always 1 index less than the base grid array for both x and y due to corners being unoccupiable. 
-        Vector2[,] even_center_pos = new Vector2[grid_dimensions.x - 1, grid_dimensions.y - 1];
+        entire_even_center_pos = new Vector2[grid_dimensions.x - 1, grid_dimensions.y - 1];
 
 
         //worldspace width and height of the REDUCED grid
@@ -199,11 +203,12 @@ public class GridController : MonoBehaviour
             {
 
                 //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.
-                even_center_pos[j, i] = new Vector2(even_center_top_left.x + cell_dimensions.x * j, even_center_top_left.y - cell_dimensions.y * i);
+                entire_even_center_pos[j, i] = new Vector2(even_center_top_left.x + cell_dimensions.x * j, even_center_top_left.y - cell_dimensions.y * i);
+                //Adds each center position to a list to be searched with .IndexOf()
+                evenCenterPosList.Add(entire_even_center_pos[j, i]);
             }
         }
 
-        return even_center_pos;
     }
 
 }
