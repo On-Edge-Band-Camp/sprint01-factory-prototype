@@ -28,6 +28,10 @@ public abstract class Machine: MonoBehaviour
     public GameManager gameManager;
     //This is the child gameobject that holds all the particles in this object
     public GameObject particleMaster;
+    //This stores the UI the machine is linked to.
+    public GameObject MachineUI;
+    //This is the inventory of the machine
+    public InventoryManager Inventory;
 
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
@@ -270,6 +274,107 @@ public abstract class Machine: MonoBehaviour
         return GridController.grid[grid_coord.x + output_direction.x, grid_coord.y + output_direction.y];
     }
 
+    #region Zephyr's variant methods, using new Item class
+    public abstract void handle_input(Vector2Int input_direction, Items item_type);
 
+    //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
+    public abstract void handle_output(Items item_type);
 
+    //Called when an intem is being input to this machine.
+    public bool input_item(Vector2Int output_machine_coord, Items item_type)
+    {
+
+        if (check_inventory_full())
+        {
+            return false;
+        }
+
+        Vector2Int input = check_input_connection(output_machine_coord);
+
+        if (input != new Vector2Int())
+        {
+            handle_input(input, item_type);
+            return true;
+        }
+
+        return false;
+
+    }
+
+    //Check all output directions to see if a valid input is present
+    public bool output_item(Items item_type)
+    {
+        //All valid outputs are stored to this list, then chosen randomly
+        List<GameObject> valid_outputs = new List<GameObject>();
+
+        //Iterate through all output directions, if potential connection, add it to the valid_outputs list
+        foreach (Vector2Int direction in output_directions)
+        {
+
+            GameObject target = check_output_connnection(direction);
+            if (target != null)
+            {
+                valid_outputs.Add(target);
+            }
+
+        }
+
+        //If list is empty, return false
+        if (valid_outputs.Count == 0)
+        {
+            return false;
+        }
+
+        //Randomize output
+        foreach (GameObject target in valid_outputs)
+        {
+            Debug.Log(target);
+            //Generate random point in outputs list
+            int random_int = UnityEngine.Random.Range(0, valid_outputs.Count);
+
+            //check if random point successfullly handshaked
+            if (output_check(valid_outputs[random_int], item_type))
+            {
+                return true;
+            }
+
+        }
+
+        //If no output point is found, return false
+        return false;
+    }
+
+    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
+    public bool output_check(GameObject target, Items item_type)
+    {
+        //if machine is not a transporter, can only output to a transporter.
+        if (machine_type != machine_types.Transporter)
+        {
+            //If target is a transporter
+            if (target.GetComponent<Machine>().machine_type == machine_types.Transporter)
+            {
+                //Handshake with transporter
+                if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
+                {
+                    handle_output(item_type);
+                    return true;
+                }
+            }
+
+            //else return false
+            return false;
+
+        }
+
+        //If machine is a transporter
+        if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
+        {
+
+            handle_output(item_type);
+            return true;
+        }
+
+        return false;
+    }
+    #endregion
 }

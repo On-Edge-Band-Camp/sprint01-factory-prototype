@@ -212,6 +212,9 @@ public class MachinePlacer : MonoBehaviour
         {
             grid_control.add_machine(new_coord, current_selection);
             Destroy(current_selection);
+
+            //Also Destroy the machine's UI
+            Destroy(current_selection.GetComponent<Machine>().MachineUI); 
         }
     }
 

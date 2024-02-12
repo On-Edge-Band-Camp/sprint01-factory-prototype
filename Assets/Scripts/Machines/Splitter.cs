@@ -39,4 +39,16 @@ public class Splitter : Machine
         }
 
     }
+
+    #region Zephyr's Variant Methods
+    public override void handle_input(Vector2Int input_direction, Items item_type)
+    {
+
+    }
+
+    public override void handle_output(Items item_type)
+    {
+
+    }
+    #endregion
 }

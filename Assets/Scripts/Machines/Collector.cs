@@ -7,7 +7,7 @@ public class Collector : Machine
 {
 
     public string collected_item = "Test";
-
+    public Items CollectingItem;
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
 
@@ -15,6 +15,7 @@ public class Collector : Machine
 
         if (check_inventory_amount() != 0)
         {
+            output_item(CollectingItem);
             output_item(collected_item);
         }
     }
@@ -36,7 +37,27 @@ public class Collector : Machine
         if (!check_inventory_full())
         {
             inventory[collected_item] += 1;
+            CollectItem(CollectingItem);
         } 
     }
 
+    void CollectItem(Items item)
+    {
+        if (item != null)
+        {
+            Inventory.AddItem(item);
+        }
+    }
+
+    #region Zephyr's Variant Methods
+    public override void handle_input(Vector2Int input_direction, Items item_type)
+    {
+
+    }
+
+    public override void handle_output(Items item_type)
+    {
+        Inventory.RemoveItem(item_type);
+    }
+    #endregion
 }
