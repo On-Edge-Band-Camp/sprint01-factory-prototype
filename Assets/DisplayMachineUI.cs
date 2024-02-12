@@ -7,6 +7,7 @@ using TMPro;
 public class DisplayMachineUI : MonoBehaviour
 {
     GameObject UICanvas;
+    public GameObject UIToUse;
     GameObject MachineUI;
 
     Machine Machine;
@@ -19,15 +20,13 @@ public class DisplayMachineUI : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
+
     void Start()
     {
         UICanvas = GameObject.FindWithTag("UICanvas");
 
-        GameObject UItoLoad = Resources.Load("UI/MachineUI")as GameObject;
-        MachineUI = Instantiate(UItoLoad,UICanvas.transform);
+        MachineUI = Instantiate(UIToUse, UICanvas.transform);
         MachineUI.transform.localScale = new Vector3(0, 0, 0);
-
 
         Machine = GetComponent<Machine>();
         Machine.MachineUI = MachineUI;
@@ -37,7 +36,6 @@ public class DisplayMachineUI : MonoBehaviour
         MachineName.text = Machine.gameObject.name.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

@@ -6,9 +6,6 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject[] InventorySlots;
     public GameObject InvItem;
-
-    public Items Wood;
-    public Items Stone;
     /// <summary>
     /// Add a item into a machine's inventory
     /// </summary>
@@ -81,7 +78,7 @@ public class InventoryManager : MonoBehaviour
     /// <summary>
     /// Spawn a new Item in a empty slot
     /// </summary>
-    public void SpawnNewItem(Items ItemToSpawn,GameObject Slot)
+    public void SpawnNewItem(Items ItemToSpawn, GameObject Slot)
     {
         //Spawn a new item as a game object insided the selected empty slot
         GameObject newItem = Instantiate(InvItem, Slot.transform);
@@ -90,7 +87,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     //Find all slots and count how many items of the same type there is.
-    public int CountTotal(Items ItemToCount) 
+    public int CountTotal(Items ItemToCount)
     {
         int TotalItem = 0;
         //Find a slot with the same object in it;
@@ -104,5 +101,13 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return TotalItem;
+    }
+
+    public void ClearAllItem()
+    {
+        foreach(GameObject slot in InventorySlots)
+        {
+            Destroy(slot.transform.GetChild(0).gameObject);
+        }
     }
 }

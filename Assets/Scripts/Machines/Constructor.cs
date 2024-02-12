@@ -20,8 +20,14 @@ public class Constructor : Machine
     private bool canCraft = false;
     private bool isCrafting = false;
 
+    public Items CraftingItem;
+    public Items ComponentA;
+    public Items ComponentB;
+
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
+        //Check what is needed to craft the CraftingItem;
+
 
         //checks what we need to make this
         SearchForInputs();
@@ -125,7 +131,7 @@ public class Constructor : Machine
     #region Zephyr's Variant Methods
     public override void handle_input(Vector2Int input_direction, Items item_type)
     {
-
+        Inventory.AddItem(item_type);
     }
 
     public override void handle_output(Items item_type)

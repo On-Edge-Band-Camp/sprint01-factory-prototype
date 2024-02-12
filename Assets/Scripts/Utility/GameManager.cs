@@ -14,10 +14,21 @@ public class GameManager : MonoBehaviour
 
     private Item[] inputsForThisItem = new Item[2];
 
+    public Items[] AllItems;
+    public List<Items> CraftableItems;
+
     private void Awake()
     {
         gameRecipes = CSVReader.Read("Recipes");
         itemInport = CSVReader.Read("Items");
+
+        foreach(Items item in AllItems)
+        {
+            if (item.Madeof.Length > 0)
+            {
+                CraftableItems.Add(item);
+            }
+        }
     }
 
     private void Start()

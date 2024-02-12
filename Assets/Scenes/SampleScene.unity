@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 187755139}
   m_Layer: 5
   m_Name: UICanvas
-  m_TagString: Untagged
+  m_TagString: UICanvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2289,6 +2289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4506b4bbd2724114a89431a3c05b6a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AllItems:
+  - {fileID: 3320299660593467834, guid: d600cee191136824bb3f54312576641c, type: 3}
+  - {fileID: 3320299660593467834, guid: 0b0c29066dd74ae4cac86d9b3a375633, type: 3}
+  - {fileID: 3320299660593467834, guid: bee3a64442efe1c4ca845f2a187b7a16, type: 3}
+  CraftableItems: []
 --- !u!114 &762060497
 MonoBehaviour:
   m_ObjectHideFlags: 0
