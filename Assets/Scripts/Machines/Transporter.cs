@@ -7,7 +7,7 @@ public class Transporter : Machine
 
     string held_item;
 
-    Items HoldingItem;
+    public Items HoldingItem;
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
