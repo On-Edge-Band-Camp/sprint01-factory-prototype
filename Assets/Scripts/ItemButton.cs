@@ -7,6 +7,7 @@ public class ItemButton : MonoBehaviour
     public GameObject TargetSlot;
     public GameObject InvItem;
     Items ThisItem;
+    Items ItemInSlot;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,29 +20,47 @@ public class ItemButton : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Add a new recipete to a slot, clearing the old one.
+    /// </summary>
     public void AddToSlot()
     {
-        //Try to find an exsiting item in target slot
-        var currentItemInSlot = TargetSlot.GetComponentInChildren<InventoryItem>();
-        if (currentItemInSlot != null)
+        ClearSlot();
+        //Due to Destroy running at the very end of a frame, items will attempt to stack on the items that are about to be destroyed
+        //This is here to add a small delay so that new items would be added slightly after
+        Invoke("AddNewItems",0.1f);
+    }
+    /// <summary>
+    /// Clearing existing recipet on a slot
+    /// </summary>
+    public void ClearSlot()
+    {
+        foreach (Transform child in TargetSlot.transform)
         {
-            //Clear Exsiting slots
-            Destroy(currentItemInSlot.gameObject);
-            TargetSlot.GetComponent<InventoryManager>().ClearAllItem();
+            var TryFindItem = child.GetComponent<InventoryItem>();
+            if (TryFindItem != null)
+            {
+                TryFindItem.DestroySelf();
+                TargetSlot.GetComponent<InventoryManager>().ClearAllItem();
+                return;
+            }
         }
+    }
 
+    /// <summary>
+    /// Adding crafting item into recipet, and also its components.
+    /// </summary>
+    public void AddNewItems()
+    {
         GameObject newItem = Instantiate(InvItem, TargetSlot.transform);
-
         newItem.GetComponent<InventoryItem>().InitializeItem(ThisItem);
+        Debug.Log("New Recipet selected;");
 
         //Add items to empty component slots of the crafting menu
-        foreach(Items item in ThisItem.Madeof)
+        foreach (Items item in ThisItem.Madeof)
         {
-            var Inv = TargetSlot.GetComponent<InventoryManager>();
-            if (Inv != null)
-            {
-                Inv.AddItem(item);
-            }
+            Debug.Log("Adding:" + item);
+            TargetSlot.GetComponent<InventoryManager>().AddItem(item);
         }
     }
 }

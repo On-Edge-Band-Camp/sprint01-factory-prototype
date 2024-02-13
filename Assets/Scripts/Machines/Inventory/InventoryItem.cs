@@ -22,6 +22,11 @@ public class InventoryItem : MonoBehaviour
         countText.text = count.ToString();
     }
 
+    public void DestroySelf()
+    {
+        Debug.Log("Self-Destruct Started");
+        Destroy(gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
