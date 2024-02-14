@@ -194,22 +194,36 @@ public class MachinePlacer : MonoBehaviour
                 current_selection.transform.position = new_world_pos;
             }
 
-
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
             if (MachineSelectMenu.buttonClicked == false) 
             {
-                set_machine(new_grid_coord);
+                set_machine(new_grid_coord, new_world_pos);
             }
         }
     }
 
+    [System.Serializable]
+    public struct PlaceEventData
+    {
+        public string name;
+        public Vector2Int gridPosition;
+        public Vector2 worldPosition;
+    }
+
     //Method to set a machine down on a grid when left mouse click is RELEASED. Takes in the new grid coordinate (index) value.
     //Registers the machine in the abstract grid array.
-    void set_machine(Vector2Int new_coord)
+    void set_machine(Vector2Int new_coord, Vector2 new_world_coord)
     {
         if (Input.GetMouseButtonUp(0))
         {
+            var data = new PlaceEventData()
+            {
+                name = current_selection.name,
+                gridPosition = new_coord,
+                worldPosition = new_world_coord
+            };
+            TelemetryLogger.Log(this, "Machine Placed", data);
             grid_control.add_machine(new_coord, current_selection);
             Destroy(current_selection);
         }
