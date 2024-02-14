@@ -210,9 +210,24 @@ public class MachinePlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
+            var data = new mechinePlacementData()
+            {
+                nameOfMachine = current_selection.name,
+                mechineCord = new_coord
+            };
+
+            TelemetryLogger.Log(this, "Placed Machine", data);
+
             grid_control.add_machine(new_coord, current_selection);
             Destroy(current_selection);
         }
+    }
+
+    [System.Serializable]
+    struct mechinePlacementData
+    {
+        public string nameOfMachine;
+        public Vector2Int mechineCord;
     }
 
 }

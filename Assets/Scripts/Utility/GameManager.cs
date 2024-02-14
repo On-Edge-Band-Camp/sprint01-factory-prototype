@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
         ItemConstructor();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Rotate"))
+        {
+            TelemetryLogger.Log(this, "Rotate");
+        }
+    }
+
     //This function assembles the list of items for mechines and UI to use
     void ItemConstructor()
     {
