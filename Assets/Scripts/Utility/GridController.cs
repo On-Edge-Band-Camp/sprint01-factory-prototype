@@ -69,7 +69,6 @@ public class GridController : MonoBehaviour
     //Runs each frame
     private void Update()
     {
-
         machine_types[] update_order = {
             
             machine_types.Transporter,
@@ -103,15 +102,6 @@ public class GridController : MonoBehaviour
             foreach(Vector2Int coordinate in machines[machine_type])
             {
                 grid[coordinate.x, coordinate.y].GetComponent<Machine>().update_machine();
-
-                //Telemetry Stuff
-                var data = new MachineStateData()
-                {
-                    MachineType = grid[coordinate.x, coordinate.y].GetComponent<Machine>().machine_type.ToString(),
-                    isProcessing = grid[coordinate.x, coordinate.y].GetComponent<Machine>().processing
-                };
-
-                TelemetryLogger.Log(this, "MachineProcessing", data);
             }
         }
 
@@ -214,13 +204,6 @@ public class GridController : MonoBehaviour
         }
 
         return even_center_pos;
-    }
-
-    [System.Serializable]
-    public struct MachineStateData
-    {
-        public bool isProcessing;
-        public string MachineType;
     }
 
 }
