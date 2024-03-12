@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cocktail
   m_EditorClassIdentifier: 
   ItemName: Cocktail
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
   MadeOf:
   - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
   - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}
