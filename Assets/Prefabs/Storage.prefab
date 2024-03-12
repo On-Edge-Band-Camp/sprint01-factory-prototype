@@ -97,11 +97,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a850bba609242a24687152752a61c509, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyCost: 1
+  EmptyItem: {fileID: 0}
   grid_coord: {x: 0, y: 0}
   machine_type: 105
   process_time: 3
   inventory_total: 0
   inventory_max: 10
+  gameManager: {fileID: 0}
+  particleMaster: {fileID: 0}
   input_directions:
   - {x: 0, y: 1}
   - {x: 1, y: 0}

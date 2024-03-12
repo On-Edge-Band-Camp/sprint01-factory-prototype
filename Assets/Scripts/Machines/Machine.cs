@@ -7,6 +7,8 @@ using UnityEngine;
 
 public abstract class Machine: MonoBehaviour
 {
+    public int energyCost;
+
     public GameItem EmptyItem;
 
     public Vector2Int grid_coord;

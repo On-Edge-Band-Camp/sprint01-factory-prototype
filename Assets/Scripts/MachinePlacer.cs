@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MachinePlacer : MonoBehaviour
 {
+    public PlayerResources resources;
+
+    public TMP_Text NotEnoughEnergy;
+
     //Gameobject set to the currently selected machine. Follows the mouse until set on the grid.
     GameObject current_selection;
 
@@ -210,8 +216,17 @@ public class MachinePlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            grid_control.add_machine(new_coord, current_selection);
-            Destroy(current_selection);
+            if(resources.Energy >= current_selection.GetComponent<Machine>().energyCost)
+            {
+                grid_control.add_machine(new_coord, current_selection);
+                resources.Energy -= current_selection.GetComponent<Machine>().energyCost;
+                Destroy(current_selection);
+            }
+            else
+            {
+                Instantiate(NotEnoughEnergy, current_selection.transform.position, Quaternion.identity);
+                Destroy(current_selection);
+            }
         }
     }
 
