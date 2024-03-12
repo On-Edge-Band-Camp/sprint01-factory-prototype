@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5791454237673926097}
   - component: {fileID: 4958116161864654839}
   - component: {fileID: 6072067520168261731}
-  - component: {fileID: -5306192279653267749}
+  - component: {fileID: 6304330747856675745}
   m_Layer: 0
   m_Name: Constructor
   m_TagString: Untagged
@@ -120,7 +120,7 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   finalProductName: Test2
---- !u!114 &-5306192279653267749
+--- !u!114 &6304330747856675745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,11 +129,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2564455348920231410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 617e2fdc309d15b49a5895cd2c616585, type: 3}
+  m_Script: {fileID: 11500000, guid: 6027ac37fbf69a242a01ab74e2d307a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
-  MachineUI: {fileID: 3794074493844319682, guid: c7ad2cf87c08f4046bf2b2ffe92ed80d, type: 3}
+  UIToUse: {fileID: 3794074493844319682, guid: c7ad2cf87c08f4046bf2b2ffe92ed80d, type: 3}
 --- !u!1 &5478830745294110643
 GameObject:
   m_ObjectHideFlags: 0
