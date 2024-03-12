@@ -11,6 +11,8 @@ public class ItemImporter : ScriptableObject
     public string TableName;
     public List<SOItem> AllItems;
 
+    public AllItems ItemList;
+
     [ContextMenu("Import")]
     public void Import()
     {
@@ -32,6 +34,8 @@ public class ItemImporter : ScriptableObject
             Debug.Log(newItem.ItemName);
             AllItems.Add(newItem);
         }
+
+        ItemList.items = AllItems;
 
         ImportMadeOf(TableName, excel, items);
     }

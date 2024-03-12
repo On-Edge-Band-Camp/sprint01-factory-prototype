@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
 
     public GameItem EmptyItem;
 
-    public SOItem[] soitem;
+    public AllItems ItemList;
+    public List<SOItem> soitem;
     public List<GameItem> AllItems = new List<GameItem>();
 
     private void Awake()
@@ -28,8 +29,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ItemConstructor();
+
+        soitem.Clear();
+        soitem = ItemList.items;
         //Initialize all items in game.
-        for (int i = 0; i < soitem.Length; i++)
+        for (int i = 0; i < soitem.Count; i++)
         {
             GameItem newItem = Instantiate(EmptyItem, new Vector3(999, 999, 999), Quaternion.identity);
             newItem.soitem = soitem[i];
