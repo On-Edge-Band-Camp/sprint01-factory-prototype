@@ -14,6 +14,11 @@ public class GameManager : MonoBehaviour
 
     private Item[] inputsForThisItem = new Item[2];
 
+    public GameItem EmptyItem;
+
+    public SOItem[] soitem;
+    public List<GameItem> AllItems = new List<GameItem>();
+
     private void Awake()
     {
         gameRecipes = CSVReader.Read("Recipes");
@@ -23,6 +28,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ItemConstructor();
+        //Initialize all items in game.
+        for (int i = 0; i < soitem.Length; i++)
+        {
+            GameItem newItem = Instantiate(EmptyItem, new Vector3(999, 999, 999), Quaternion.identity);
+            newItem.soitem = soitem[i];
+            newItem.Initialize();
+            AllItems.Add(newItem);
+        }
     }
 
     //This function assembles the list of items for mechines and UI to use

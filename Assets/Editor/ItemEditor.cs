@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEditor;
 
 //What class this script is used for
-[CustomEditor(typeof(Items))]
+[CustomEditor(typeof(SOItem))]
 public class ItemEditor : Editor
 {
-    Items item;
+    SOItem item;
     public override void OnInspectorGUI()
     {
         //Draw the rest of inspector
@@ -16,7 +16,7 @@ public class ItemEditor : Editor
 
         // Inspects the item class? Not exactlly sure what this does.
         // But it is nesseary.
-        item = (Items)target;
+        item = (SOItem)target;
 
         DrawSpritePreview();
 

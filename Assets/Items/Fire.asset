@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47352e737c1f5d41b6b662662ebf795, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d3092663845a79488601c79fa4b38cb, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  ItemName: 
-  Sprite: {fileID: 0}
-  MadeOf: []
-  Tier: 0
+  ItemName: Fire
+  Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
+  MadeOf:
+  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
+  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
+  - {fileID: 11400000, guid: 9ababe34b62f1884b9560c6859cc9ca2, type: 2}
+  Tier: 5

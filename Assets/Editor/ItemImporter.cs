@@ -9,7 +9,7 @@ public class ItemImporter : ScriptableObject
     [Tooltip("Path from Assets/ to the Excel file to import(Use forward slashs '/')")]
     public string excelFilePath = "Editor/ItemTree.xlsx";
     public string TableName;
-    public List<Items> AllItems;
+    public List<SOItem> AllItems;
 
     [ContextMenu("Import")]
     public void Import()
@@ -19,16 +19,16 @@ public class ItemImporter : ScriptableObject
 
         var excel = new ExcelImporter(excelFilePath);
 
-        var items = DataHelper.GetAllAssetsOfType<Items>();
+        var items = DataHelper.GetAllAssetsOfType<SOItem>();
 
         ImportItems(TableName, excel, items);
 
         //Find all items in the Items folder
-        string[] guids = AssetDatabase.FindAssets("t:Items", new[] { "Assets/Items" });
+        string[] guids = AssetDatabase.FindAssets("t:SOItem", new[] { "Assets/Items" });
         foreach (string guid in guids)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-            Items newItem = AssetDatabase.LoadAssetAtPath<Items>(path);
+            SOItem newItem = AssetDatabase.LoadAssetAtPath<SOItem>(path);
             Debug.Log(newItem.ItemName);
             AllItems.Add(newItem);
         }
@@ -36,7 +36,7 @@ public class ItemImporter : ScriptableObject
         ImportMadeOf(TableName, excel, items);
     }
 
-    void ImportItems(string TableName, ExcelImporter excel, Dictionary<string, Items> items)
+    void ImportItems(string TableName, ExcelImporter excel, Dictionary<string, SOItem> items)
     {
         //If the table cannot be found, stop this method
         if(!excel.TryGetTable(TableName, out var table))
@@ -49,7 +49,6 @@ public class ItemImporter : ScriptableObject
         {
             //Find the "Name" row of the table
             string name = table.GetValue<string>(row, "Name");
-            Debug.Log(name + " is being created");
 
             if (string.IsNullOrWhiteSpace(name)) continue;
 
@@ -67,7 +66,7 @@ public class ItemImporter : ScriptableObject
     /// <summary>
     /// Find all items in the items folder and update all of their madeofs
     /// </summary>
-    void ImportMadeOf(string TableName, ExcelImporter excel, Dictionary<string, Items> items)
+    void ImportMadeOf(string TableName, ExcelImporter excel, Dictionary<string, SOItem> items)
     {
         //If the table cannot be found, stop this method
         if (!excel.TryGetTable(TableName, out var table))
@@ -80,12 +79,11 @@ public class ItemImporter : ScriptableObject
         {
             //Find the "Name" row of the table
             string nameOnTable = table.GetValue<string>(row, "Name");
-            Debug.Log(nameOnTable + " is being edited");
 
             if (string.IsNullOrWhiteSpace(nameOnTable)) continue;
 
             //Find the name of the object that is being modified
-            Items item = FindItemByName(nameOnTable);
+            SOItem item = FindItemByName(nameOnTable);
             item.MadeOf.Clear();
             if (item != null)
             {
@@ -112,10 +110,10 @@ public class ItemImporter : ScriptableObject
             }
         }
 
-        Items FindItemByName(string ItemName)
+        SOItem FindItemByName(string ItemName)
         {
             //iterate through all items and find a name that matches the name on the table.
-            foreach (Items item in AllItems)
+            foreach (SOItem item in AllItems)
             {
                 if (item.name == ItemName)
                 {

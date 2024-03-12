@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47352e737c1f5d41b6b662662ebf795, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d3092663845a79488601c79fa4b38cb, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  ItemName: 
+  ItemName: Stone
   Sprite: {fileID: 0}
   MadeOf: []
-  Tier: 0
+  Tier: 5

@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4affdfa9429bdb84daadc113e4caa1c6, type: 3}
   m_Name: ItemImporter
   m_EditorClassIdentifier: 
-  excelFilePath: Editor/PotionCrafting.xlsx
+  excelFilePath: Editor/ItemTree.xlsx
+  TableName: Items
+  AllItems:
+  - {fileID: 11400000, guid: 36549da8891f8c840ad26437b78892bc, type: 2}
+  - {fileID: 11400000, guid: 93740af6c85bc3b419cad77250e8e10d, type: 2}
+  - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}
+  - {fileID: 11400000, guid: 523dd619579bc0d4d949f6e9649ce387, type: 2}
+  - {fileID: 11400000, guid: 94346188964b8bd45a1fc48e408eba7f, type: 2}
+  - {fileID: 11400000, guid: 9ababe34b62f1884b9560c6859cc9ca2, type: 2}
+  - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
+  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}

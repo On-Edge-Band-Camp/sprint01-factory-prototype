@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d3092663845a79488601c79fa4b38cb, type: 3}
-  m_Name: Cocktail
+  m_Name: Coffee
   m_EditorClassIdentifier: 
-  ItemName: Cocktail
+  ItemName: Coffee
   Sprite: {fileID: 0}
   MadeOf:
   - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
-  - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}
+  - {fileID: 11400000, guid: 94346188964b8bd45a1fc48e408eba7f, type: 2}
   Tier: 0

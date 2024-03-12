@@ -7,6 +7,7 @@ using UnityEngine;
 
 public abstract class Machine: MonoBehaviour
 {
+    public GameItem EmptyItem;
 
     public Vector2Int grid_coord;
 
@@ -28,6 +29,8 @@ public abstract class Machine: MonoBehaviour
     public GameManager gameManager;
     //This is the child gameobject that holds all the particles in this object
     public GameObject particleMaster;
+
+    public Dictionary<GameItem, int> MachineInventory = new Dictionary<GameItem, int>();
 
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
@@ -75,11 +78,26 @@ public abstract class Machine: MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        GameObject EmptyItemPrefab = Resources.Load("EmptyItem") as GameObject;
+        EmptyItem = EmptyItemPrefab.GetComponent<GameItem>();
     }
 
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
+
+        //Initialize Inventory with all items in game.
+        for (int i = 0; i < gameManager.AllItems.Count; i++)
+        {
+            //Add 0 of all items into the inventory.
+            MachineInventory.Add(gameManager.AllItems[i], 0);
+            if (MachineInventory.ContainsKey(gameManager.AllItems[i]))
+            {
+                Debug.Log($"{gameManager.AllItems[i].ItemName} has {MachineInventory[gameManager.AllItems[i]]}");
+            }
+        }
+        
+
         if (particleMaster != null)
         {
             particleMaster.SetActive(false);
