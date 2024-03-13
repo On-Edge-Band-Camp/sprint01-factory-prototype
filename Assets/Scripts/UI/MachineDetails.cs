@@ -24,7 +24,10 @@ public class MachineDetails : MonoBehaviour
     {
         foreach(GameItem item in machine.MachineInventory.Keys)
         {
-            Debug.Log(item);
+            if (machine.MachineInventory[item] > 0)
+            {
+                Debug.Log(item.ItemName);
+            }
         }
     }
 }

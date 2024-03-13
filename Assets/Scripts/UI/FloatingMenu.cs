@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FloatingMenu : MonoBehaviour
 {
     public GameObject floatingMenuPrefab;
     GameObject menu;
+    public RectTransform RectTransform; 
 
     Vector2 mousePos;
 
@@ -44,14 +47,15 @@ public class FloatingMenu : MonoBehaviour
         //If machine exists at current mouse grid position and mouse is clicked and released, spawn menu.
         if (GridController.grid[machineGridIndex.x, machineGridIndex.y] != null)
         {
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(1))
             {
                 if(menu != null)
                 {
                     Destroy(menu);
                 }
 
-                menu = Instantiate(floatingMenuPrefab, mousePos, Quaternion.identity, this.transform);
+                menu = Instantiate(floatingMenuPrefab, RectTransform.position, Quaternion.identity, this.transform);
+                menu.GetComponent<MachineDetails>().machine = GridController.grid[machineGridIndex.x, machineGridIndex.y].GetComponent<Machine>();
                 spawnInstant = true;
                 prevMouseGridPos = mouseGridPos;                   
             }

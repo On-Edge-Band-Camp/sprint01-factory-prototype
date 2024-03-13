@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
+    public bool isEmpty;
     // Start is called before the first frame update
     void Start()
     {
