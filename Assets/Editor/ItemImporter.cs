@@ -13,6 +13,18 @@ public class ItemImporter : ScriptableObject
 
     public AllItems ItemList;
 
+    [ContextMenu("Test Importing to Prefabs")]
+    public void TestPrefabs()
+    {
+        var prefabs = DataHelper.GetAllAssetsOfType<Splitter>();
+
+        Debug.Log($"Found {prefabs.Count} assets.");
+        foreach (var item in prefabs.Values)
+        {
+            Debug.Log($"{item.name} is a {item.GetType().Name}");
+        }
+    }
+
     [ContextMenu("Import")]
     public void Import()
     {
