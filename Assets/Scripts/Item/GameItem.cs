@@ -26,7 +26,6 @@ public class GameItem : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         if (soitem != null) 
         {
-            Debug.Log($"Initializing:  {soitem.ItemName}");
             ItemName = soitem.ItemName;
             gameObject.name = soitem.ItemName;
             Sprite = soitem.Sprite;

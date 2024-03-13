@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coal
   m_EditorClassIdentifier: 
   ItemName: Coal
-  Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
+  Sprite: {fileID: 0}
   MadeOf:
   - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
   - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}

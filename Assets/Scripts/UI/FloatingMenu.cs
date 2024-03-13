@@ -53,9 +53,11 @@ public class FloatingMenu : MonoBehaviour
                 {
                     Destroy(menu);
                 }
-
+                Machine machine = GridController.grid[machineGridIndex.x, machineGridIndex.y].GetComponent<Machine>();
                 menu = Instantiate(floatingMenuPrefab, RectTransform.position, Quaternion.identity, this.transform);
-                menu.GetComponent<MachineDetails>().machine = GridController.grid[machineGridIndex.x, machineGridIndex.y].GetComponent<Machine>();
+                menu.GetComponent<MachineDetails>().machine = machine;
+                menu.GetComponent<MachineDetails>().InputNewInventory(machine);
+                machine.UI = menu.GetComponent<MachineDetails>();
                 spawnInstant = true;
                 prevMouseGridPos = mouseGridPos;                   
             }

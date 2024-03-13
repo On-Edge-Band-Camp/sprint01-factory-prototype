@@ -118,3 +118,4 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   collected_item: Test
+  CollectingItem: {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}

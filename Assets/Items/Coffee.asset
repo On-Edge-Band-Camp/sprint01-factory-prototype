@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Coffee
   m_EditorClassIdentifier: 
   ItemName: Coffee
-  Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
+  Sprite: {fileID: 0}
   MadeOf:
   - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
   - {fileID: 11400000, guid: 94346188964b8bd45a1fc48e408eba7f, type: 2}

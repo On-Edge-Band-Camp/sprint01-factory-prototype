@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d3092663845a79488601c79fa4b38cb, type: 3}
-  m_Name: Cocktail
+  m_Name: Mushroom
   m_EditorClassIdentifier: 
-  ItemName: Cocktail
+  ItemName: Mushroom
   Sprite: {fileID: 0}
   MadeOf:
   - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
-  - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}
-  Tier: 0
+  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
+  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
+  Tier: 3

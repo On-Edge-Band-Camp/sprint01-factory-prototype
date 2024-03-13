@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   ItemName: Water
-  Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
+  Sprite: {fileID: 0}
   MadeOf: []
   Tier: 5

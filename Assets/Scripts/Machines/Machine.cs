@@ -33,6 +33,7 @@ public abstract class Machine: MonoBehaviour
     public GameObject particleMaster;
 
     public Dictionary<GameItem, int> MachineInventory = new Dictionary<GameItem, int>();
+    public MachineDetails UI;
 
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
@@ -95,7 +96,6 @@ public abstract class Machine: MonoBehaviour
             MachineInventory.Add(gameManager.AllItems[i], 0);
             if (MachineInventory.ContainsKey(gameManager.AllItems[i]))
             {
-                Debug.Log($"{gameManager.AllItems[i].ItemName} has {MachineInventory[gameManager.AllItems[i]]}");
             }
         }
         
@@ -289,7 +289,64 @@ public abstract class Machine: MonoBehaviour
     {
         return GridController.grid[grid_coord.x + output_direction.x, grid_coord.y + output_direction.y];
     }
+    /// <summary>
+    /// Add x amount of an item to the machine's inventory
+    /// </summary>
+    public void AddItem(SOItem soitem, int count)
+    {
+        //Iterate through all items
+        foreach (var key in MachineInventory.Keys)
+        {
+            //If a item contains the matching SOitem, that is the one we wish to add
+            if(key.soitem == soitem)
+            {
+                //Add count to its value
+                MachineInventory[key] += count;
+                if (UI != null)
+                {
+                    UI.UpdateUIItem(soitem);
+                }
+                Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
+                return;
+            }
+        }
+    }
 
+    /// <summary>
+    /// Add x amount of an item to the machine's inventory
+    /// </summary>
+    public void AddItem(GameItem item, int count)
+    {
+        //Iterate through all items
+        foreach (var key in MachineInventory.Keys)
+        {
+            //If a item is the matching item, that is the one we wish to add
+            if (key == item)
+            {
+                //Add count to its value
+                MachineInventory[key] += count;
+                UI.UpdateUIItem(item.soitem);
+                Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
+                return;
+            }
+        }
+    }
 
-
+    /// <summary>
+    /// Returns how many items of the type SOItem is in the inventory
+    /// </summary>
+    /// <param name="soitem"></param>
+    /// <returns></returns>
+    public int FindItemCount(SOItem soitem)
+    {
+        //Iterate through all items
+        foreach (var key in MachineInventory.Keys)
+        {
+            if (key.soitem == soitem)
+            {
+                return MachineInventory[key];
+            }
+        }
+        return 0;
+    }
 }
