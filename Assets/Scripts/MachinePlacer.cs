@@ -239,9 +239,6 @@ public class MachinePlacer : MonoBehaviour
 
             grid_control.add_machine(new_coord, current_selection);
             Destroy(current_selection);
-
-            
-        }
     }
 
     public struct machinePlacementData
@@ -250,5 +247,5 @@ public class MachinePlacer : MonoBehaviour
         public Vector2Int location;
         public int cost;
     }
-
 }
+
