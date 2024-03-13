@@ -241,6 +241,7 @@ public class MachinePlacer : MonoBehaviour
             Destroy(current_selection);
     }
 
+    [System.Serializable]
     public struct machinePlacementData
     {
         public string name;
