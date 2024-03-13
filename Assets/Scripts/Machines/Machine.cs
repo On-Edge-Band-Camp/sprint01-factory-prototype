@@ -88,15 +88,12 @@ public abstract class Machine: MonoBehaviour
     //idk why, but dictionaries need to be declared at runtime
     private void Start()
     {
-
+        Debug.Log("Initializing Inventory");
         //Initialize Inventory with all items in game.
-        for (int i = 0; i < gameManager.AllItems.Count; i++)
+        foreach(GameItem item in gameManager.AllItems)
         {
-            //Add 0 of all items into the inventory.
-            MachineInventory.Add(gameManager.AllItems[i], 0);
-            if (MachineInventory.ContainsKey(gameManager.AllItems[i]))
-            {
-            }
+            MachineInventory.Add(item, 0);
+            Debug.Log($"{item}: {MachineInventory[item]}");
         }
         
 
@@ -297,8 +294,9 @@ public abstract class Machine: MonoBehaviour
         //Iterate through all items
         foreach (var key in MachineInventory.Keys)
         {
+            Debug.Log($"{key.ItemName}");
             //If a item contains the matching SOitem, that is the one we wish to add
-            if(key.soitem == soitem)
+            if (key.soitem == soitem)
             {
                 //Add count to its value
                 MachineInventory[key] += count;
@@ -310,6 +308,7 @@ public abstract class Machine: MonoBehaviour
                 return;
             }
         }
+        Debug.LogWarning("Item not added, no matching item found in game");
     }
 
     /// <summary>

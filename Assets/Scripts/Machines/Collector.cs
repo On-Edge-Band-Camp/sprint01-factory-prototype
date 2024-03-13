@@ -38,7 +38,7 @@ public class Collector : Machine
         AddItem(CollectingItem, CollectAmountPerTick);
         if (!check_inventory_full())
         {
-            inventory[collected_item] += 1;
+            //inventory[collected_item] += 1;
         } 
     }
 

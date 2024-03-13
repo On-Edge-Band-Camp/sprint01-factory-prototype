@@ -227,7 +227,6 @@ public class MachinePlacer : MonoBehaviour
                 Instantiate(NotEnoughEnergy, current_selection.transform.position, Quaternion.identity);
                 Destroy(current_selection);
             }
-        }
             var data = new machinePlacementData()
             {
                 name = current_selection.name,
@@ -236,9 +235,7 @@ public class MachinePlacer : MonoBehaviour
             };
 
             TelemetryLogger.Log(this, "MachinePlaced", data);
-
-            grid_control.add_machine(new_coord, current_selection);
-            Destroy(current_selection);
+        }
     }
 
     [System.Serializable]
