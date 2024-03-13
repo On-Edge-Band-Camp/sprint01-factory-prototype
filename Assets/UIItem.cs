@@ -8,10 +8,12 @@ public class UIItem : MonoBehaviour
 {
     public SOItem soitem;
     public Image image;
+    Animator ac;
     // Start is called before the first frame update
     void Start()
     {
         image = GetComponent<Image>();
+        ac = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,14 +24,17 @@ public class UIItem : MonoBehaviour
 
     public void SetItem(SOItem soitem)
     {
+        ac = GetComponent<Animator>();
         this.soitem = soitem;
         image.sprite = soitem.Sprite;
         image.enabled = true;
+        ac.Play("Pop");
     }
 
     public void updateCount(int itemCount)
     {
         GetComponentInChildren<TMP_Text>().text = itemCount.ToString();
+        ac.Play("Pop");
     }
 
     public void Hide()
