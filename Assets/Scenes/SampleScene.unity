@@ -2772,7 +2772,6 @@ GameObject:
   - component: {fileID: 739948234}
   - component: {fileID: 739948233}
   - component: {fileID: 739948235}
-  - component: {fileID: 739948236}
   - component: {fileID: 762060496}
   m_Layer: 0
   m_Name: GameManager
@@ -2834,18 +2833,6 @@ MonoBehaviour:
   splitter_prefab: {fileID: 2208241733295953448, guid: 501f8bd0dd0ff9c4eb917835f9737b9f, type: 3}
   constructor_prefab: {fileID: 2564455348920231410, guid: 3dbac9e5d18fe4949abf182e1416d142, type: 3}
   worldposcheck: {x: 0, y: 0}
---- !u!114 &739948236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739948232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &762060494
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,6 +35,7 @@ public class GameItem : MonoBehaviour
             }
             MadeOf = soitem.MadeOf;
             Tier = soitem.Tier;
+            Debug.Log($"{soitem.ItemName} initialized!");
         }
         else
         {

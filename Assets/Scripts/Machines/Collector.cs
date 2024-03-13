@@ -9,6 +9,7 @@ public class Collector : Machine
     public string collected_item = "Test";
 
     public SOItem CollectingItem;
+    public int CollectAmountPerTick;
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
@@ -34,7 +35,7 @@ public class Collector : Machine
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-        AddItem(CollectingItem, 2);
+        AddItem(CollectingItem, CollectAmountPerTick);
         if (!check_inventory_full())
         {
             inventory[collected_item] += 1;
