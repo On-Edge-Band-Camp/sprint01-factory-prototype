@@ -34,6 +34,19 @@ public class GameManager : MonoBehaviour
         InitializeAllItem();
     }
 
+    private void Update()
+    {
+        RuntimeTelemtry();
+    }
+
+    private void RuntimeTelemtry()
+    {
+        if (Input.GetButtonDown("R") || Input.GetButtonDown("E") || Input.GetButtonDown("Q"))
+        {
+            TelemetryLogger.Log(this, "RotateAttempt");
+        }
+    }
+
     //This function assembles the list of items for mechines and UI to use
     void ItemConstructor()
     {
