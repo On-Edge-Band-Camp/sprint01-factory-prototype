@@ -226,6 +226,7 @@ public class MachinePlacer : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     public struct machinePlacementData
     {
         public string name;

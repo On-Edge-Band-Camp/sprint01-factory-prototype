@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void RuntimeTelemtry()
     {
-        if (Input.GetButtonDown("R") || Input.GetButtonDown("E") || Input.GetButtonDown("Q"))
+        if (Input.GetButtonDown("Rotate"))
         {
             TelemetryLogger.Log(this, "RotateAttempt");
         }

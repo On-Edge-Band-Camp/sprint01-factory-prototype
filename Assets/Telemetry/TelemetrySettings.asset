@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa188ed3cd5ee314b91a17c5c707da0a, type: 3}
   m_Name: TelemetrySettings
   m_EditorClassIdentifier: 
-  userName: Your SLATE user name or team name
-  secret: Your student # or team passphrase
-  _version: test
+  userName: On Edge Band Camp
+  secret: splurge leave
+  _version: V0.1Telemetry
   _serverURL: https://dd-delemetry-1-2a4510835c2b.herokuapp.com/
   serverCommunication: 1
   debugLogging: 0
-  <SetupId>k__BackingField: 
+  <SetupId>k__BackingField: RILEY > sprint01-factory-prototype / sprint01-factory-prototype
+    @ infer-1341001864
