@@ -28,4 +28,9 @@ public class MachineSelectMenu : MonoBehaviour
         }
     }
 
+    public void DontCloseOnClick()
+    {
+        floatingMenuClicked = true;
+    }
+
 }

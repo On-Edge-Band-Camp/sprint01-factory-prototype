@@ -97,4 +97,9 @@ public class MachineDetails : MonoBehaviour
             }
         }
     }
+
+    public void EnableSubUI(GameObject subui)
+    {
+        subui.SetActive(true);
+    }
 }

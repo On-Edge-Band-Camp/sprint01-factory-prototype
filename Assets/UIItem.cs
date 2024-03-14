@@ -13,6 +13,15 @@ public class UIItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Item != null)
+        {
+            image.sprite = Item.Sprite;
+            text.text = " ";
+        }
+        else
+        {
+            Clear();
+        }
     }
 
     // Update is called once per frame
@@ -34,13 +43,17 @@ public class UIItem : MonoBehaviour
         Debug.Log("updateCount");
 
         text.text = itemCount.ToString();
+        Pop();
+    }
+
+    public void Pop()
+    {
         ac.Play("Pop");
     }
 
-    public void Hide()
+    public void BigPop()
     {
-        image.enabled = false;
-        text.text = " ";
+        ac.Play("BigPop");
     }
 
     public void Clear()
@@ -49,5 +62,23 @@ public class UIItem : MonoBehaviour
         image.sprite = null;
         image.enabled = false;
         text.text = " ";
+    }
+    /// <summary>
+    /// Temerpory. upgrade to fit all machines later.
+    /// </summary>
+    /// 
+
+    public void SetItemInMachine(MachineDetails Target)
+    {
+        var collector = Target.machine.GetComponent<Collector>();
+        if (collector != null)
+        {
+            collector.CollectingItem = Item;
+        }       
+    }
+
+    public void SetUIItemInTarget(UIItem Target)
+    {
+        Target.SetItem(Item);
     }
 }

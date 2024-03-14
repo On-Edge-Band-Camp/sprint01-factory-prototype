@@ -13,7 +13,7 @@ public class Collector : Machine
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
-
+        ProgressTimer();
         if (!processing && !check_inventory_full()) { StartCoroutine("process_timer");}
 
         if (check_inventory_amount() != 0)
@@ -35,6 +35,7 @@ public class Collector : Machine
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
+        currentProcessInSec = 0;
         if (CollectingItem != null)
         {
             AddItem(CollectingItem, CollectAmountPerTick);

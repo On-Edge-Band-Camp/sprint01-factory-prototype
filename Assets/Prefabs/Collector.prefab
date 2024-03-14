@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCost: 1
+  UIToUse: {fileID: 3794074493844319682, guid: 93e08393904ea8c49a89598840236500, type: 3}
   EmptyItem: {fileID: 0}
   grid_coord: {x: 0, y: 0}
   machine_type: 101
@@ -106,7 +107,7 @@ MonoBehaviour:
   inventory_max: 10
   gameManager: {fileID: 0}
   particleMaster: {fileID: 0}
-  UI: {fileID: 0}
+  UI: {fileID: 7904626582920652445, guid: 93e08393904ea8c49a89598840236500, type: 3}
   input_directions:
   - {x: 0, y: 1}
   - {x: 1, y: 0}
@@ -119,5 +120,5 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   collected_item: Test
-  CollectingItem: {fileID: -2105226617953997082, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
+  CollectingItem: {fileID: 2188398024510512288, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
   CollectAmountPerTick: 1

@@ -8,6 +8,7 @@ using UnityEngine;
 public abstract class Machine: MonoBehaviour
 {
     public int energyCost;
+    public GameObject UIToUse;
 
     public GameItem EmptyItem;
 
@@ -16,6 +17,8 @@ public abstract class Machine: MonoBehaviour
     public machine_types machine_type;
 
     public float process_time = 3;
+    protected float currentProcessInSec;
+    public float currentProcessInPercent;
 
     public int inventory_total; //FOR TESTING ONLY REMOVE
 
@@ -138,6 +141,11 @@ public abstract class Machine: MonoBehaviour
         processing = false;
     }
 
+    public void ProgressTimer()
+    {
+        currentProcessInSec += Time.deltaTime;
+        currentProcessInPercent = currentProcessInSec / process_time;
+    }
 
     //Called when an intem is being input to this machine.
     public bool input_item(Vector2Int output_machine_coord, string item_type)
