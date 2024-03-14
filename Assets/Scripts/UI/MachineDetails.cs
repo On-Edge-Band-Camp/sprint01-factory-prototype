@@ -35,13 +35,9 @@ public class MachineDetails : MonoBehaviour
             if (newSlot != null)
             {
                 slots.Add(newSlot);
-                UIItems.Add(newSlot.GetComponentInChildren<UIItem>());
+                var newUIItem = newSlot.GetComponentInChildren<UIItem>();
+                UIItems.Add(newUIItem.GetComponentInChildren<UIItem>());
             }
-        }
-
-        foreach(UIItem uiitem in UIItems)
-        {
-            uiitem.Hide();
         }
     }
     public void UpdateUIItem(GameItem item)
@@ -92,9 +88,11 @@ public class MachineDetails : MonoBehaviour
                 {
                     if(uiitem.Item == null)
                     {
+                        uiitem.image.enabled = true;
                         uiitem.SetItem(item);
                         uiitem.updateCount(machine.FindItemCount(item));
                     }
+                    return;
                 }
             }
         }
