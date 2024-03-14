@@ -119,5 +119,5 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   collected_item: Test
-  CollectingItem: {fileID: -797862161402687504, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  CollectingItem: {fileID: 7592045920299565246, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
   CollectAmountPerTick: 1

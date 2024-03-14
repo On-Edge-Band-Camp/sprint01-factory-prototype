@@ -14,16 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   excelFilePath: Editor/ItemTree.xlsx
   SaveItemsPath: Assets/Items/
+  ItemTexturePath: Assets/Textures/Items/
   TableName: Items
   AllItems:
-  - {fileID: 11400000, guid: 36549da8891f8c840ad26437b78892bc, type: 2}
-  - {fileID: 11400000, guid: 93740af6c85bc3b419cad77250e8e10d, type: 2}
-  - {fileID: 11400000, guid: 2a980f6cb4ba1db448d2cc841e976d96, type: 2}
-  - {fileID: 11400000, guid: 52d0a657f894db04a9a24eee389f0187, type: 2}
-  - {fileID: 11400000, guid: 523dd619579bc0d4d949f6e9649ce387, type: 2}
-  - {fileID: 11400000, guid: dc6fcc0d02b046444899d8df0c40cc46, type: 2}
-  - {fileID: 11400000, guid: 94346188964b8bd45a1fc48e408eba7f, type: 2}
-  - {fileID: 11400000, guid: 9ababe34b62f1884b9560c6859cc9ca2, type: 2}
-  - {fileID: 11400000, guid: 883684457cf9d724481fe22455bec4c7, type: 2}
-  - {fileID: 11400000, guid: 6448272fb1361dc489728a2725f7092e, type: 2}
+  - {fileID: 6122603087195649378, guid: 1ea0764434684d94193d7ed1ccd4ecbf, type: 3}
+  - {fileID: 4118088979838832707, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
+  - {fileID: 7088478801564155199, guid: 69b59a210db0a1142b43b42bf15d6489, type: 3}
+  - {fileID: -2984164700309623040, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
+  - {fileID: -6754497921298318435, guid: 83781ec76b1e639448c2b101c7c176fc, type: 3}
+  - {fileID: 1544348295793862297, guid: e4c132360adf65842ae6a190af879513, type: 3}
+  - {fileID: 8689328279372213518, guid: 3e35a846d05e76c4daa974f98a4d8078, type: 3}
+  - {fileID: 4976386687585857332, guid: 44e2820cae958b949b311686319f7e62, type: 3}
+  - {fileID: 4724935582858477530, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: -6282792305108799844, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
   ItemList: {fileID: 11400000, guid: fb1c3a7d62521f543a18b0ecc509551b, type: 2}

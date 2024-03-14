@@ -8,12 +8,11 @@ public class UIItem : MonoBehaviour
 {
     public GameItem Item;
     public Image image;
-    Animator ac;
+    public Animator ac;
+    public TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
-        image = GetComponent<Image>();
-        ac = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,29 +23,30 @@ public class UIItem : MonoBehaviour
 
     public void SetItem(GameItem item)
     {
-        ac = GetComponent<Animator>();
+        Debug.Log("SetItem");
+        Item = item;
         image.sprite = item.Sprite;
-        image.enabled = true;
-        ac.Play("Pop");
     }
 
     public void updateCount(int itemCount)
     {
-        GetComponentInChildren<TMP_Text>().text = itemCount.ToString();
+        Debug.Log("updateCount");
+        image.enabled = true;
+        text.text = itemCount.ToString();
         ac.Play("Pop");
     }
 
     public void Hide()
     {
-        image = GetComponent<Image>();
         image.enabled = false;
-        GetComponentInChildren<TMP_Text>().text = " ";
+        text.text = " ";
     }
 
     public void Clear()
     {
+        Item = null;
         image.sprite = null;
         image.enabled = false;
-        GetComponentInChildren<TMP_Text>().text = " ";
+        text.text = " ";
     }
 }

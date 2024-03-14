@@ -8,9 +8,9 @@ public class MachineDetails : MonoBehaviour
 {
     public Machine machine;
     public List<Slot> slots;
+    public List<UIItem> UIItems;
 
     public GameObject emptyUIItem;
-    public SOItem testItem;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,9 @@ public class MachineDetails : MonoBehaviour
 
     public void InitializeSlots()
     {
+        slots.Clear();
+        UIItems.Clear();
+
         //Initialize all Item Slots
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -32,29 +35,38 @@ public class MachineDetails : MonoBehaviour
             if (newSlot != null)
             {
                 slots.Add(newSlot);
-                GameObject newUIItem = Instantiate(emptyUIItem, newSlot.transform);
-                newUIItem.GetComponent<UIItem>().Hide();
+                UIItems.Add(newSlot.GetComponentInChildren<UIItem>());
             }
+        }
+
+        foreach(UIItem uiitem in UIItems)
+        {
+            uiitem.Hide();
         }
     }
     public void UpdateUIItem(GameItem item)
     {
-        foreach (Slot slot in slots)
+        Debug.Log("Updating Items");
+        //Find all slots
+        foreach (var uiitem in UIItems)
         {
-            UIItem uiitem = slot.GetComponentInChildren<UIItem>();
             if (uiitem.Item != null)
             {
+                Debug.Log(uiitem.Item);
+                //If the UI item is the same item type
                 if (uiitem.Item == item)
-                {               
+                {
+                    Debug.Log("Found same item");
+                    //Update that item's count
                     uiitem.updateCount(machine.FindItemCount(item));
                     return;
                 }
             }
         }
+        Debug.Log("No same item found, adding new instead");
         //If no matching item exist in the current UI, find a empty slot and create one
-        foreach (Slot slot in slots)
+        foreach (UIItem uiitem in UIItems)
         {
-            UIItem uiitem = slot.GetComponentInChildren<UIItem>();
             if (uiitem.Item == null)
             {
                 uiitem.SetItem(item);
@@ -64,20 +76,26 @@ public class MachineDetails : MonoBehaviour
         }
     }
 
-    public void InputNewInventory(Machine machine)
+    public void InputNewInventory()
     {
         InitializeSlots();
-        foreach (Slot slot in slots)
+        foreach (UIItem uiitem in UIItems)
         {
-            slot.GetComponentInChildren<UIItem>().Clear();
+            uiitem.Clear();
         }
 
         foreach(var item in machine.MachineInventory.Keys)
         {
             if (machine.MachineInventory[item] > 0)
             {
-                Debug.Log($"{item} : {machine.MachineInventory[item]}");
-                UpdateUIItem(item);
+                foreach(var uiitem in UIItems)
+                {
+                    if(uiitem.Item == null)
+                    {
+                        uiitem.SetItem(item);
+                        uiitem.updateCount(machine.FindItemCount(item));
+                    }
+                }
             }
         }
     }

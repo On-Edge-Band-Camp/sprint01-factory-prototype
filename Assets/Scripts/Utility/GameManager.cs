@@ -130,11 +130,8 @@ public class GameManager : MonoBehaviour
     public void InitializeAllItem()
     {
         AllItems.Clear();
-
         AllItems = ItemList.items;
 
-        GameItemsFolder = Instantiate(EmptyItem, new Vector3(999, 999, 999), Quaternion.identity);
-        GameItemsFolder.name = "GameItemsFolder";
         if(AllItems.Count > 0) 
         {
             Debug.Log($"Initialized{AllItems.Count} Items!");

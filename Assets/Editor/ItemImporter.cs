@@ -25,8 +25,6 @@ public class ItemImporter : ScriptableObject
 
         var excel = new ExcelImporter(excelFilePath);
 
-        var items = DataHelper.GetAllAssetsOfType<SOItem>();
-
         ImportItems(TableName, excel);
 
         //Find all items in the Items folder
