@@ -60,7 +60,12 @@ public class ItemImporter : ScriptableObject
             if (string.IsNullOrWhiteSpace(name)) continue;
 
             //Add new item gameobject
-            GameObject GO = PrefabUtility.SaveAsPrefabAsset(new GameObject(name), SaveItemsPath + name + ".prefab");
+            GameObject go = new GameObject(name);
+            GameObject GO = PrefabUtility.SaveAsPrefabAsset(go, SaveItemsPath + name + ".prefab");
+
+            //!!! Destroy the temperary game object refrence !!!
+            DestroyImmediate(go);
+
             SpriteRenderer itemSr = GO.AddComponent<SpriteRenderer>();
             GameItem itemVariable = GO.AddComponent<GameItem>();
 
@@ -73,7 +78,6 @@ public class ItemImporter : ScriptableObject
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 Sprite newItem = AssetDatabase.LoadAssetAtPath<Sprite>(path);
-                Debug.Log(newItem);
                 if(itemVariable.ItemName == newItem.name)
                 {
                     itemVariable.Sprite = newItem;
