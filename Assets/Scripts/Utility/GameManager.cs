@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     public GameItem EmptyItem;
 
     public AllItems ItemList;
-    public List<SOItem> soitems;
     public List<GameItem> AllItems = new List<GameItem>();
 
     private GameItem GameItemsFolder;
@@ -130,21 +129,12 @@ public class GameManager : MonoBehaviour
 
     public void InitializeAllItem()
     {
-        soitems.Clear();
         AllItems.Clear();
-        Destroy(GameItemsFolder);
-        soitems = ItemList.items;
+
+        AllItems = ItemList.items;
+
         GameItemsFolder = Instantiate(EmptyItem, new Vector3(999, 999, 999), Quaternion.identity);
         GameItemsFolder.name = "GameItemsFolder";
-        //Initialize all items in game.
-        for (int i = 0; i < soitems.Count; i++)
-        {
-            GameItem newItem = Instantiate(EmptyItem, GameItemsFolder.transform);
-            newItem.soitem = soitems[i];
-            newItem.Initialize();
-            AllItems.Add(newItem);
-        }
-
         if(AllItems.Count > 0) 
         {
             Debug.Log($"Initialized{AllItems.Count} Items!");

@@ -37,16 +37,16 @@ public class MachineDetails : MonoBehaviour
             }
         }
     }
-    public void UpdateUIItem(SOItem soitem)
+    public void UpdateUIItem(GameItem item)
     {
         foreach (Slot slot in slots)
         {
             UIItem uiitem = slot.GetComponentInChildren<UIItem>();
-            if (uiitem.soitem != null)
+            if (uiitem.Item != null)
             {
-                if (uiitem.soitem == soitem)
+                if (uiitem.Item == item)
                 {               
-                    uiitem.updateCount(machine.FindItemCount(soitem));
+                    uiitem.updateCount(machine.FindItemCount(item));
                     return;
                 }
             }
@@ -55,10 +55,10 @@ public class MachineDetails : MonoBehaviour
         foreach (Slot slot in slots)
         {
             UIItem uiitem = slot.GetComponentInChildren<UIItem>();
-            if (uiitem.soitem == null)
+            if (uiitem.Item == null)
             {
-                uiitem.SetItem(soitem);
-                uiitem.updateCount(machine.FindItemCount(soitem));
+                uiitem.SetItem(item);
+                uiitem.updateCount(machine.FindItemCount(item));
                 return;
             }
         }
@@ -77,7 +77,7 @@ public class MachineDetails : MonoBehaviour
             if (machine.MachineInventory[item] > 0)
             {
                 Debug.Log($"{item} : {machine.MachineInventory[item]}");
-                UpdateUIItem(item.soitem);
+                UpdateUIItem(item);
             }
         }
     }

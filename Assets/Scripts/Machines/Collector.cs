@@ -8,7 +8,7 @@ public class Collector : Machine
 
     public string collected_item = "Test";
 
-    public SOItem CollectingItem;
+    public GameItem CollectingItem;
     public int CollectAmountPerTick;
 
     //Activates when grid_handler sends and update call to this machine

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item List.Asset", menuName = "Items/Item List")]
 public class AllItems : ScriptableObject
 {
-    public List<SOItem> items;
+    public List<GameItem> items;
 }

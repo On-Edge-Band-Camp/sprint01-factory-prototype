@@ -286,30 +286,6 @@ public abstract class Machine: MonoBehaviour
     {
         return GridController.grid[grid_coord.x + output_direction.x, grid_coord.y + output_direction.y];
     }
-    /// <summary>
-    /// Add x amount of an item to the machine's inventory
-    /// </summary>
-    public void AddItem(SOItem soitem, int count)
-    {
-        //Iterate through all items
-        foreach (var key in MachineInventory.Keys)
-        {
-            Debug.Log($"{key.ItemName}");
-            //If a item contains the matching SOitem, that is the one we wish to add
-            if (key.soitem == soitem)
-            {
-                //Add count to its value
-                MachineInventory[key] += count;
-                if (UI != null)
-                {
-                    UI.UpdateUIItem(soitem);
-                }
-                Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
-                return;
-            }
-        }
-        Debug.LogWarning("Item not added, no matching item found in game");
-    }
 
     /// <summary>
     /// Add x amount of an item to the machine's inventory
@@ -324,7 +300,10 @@ public abstract class Machine: MonoBehaviour
             {
                 //Add count to its value
                 MachineInventory[key] += count;
-                UI.UpdateUIItem(item.soitem);
+                if (UI != null)
+                {
+                    UI.UpdateUIItem(item);
+                }
                 Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
                 return;
             }
@@ -336,12 +315,12 @@ public abstract class Machine: MonoBehaviour
     /// </summary>
     /// <param name="soitem"></param>
     /// <returns></returns>
-    public int FindItemCount(SOItem soitem)
+    public int FindItemCount(GameItem soitem)
     {
         //Iterate through all items
         foreach (var key in MachineInventory.Keys)
         {
-            if (key.soitem == soitem)
+            if (key == soitem)
             {
                 return MachineInventory[key];
             }

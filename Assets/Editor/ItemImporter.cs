@@ -8,22 +8,14 @@ public class ItemImporter : ScriptableObject
 {
     [Tooltip("Path from Assets/ to the Excel file to import(Use forward slashs '/')")]
     public string excelFilePath = "Editor/ItemTree.xlsx";
+    public string SaveItemsPath = "Assets/Items/";
+    public string ItemTexturePath = "Assets/Textures/Items/";
     public string TableName;
-    public List<SOItem> AllItems;
+
+    public List<GameItem> AllItems;
+
 
     public AllItems ItemList;
-
-    [ContextMenu("Test Importing to Prefabs")]
-    public void TestPrefabs()
-    {
-        var prefabs = DataHelper.GetAllAssetsOfType<Splitter>();
-
-        Debug.Log($"Found {prefabs.Count} assets.");
-        foreach (var item in prefabs.Values)
-        {
-            Debug.Log($"{item.name} is a {item.GetType().Name}");
-        }
-    }
 
     [ContextMenu("Import")]
     public void Import()
@@ -35,24 +27,23 @@ public class ItemImporter : ScriptableObject
 
         var items = DataHelper.GetAllAssetsOfType<SOItem>();
 
-        ImportItems(TableName, excel, items);
+        ImportItems(TableName, excel);
 
         //Find all items in the Items folder
-        string[] guids = AssetDatabase.FindAssets("t:SOItem", new[] { "Assets/Items" });
+        string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { "Assets/Items" });
         foreach (string guid in guids)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
-            SOItem newItem = AssetDatabase.LoadAssetAtPath<SOItem>(path);
-            Debug.Log(newItem.ItemName);
-            AllItems.Add(newItem);
+            GameObject newItem = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+            AllItems.Add(newItem.GetComponent<GameItem>());
         }
 
         ItemList.items = AllItems;
 
-        ImportMadeOf(TableName, excel, items);
+        ImportMadeOf(TableName, excel);
     }
 
-    void ImportItems(string TableName, ExcelImporter excel, Dictionary<string, SOItem> items)
+    void ImportItems(string TableName, ExcelImporter excel)
     {
         //If the table cannot be found, stop this method
         if(!excel.TryGetTable(TableName, out var table))
@@ -68,21 +59,34 @@ public class ItemImporter : ScriptableObject
 
             if (string.IsNullOrWhiteSpace(name)) continue;
 
-            var item = DataHelper.GetOrCreateAsset(name, items, TableName);
+            //Add new item gameobject
+            GameObject GO = PrefabUtility.SaveAsPrefabAsset(new GameObject(name), SaveItemsPath + name + ".prefab");
+            SpriteRenderer itemSr = GO.AddComponent<SpriteRenderer>();
+            GameItem itemVariable = GO.AddComponent<GameItem>();
 
-            if (string.IsNullOrWhiteSpace(item.ItemName))
+            itemVariable.ItemName = name;
+            itemVariable.Tier = table.GetValue<int>(row, "Tier");
+
+            //Find all items in the Textures/Item folder
+            string[] guids = AssetDatabase.FindAssets("t:Texture2D", new[] { ItemTexturePath });
+            foreach (string guid in guids)
             {
-                item.ItemName = name;
+                var path = AssetDatabase.GUIDToAssetPath(guid);
+                Sprite newItem = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+                Debug.Log(newItem);
+                if(itemVariable.ItemName == newItem.name)
+                {
+                    itemVariable.Sprite = newItem;
+                    itemSr.sprite = newItem;
+                }
             }
-
-            item.Tier = table.GetValue<int>(row, "Tier");
         }
     }
 
     /// <summary>
     /// Find all items in the items folder and update all of their madeofs
     /// </summary>
-    void ImportMadeOf(string TableName, ExcelImporter excel, Dictionary<string, SOItem> items)
+    void ImportMadeOf(string TableName, ExcelImporter excel)
     {
         //If the table cannot be found, stop this method
         if (!excel.TryGetTable(TableName, out var table))
@@ -99,7 +103,7 @@ public class ItemImporter : ScriptableObject
             if (string.IsNullOrWhiteSpace(nameOnTable)) continue;
 
             //Find the name of the object that is being modified
-            SOItem item = FindItemByName(nameOnTable);
+            GameItem item = FindItemByName(nameOnTable);
             item.MadeOf.Clear();
             if (item != null)
             {
@@ -126,12 +130,12 @@ public class ItemImporter : ScriptableObject
             }
         }
 
-        SOItem FindItemByName(string ItemName)
+        GameItem FindItemByName(string ItemName)
         {
             //iterate through all items and find a name that matches the name on the table.
-            foreach (SOItem item in AllItems)
+            foreach (GameItem item in AllItems)
             {
-                if (item.name == ItemName)
+                if (item.ItemName == ItemName)
                 {
                     return item;
                 }

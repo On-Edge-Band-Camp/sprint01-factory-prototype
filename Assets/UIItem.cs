@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIItem : MonoBehaviour
 {
-    public SOItem soitem;
+    public GameItem Item;
     public Image image;
     Animator ac;
     // Start is called before the first frame update
@@ -22,11 +22,10 @@ public class UIItem : MonoBehaviour
         
     }
 
-    public void SetItem(SOItem soitem)
+    public void SetItem(GameItem item)
     {
         ac = GetComponent<Animator>();
-        this.soitem = soitem;
-        image.sprite = soitem.Sprite;
+        image.sprite = item.Sprite;
         image.enabled = true;
         ac.Play("Pop");
     }
@@ -46,7 +45,6 @@ public class UIItem : MonoBehaviour
 
     public void Clear()
     {
-        soitem = null;
         image.sprite = null;
         image.enabled = false;
         GetComponentInChildren<TMP_Text>().text = " ";
