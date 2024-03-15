@@ -7,6 +7,7 @@ using UnityEngine;
 /*
 ---------------- BUGS TO FIX ----------------
 1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted (Kinda fixed with ratios, just compensate on input 2 by adding 1 more needed)
+2. If a new recipe is slected during Runtime, the recipe dose not update.
 ----------------------------------------------
 
 
@@ -14,11 +15,12 @@ using UnityEngine;
 
 public class Constructor : Machine
 {
-    private GameItem[] materialNeeded;
-    public GameItem finalProductName;
+    public GameItem finalProduct;
 
     private bool canCraft = false;
     private bool isCrafting = false;
+
+    private Dictionary<GameItem, int> neededMaterials = new Dictionary<GameItem, int>();
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
@@ -65,27 +67,34 @@ public class Constructor : Machine
     //Finds the recipe the inputs make
     private void SearchForInputs()
     {
-        materialNeeded = null;
-        //Checks the list of recipes for the inputs given, sets finalProduct to found recipe. Sets finalProduct to null if no recipe is found
-        for (int i = 0; i < gameManager.items.Length; i++)
+        for(int i = 0; i<finalProduct.MadeOf.Count; i++)
         {
-            /*if (gameManager.items[i].Name == finalProductName)
+            bool isInList = false;
+            foreach (GameItem item in neededMaterials.Keys)
             {
-                materialNeeded = gameManager.items[i].inputNames;
-                break;
-            }*/
+                isInList = finalProduct.MadeOf[i] == item;
+            }
+
+            if (!isInList)
+            {
+                neededMaterials.Add(finalProduct.MadeOf[i], 1);
+            }
+            else
+            {
+                neededMaterials[finalProduct] += 1;
+            }
         }
-        
-        if (materialNeeded == null)
+
+        if (neededMaterials.Count == 0)
         {
-            Debug.LogWarning("No Buildable path found. Check your imput for crafted meterial for typos");
+            Debug.LogWarning("No Buildable path found. Likly not a buildingable object");
         }
     }
 
     private void inventoryCheck()
     {
         //Seting up booleans for inventory check
-        bool[] hasMateralsInInventory = new bool[materialNeeded.Length];
+        bool[] hasMateralsInInventory = new bool[neededMaterials.Count];
         for (int i = 0; i < hasMateralsInInventory.Length; i++)
         {
             hasMateralsInInventory[i] = false;

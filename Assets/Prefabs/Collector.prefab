@@ -105,7 +105,7 @@ MonoBehaviour:
   process_time: 3
   currentProcessInPercent: 0
   inventory_total: 0
-  inventory_max: 10
+  inventory_max: 1000
   gameManager: {fileID: 0}
   particleMaster: {fileID: 0}
   UI: {fileID: 7904626582920652445, guid: 93e08393904ea8c49a89598840236500, type: 3}
@@ -120,6 +120,5 @@ MonoBehaviour:
   - {x: 0, y: -1}
   - {x: -1, y: 0}
   processing: 0
-  collected_item: Test
   CollectingItem: {fileID: -7524959531490665733, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
   CollectAmountPerTick: 1
