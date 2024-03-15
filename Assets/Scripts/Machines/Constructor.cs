@@ -29,7 +29,7 @@ public class Constructor : Machine
         //starts process once all needed mats are gathered
         if (inventoryCheck() && !isCrafting)
         {
-            Debug.Log("Starting Work!");
+            //Debug.Log("Starting Work!");
             StartCoroutine("process_timer");
             isCrafting = true;
         }
@@ -48,22 +48,22 @@ public class Constructor : Machine
         foreach (GameItem item in neededMaterials.Keys)
         {
             MachineInventory[item] -= neededMaterials[item];
-            Debug.Log("Removing 1 " + item.name + " from Inventry.");
+            //Debug.Log("Removing 1 " + item.name + " from Inventry.");
         }
     }
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-        Debug.Log("Exporting " + finalProduct.name + "!"); //Debug
+        //Debug.Log("Exporting " + finalProduct.name + "!"); //Debug
         output_item(finalProduct);
 
         isCrafting = false;
         
     }
 
-    /* <Summery>
-     * turns MadeOf list from gameitem into a dictinary of needed items. This is done for ease of use in the rest of the code
-     * <Summery>
+    /* <Summary>
+     * turns MadeOf list from GameItem into a dictinary of needed items. This is done for ease of use in the rest of the code
+     * <Summary>
      */
     private void SearchForInputs()
     {
@@ -97,10 +97,10 @@ public class Constructor : Machine
         }
     }
 
-    /* <Summery>
+    /* <Summary>
      * checks if the mechine has the materials needed to craft its product. Returns false if it does not, returns true if it does. 
      * Also returns true if the inventru doesn't know what the item is.
-     * <Summery>
+     * <Summary>
      */ 
     private bool inventoryCheck()
     {

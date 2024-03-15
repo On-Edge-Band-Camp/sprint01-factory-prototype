@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Will return the class of any itemName given, will return null if it cannot be found
+    //Will return the class of any itemName given, will return null if it cannot be found OUTDATED DON NOT USE
     public Item findItemByName(string itemName)
     {
         for (int i = 0;i < items.Length;i++)
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    //This is the class for all item information
+    //This is the class for all item information OUTDATED DO NOT USE
     public class Item
     {
         public object index;
