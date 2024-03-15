@@ -280,7 +280,7 @@ public abstract class Machine: MonoBehaviour
                 {
                     UI.UpdateUIItem(item);
                 }
-                Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
+                //Debug.Log($"Added {count} of {key.ItemName}, now have {MachineInventory[key]} {key.ItemName}s");
                 return;
             }
         }

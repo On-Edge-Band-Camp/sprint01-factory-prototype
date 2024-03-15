@@ -6,8 +6,7 @@ using UnityEngine;
 
 /*
 ---------------- BUGS TO FIX ----------------
-1. if a recipe calls for the same object more then once, its currently has no way of knowing what its already counted (Kinda fixed with ratios, just compensate on input 2 by adding 1 more needed)
-2. If a new recipe is slected during Runtime, the recipe dose not update.
+
 ----------------------------------------------
 
 
@@ -17,7 +16,6 @@ public class Constructor : Machine
 {
     public GameItem finalProduct;
 
-    private bool canCraft = false;
     private bool isCrafting = false;
 
     private Dictionary<GameItem, int> neededMaterials = new Dictionary<GameItem, int>();
@@ -28,12 +26,10 @@ public class Constructor : Machine
         //checks what we need to make this
         SearchForInputs();
 
-        //checks if we have what we need
-        inventoryCheck();
-
         //starts process once all needed mats are gathered
-        if (canCraft && !isCrafting && finalProductName != null)
-        { 
+        if (inventoryCheck() && !isCrafting)
+        {
+            Debug.Log("Starting Work!");
             StartCoroutine("process_timer");
             isCrafting = true;
         }
@@ -47,88 +43,82 @@ public class Constructor : Machine
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
     public override void handle_output(GameItem item_type) {
+
         // delete component items on export
-        for (int i = 0; i < materialNeeded.Length; i++)
+        foreach (GameItem item in neededMaterials.Keys)
         {
-            //MachineInventory[materialNeeded[i]] -= 1 * gameManager.findItemByName(materialNeeded[i]).inputRatios[i];
+            MachineInventory[item] -= neededMaterials[item];
+            Debug.Log("Removing 1 " + item.name + " from Inventry.");
         }
     }
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-        Debug.Log("Exporting!"); //Debug
-        output_item(finalProductName);
+        Debug.Log("Exporting " + finalProduct.name + "!"); //Debug
+        output_item(finalProduct);
 
-        canCraft = false;
         isCrafting = false;
         
     }
 
-    //Finds the recipe the inputs make
+    /* <Summery>
+     * turns MadeOf list from gameitem into a dictinary of needed items. This is done for ease of use in the rest of the code
+     * <Summery>
+     */
     private void SearchForInputs()
     {
+        Dictionary<GameItem, int> batch = new Dictionary<GameItem, int>();
+
         for(int i = 0; i<finalProduct.MadeOf.Count; i++)
         {
             bool isInList = false;
-            foreach (GameItem item in neededMaterials.Keys)
+            foreach (GameItem item in batch.Keys)
             {
                 isInList = finalProduct.MadeOf[i] == item;
             }
 
             if (!isInList)
             {
-                neededMaterials.Add(finalProduct.MadeOf[i], 1);
+                batch.Add(finalProduct.MadeOf[i], 1);
             }
             else
             {
-                neededMaterials[finalProduct] += 1;
+                batch[finalProduct] += 1;
             }
         }
 
-        if (neededMaterials.Count == 0)
+        if (batch.Count == 0)
         {
-            Debug.LogWarning("No Buildable path found. Likly not a buildingable object");
+            Debug.LogWarning("No Buildable path found. Likly not a craftable object");
+        }
+        else
+        {
+            neededMaterials = batch;
         }
     }
 
-    private void inventoryCheck()
+    /* <Summery>
+     * checks if the mechine has the materials needed to craft its product. Returns false if it does not, returns true if it does. 
+     * Also returns true if the inventru doesn't know what the item is.
+     * <Summery>
+     */ 
+    private bool inventoryCheck()
     {
-        //Seting up booleans for inventory check
-        bool[] hasMateralsInInventory = new bool[neededMaterials.Count];
-        for (int i = 0; i < hasMateralsInInventory.Length; i++)
-        {
-            hasMateralsInInventory[i] = false;
-        }
-
-        //checks if we have what we need in our inventory, sends error if it dose not reconize needed material
-        for (int i = 0; i < materialNeeded.Length; i++)
+        foreach(GameItem item in neededMaterials.Keys)
         {
             try
             {
-                /*if (MachineInventory[materialNeeded[i]] >= 1 * gameManager.findItemByName(materialNeeded[i]).inputRatios[i])
+                if (neededMaterials[item] > MachineInventory[item])
                 {
-                    hasMateralsInInventory[i] = true;
+                    return false;
                 }
-                else
-                {
-                    hasMateralsInInventory[i] = false;
-                }*/
             }
             catch
             {
-                Debug.LogWarning("Needed material could not be found on constructor. Check the items spreadsheet for typos on input item names");
+                return false;
             }
         }
 
-        //chekcs if the boolean is fully true
-        for (int i = 0; i < hasMateralsInInventory.Length; i++)
-        {
-            canCraft = true;
-            if (!hasMateralsInInventory[i])
-            {
-                canCraft = false;
-                break;
-            }
-        }
+        return true;
     }
 }

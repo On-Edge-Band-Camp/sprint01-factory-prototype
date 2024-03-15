@@ -34,18 +34,14 @@ public class Collector : Machine
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
         currentProcessInSec = 0;
-        if (CollectingItem != null)
+        if (CollectingItem != null && !check_inventory_full())
         {
             AddItem(CollectingItem, CollectAmountPerTick);
         }
-        else
+        else if(CollectingItem == null)
         {
             Debug.LogWarning("No item is assigned to Collector");
         }
-        if (!check_inventory_full())
-        {
-            //inventory[collected_item] += 1;
-        } 
     }
 
 }

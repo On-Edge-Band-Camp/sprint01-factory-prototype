@@ -122,7 +122,7 @@ MonoBehaviour:
   - {x: 0, y: -1}
   - {x: -1, y: 0}
   processing: 0
-  finalProductName: {fileID: 0}
+  finalProduct: {fileID: 9159952854637612295, guid: 1ea0764434684d94193d7ed1ccd4ecbf, type: 3}
 --- !u!114 &6304330747856675745
 MonoBehaviour:
   m_ObjectHideFlags: 0
