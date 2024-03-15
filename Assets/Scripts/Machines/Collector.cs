@@ -6,8 +6,6 @@ using UnityEngine;
 public class Collector : Machine
 {
 
-    public string collected_item = "Test";
-
     public GameItem CollectingItem;
     public int CollectAmountPerTick;
 
@@ -18,18 +16,18 @@ public class Collector : Machine
 
         if (check_inventory_amount() != 0)
         {
-            output_item(collected_item);
+            output_item(CollectingItem);
         }
     }
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
-    public override void handle_input(Vector2Int input_direction, string item_type) { }
+    public override void handle_input(Vector2Int input_direction, GameItem item_type) { }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    public override void handle_output(string item_type) {
+    public override void handle_output(GameItem item_type) {
 
         
-        inventory[item_type] -= 1;
+        MachineInventory[item_type] -= 1;
     
     }
 

@@ -12,14 +12,15 @@ public class Storage : Machine
     }
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
-    public override void handle_input(Vector2Int input_direction, string item_type) {
-
-        inventory[item_type] += 1;
-
+    public override void handle_input(Vector2Int input_direction, GameItem item_type) {
+        
+        MachineInventory[item_type] += 1;
+        
+        Debug.Log("1 " + item_type.name + " Added. " + MachineInventory[item_type] + " " + item_type.name + " stored total.");
     }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    public override void handle_output(string item_type)
+    public override void handle_output(GameItem item_type)
     {
 
     }

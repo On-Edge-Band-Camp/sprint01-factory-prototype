@@ -22,14 +22,8 @@ public abstract class Machine: MonoBehaviour
 
     public int inventory_total; //FOR TESTING ONLY REMOVE
 
-    //Stores references to all items in game for this machine
-    public Dictionary<string, int> inventory = new Dictionary<string, int>();
-
-    //Total amount of items able to be stored in inventory
-    public int inventory_max = 10;
-
-    //This will store all the possible recipies in the game
-    public List<Dictionary<string, object>> recipes = new List<Dictionary<string, object>>();
+    //Total amount of items able to be stored in inventory OUTDATED
+    public int inventory_max = 20;
 
     public GameManager gameManager;
     //This is the child gameobject that holds all the particles in this object
@@ -62,11 +56,11 @@ public abstract class Machine: MonoBehaviour
     //Activates when grid_handler sends and update call to this machine
     public abstract void update_machine();
 
-    //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
-    public abstract void handle_input(Vector2Int input_direction, string item_type);
+    //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional. OUTDATED
+    public abstract void handle_input(Vector2Int input_direction, GameItem item_type);
 
-    //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
-    public abstract void handle_output(string item_type);
+    //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional. OUTDATED
+    public abstract void handle_output(GameItem item_type);
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public abstract void process();
@@ -104,32 +98,6 @@ public abstract class Machine: MonoBehaviour
         {
             particleMaster.SetActive(false);
         }
-
-        //reads recipies into memory
-        recipes = gameManager.gameRecipes;
-
-        //Initialize inventory
-        //REMOVE
-        //PULL FROM SPREADSHEET INSTEAD
-        /*inventory = new Dictionary<string, int>() {
-
-            {"A", 0},
-            {"B", 0},
-            {"C", 0},
-            {"AA", 0},
-            {"AB", 0},
-            {"AC", 0},
-            {"BB", 0},
-            {"BC", 0},
-            {"CC", 0}
-
-        };*/
-
-        //Populates the inventroy with every possible item
-        for(int i = 0; i < gameManager.items.Length; i++)
-        {
-            inventory.Add(gameManager.items[i].Name, 0);
-        }
     }
 
     //A timer for the process, only manipulated inventory in the process() function, custom to each machine.
@@ -147,8 +115,8 @@ public abstract class Machine: MonoBehaviour
         currentProcessInPercent = currentProcessInSec / process_time;
     }
 
-    //Called when an intem is being input to this machine.
-    public bool input_item(Vector2Int output_machine_coord, string item_type)
+    //Called when an intem is being input to this machine. OUTDATED
+    public bool input_item(Vector2Int output_machine_coord, GameItem item_type)
     {
 
         if (check_inventory_full())
@@ -168,8 +136,8 @@ public abstract class Machine: MonoBehaviour
 
     }
 
-    //Check all output directions to see if a valid input is present
-    public bool output_item(string item_type)
+    //Check all output directions to see if a valid input is present OUTDATED
+    public bool output_item(GameItem item_type)
     {
 
         //All valid outputs are stored to this list, then chosen randomly
@@ -193,7 +161,7 @@ public abstract class Machine: MonoBehaviour
             return false;
         }
 
-        //Randomize output
+        //Randomize output OUTDATED
         foreach (GameObject target in valid_outputs)
         {
             //Generate random point in outputs list
@@ -211,8 +179,8 @@ public abstract class Machine: MonoBehaviour
         return false;
     }
 
-    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
-    public bool output_check(GameObject target, string item_type)
+    //Used to output an item to a nearby machine, calls input_item method on the inputting device.OUTDATED
+    public bool output_check(GameObject target, GameItem item_type)
     {
 
         //if machine is not a transporter, can only output to a transporter.
@@ -234,7 +202,7 @@ public abstract class Machine: MonoBehaviour
 
         }
 
-        //If machine is a transporter
+        //If machine is a transporter OUTDATED
         if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
         {
             handle_output(item_type);
@@ -245,12 +213,12 @@ public abstract class Machine: MonoBehaviour
 
     }
 
-    //Checks if the inventory is currently full, if full return true
+    //Checks if the inventory is currently full, if full return true OUTDATED
     public bool check_inventory_full()
     {
         int inventory_count = 0;
 
-        foreach(var item in inventory)
+        foreach(var item in MachineInventory)
         {
             inventory_count += item.Value;
         }
@@ -268,7 +236,7 @@ public abstract class Machine: MonoBehaviour
     {
         int inventory_count = 0;
 
-        foreach (var item in inventory)
+        foreach (var item in MachineInventory)
         {
             inventory_count += item.Value;
         }
