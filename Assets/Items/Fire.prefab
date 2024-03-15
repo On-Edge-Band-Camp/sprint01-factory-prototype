@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8362813391982728641}
-  - component: {fileID: 4120851730888464565}
-  - component: {fileID: -909645143345771793}
+  - component: {fileID: -3560549710868539000}
+  - component: {fileID: -7524959531490665733}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4120851730888464565
+--- !u!212 &-3560549710868539000
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-909645143345771793
+--- !u!114 &-7524959531490665733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Fire
   Sprite: {fileID: 21300000, guid: 1376e12ba05da654ba30f89acd7badb7, type: 3}
   MadeOf:
-  - {fileID: -7767560854787679610, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
-  - {fileID: -7767560854787679610, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
-  - {fileID: 3422681618616890302, guid: 44e2820cae958b949b311686319f7e62, type: 3}
+  - {fileID: 7037672061610665727, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  - {fileID: 7037672061610665727, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  - {fileID: 5285480402964443713, guid: 44e2820cae958b949b311686319f7e62, type: 3}
   Tier: 5

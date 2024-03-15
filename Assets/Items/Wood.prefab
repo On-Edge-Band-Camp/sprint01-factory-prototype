@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8766003961425483160}
-  - component: {fileID: 9196162498621944141}
-  - component: {fileID: -7767560854787679610}
+  - component: {fileID: -8241058590461363466}
+  - component: {fileID: 7037672061610665727}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9196162498621944141
+--- !u!212 &-8241058590461363466
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7767560854787679610
+--- !u!114 &7037672061610665727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

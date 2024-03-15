@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UIItemList : MonoBehaviour
 {
+    GameManager GM;
+    public MachineDetails machineDetails;
     public List<UIItem> UI_Items;
 
     public List<GameItem> ItemsList;
@@ -13,6 +15,7 @@ public class UIItemList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GM = FindObjectOfType<GameManager>();
         //Initialize all Item Slots
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -21,9 +24,19 @@ public class UIItemList : MonoBehaviour
             {
                 var newUIItem = newSlot.GetComponentInChildren<UIItem>();
                 UI_Items.Add(newUIItem.GetComponentInChildren<UIItem>());
+                newUIItem.machineDetails = machineDetails;
+                newUIItem.Clear();
             }
         }
 
-        ItemsList = ItemFilter.FilteredItems(TypeFilter, TierFilter);
+        ItemsList = ItemFilter.FilteredItems(GM.AllGameItems,TypeFilter, TierFilter);
+
+        for(int i = 0; i < ItemsList.Count; i++)
+        {
+            if (UI_Items[i].Item == null)
+            {
+                UI_Items[i].SetItem(ItemsList[i]);
+            }
+        }
     }
 }

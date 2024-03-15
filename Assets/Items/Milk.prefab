@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5933439481221883544}
-  - component: {fileID: -5907368393452697844}
-  - component: {fileID: 5820463302690094971}
+  - component: {fileID: 2641885830738349019}
+  - component: {fileID: 8372709994259438795}
   m_Layer: 0
   m_Name: Milk
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-5907368393452697844
+--- !u!212 &2641885830738349019
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5820463302690094971
+--- !u!114 &8372709994259438795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,9 +100,9 @@ MonoBehaviour:
   ItemName: Milk
   Sprite: {fileID: 0}
   MadeOf:
-  - {fileID: -7298982365768685664, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
-  - {fileID: -7298982365768685664, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
-  - {fileID: 2457594691362760649, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
-  - {fileID: 2457594691362760649, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
-  - {fileID: 2457594691362760649, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
+  - {fileID: -3517497516986140507, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: -3517497516986140507, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: -4450854562500793214, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
+  - {fileID: -4450854562500793214, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
+  - {fileID: -4450854562500793214, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
   Tier: 2

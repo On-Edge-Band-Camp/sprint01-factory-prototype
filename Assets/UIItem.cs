@@ -84,17 +84,24 @@ public class UIItem : MonoBehaviour
     /// </summary>
     /// 
 
-    public void SetItemInMachine(MachineDetails Target)
+    public void SetItemInMachine()
     {
-        var collector = Target.machine.GetComponent<Collector>();
+        var collector = machineDetails.machine.GetComponent<Collector>();
         if (collector != null)
         {
             collector.CollectingItem = Item;
+            SetUIItemInTarget(machineDetails.ItemSelectionUI);
+            DontCloseOnClick();
         }       
     }
 
     public void SetUIItemInTarget(UIItem Target)
     {
         Target.SetItem(Item);
+    }
+
+    public void DontCloseOnClick()
+    {
+        machineDetails.gameObject.GetComponent<MachineSelectMenu>().DontCloseOnClick();
     }
 }

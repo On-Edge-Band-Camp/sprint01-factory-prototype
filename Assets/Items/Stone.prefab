@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1569228675255091231}
-  - component: {fileID: 2372628569880011720}
-  - component: {fileID: 3422681618616890302}
+  - component: {fileID: -7212427554099292509}
+  - component: {fileID: 5285480402964443713}
   m_Layer: 0
   m_Name: Stone
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2372628569880011720
+--- !u!212 &-7212427554099292509
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3422681618616890302
+--- !u!114 &5285480402964443713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -121,5 +121,5 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   collected_item: Test
-  CollectingItem: {fileID: -7767560854787679610, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  CollectingItem: {fileID: -7524959531490665733, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
   CollectAmountPerTick: 1

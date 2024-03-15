@@ -93,7 +93,7 @@ public abstract class Machine: MonoBehaviour
     {
         Debug.Log("Initializing Inventory");
         //Initialize Inventory with all items in game.
-        foreach(GameItem item in GameManager.AllItems)
+        foreach(GameItem item in gameManager.AllGameItems)
         {
             MachineInventory.Add(item, 0);
             Debug.Log($"{item}: {MachineInventory[item]}");

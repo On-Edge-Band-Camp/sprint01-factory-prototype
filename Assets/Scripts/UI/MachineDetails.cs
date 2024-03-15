@@ -11,6 +11,7 @@ public class MachineDetails : MonoBehaviour
     public List<UIItem> UIItems;
 
     public GameObject emptyUIItem;
+    public UIItem ItemSelectionUI;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,7 @@ public class MachineDetails : MonoBehaviour
                 slots.Add(newSlot);
                 var newUIItem = newSlot.GetComponentInChildren<UIItem>();
                 UIItems.Add(newUIItem.GetComponentInChildren<UIItem>());
+                newUIItem.machineDetails = this;
             }
         }
     }
@@ -100,6 +102,7 @@ public class MachineDetails : MonoBehaviour
 
     public void EnableSubUI(GameObject subui)
     {
-        subui.SetActive(true);
+        subui.GetComponent<UIItemList>().machineDetails = this;
+        subui.SetActive(true);      
     }
 }

@@ -17,9 +17,7 @@ public class GameManager : MonoBehaviour
     public GameItem EmptyItem;
 
     public AllItems ItemList;
-    public static List<GameItem> AllItems = new List<GameItem>();
-
-    private GameItem GameItemsFolder;
+    public List<GameItem> AllGameItems;
 
     private void Awake()
     {
@@ -30,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ItemConstructor();
-        InitializeAllItem();
+        AllGameItems = ItemList.AllGameItems;
     }
 
     private void Update()
@@ -122,23 +120,6 @@ public class GameManager : MonoBehaviour
             this.Input1Ratio = input1Ratio;
             this.Input2Ratio = input2Ratio;
             this.inputRatios = new int[2];
-        }
-    }
-
-    [ContextMenu("InitializeItem")]
-
-    public void InitializeAllItem()
-    {
-        AllItems.Clear();
-        AllItems = ItemList.AllGameItems;
-
-        if(AllItems.Count > 0) 
-        {
-            Debug.Log($"Initialized{AllItems.Count} Items!");
-        }
-        else
-        {
-            Debug.LogWarning("No Items initialized, please try to use /Editor/ItemImporter to import again");
         }
     }
 }

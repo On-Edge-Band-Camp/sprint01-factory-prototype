@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a388d78905e4a46b186fa26efa5e4f, type: 3}
   m_Name: Item List
   m_EditorClassIdentifier: 
-  items: []
+  AllGameItems:
+  - {fileID: 9159952854637612295, guid: 1ea0764434684d94193d7ed1ccd4ecbf, type: 3}
+  - {fileID: -4450854562500793214, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
+  - {fileID: -7524959531490665733, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
+  - {fileID: 4580358973608841708, guid: 83781ec76b1e639448c2b101c7c176fc, type: 3}
+  - {fileID: 8372709994259438795, guid: 9c4620e249183e04ca0ce4cb6a287cce, type: 3}
+  - {fileID: 3317963295598328623, guid: 3e35a846d05e76c4daa974f98a4d8078, type: 3}
+  - {fileID: 5285480402964443713, guid: 44e2820cae958b949b311686319f7e62, type: 3}
+  - {fileID: -3517497516986140507, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: 7037672061610665727, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}

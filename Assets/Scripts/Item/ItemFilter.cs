@@ -19,6 +19,8 @@ public enum TierFilter
 
 public class ItemFilter
 {
+    public GameManager GM;
+
     /// <summary>
     /// Input the filter to returns a array of int representing tiers
     /// </summary>
@@ -61,21 +63,29 @@ public class ItemFilter
     /// <summary>
     /// Use filters to get a filtered list of items
     /// </summary>
-    public static List<GameItem> FilteredItems(TypeFilter typeFilter, TierFilter tierFilter)
+    public static List<GameItem> FilteredItems(List<GameItem> UnfilteredList, TypeFilter typeFilter, TierFilter tierFilter)
     {
         List<int> FilteredTiers = FilteredTierList(tierFilter);
-        List<GameItem> UnfilteredList = GameManager.AllItems;
+
+        List<GameItem> FilteringList = new List<GameItem>();
+        foreach(GameItem item in UnfilteredList)
+        {
+            FilteringList.Add(item);
+        }
+
         List<GameItem> UnqualifyItems = new List<GameItem>();
 
         if (typeFilter == TypeFilter.None)
         {
+            Debug.Log("Type filter is set to none, no item added to list");
             return null;
         }
 
-        foreach (GameItem item in UnfilteredList)
+        foreach (GameItem item in FilteringList)
         {
+            Debug.Log($"Filtering {item}");
             //If the type does not match or tier does not match, remove this item
-            if(!FilterByType(item,typeFilter) || !FilterByTier(item, FilteredTiers))
+            if (!FilterByType(item,typeFilter) || !FilterByTier(item, FilteredTiers))
             {
                 UnqualifyItems.Add(item);
             }
@@ -83,13 +93,14 @@ public class ItemFilter
 
         foreach(GameItem item in UnqualifyItems)
         {
-            UnfilteredList.Remove(item);
+            FilteringList.Remove(item);
         }
-        return UnfilteredList;
+        return FilteringList;
     }
 
     public static bool FilterByType(GameItem item, TypeFilter typeFilter)
     {
+        Debug.Log("Filtering by Type");
         //Add all filtered items in list
         switch (typeFilter)
         {
@@ -98,6 +109,7 @@ public class ItemFilter
             case TypeFilter.All:
                 return true;
             case TypeFilter.CraftableItems:
+                Debug.Log($"Checking {item}, have {item.MadeOf.Count} components");
                 if (item.MadeOf.Count > 0)
                 {
                     return true;
