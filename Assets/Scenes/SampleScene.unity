@@ -2885,17 +2885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmptyItem: {fileID: 48855132675036980, guid: 342e46f4d36b40d4fad706c2d34d946e, type: 3}
   ItemList: {fileID: 11400000, guid: fb1c3a7d62521f543a18b0ecc509551b, type: 2}
-  AllItems:
-  - {fileID: -6963426714095740154, guid: 1ea0764434684d94193d7ed1ccd4ecbf, type: 3}
-  - {fileID: 7278137109753539717, guid: 3c38e7b366a44554e81af3f0c1f1bc72, type: 3}
-  - {fileID: -6258470008993438075, guid: 69b59a210db0a1142b43b42bf15d6489, type: 3}
-  - {fileID: 2489094781988400697, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
-  - {fileID: 4682990509942221239, guid: 83781ec76b1e639448c2b101c7c176fc, type: 3}
-  - {fileID: 6211294948103493404, guid: e4c132360adf65842ae6a190af879513, type: 3}
-  - {fileID: -1998019853711975088, guid: 3e35a846d05e76c4daa974f98a4d8078, type: 3}
-  - {fileID: 384834984731028625, guid: 44e2820cae958b949b311686319f7e62, type: 3}
-  - {fileID: -469752562732880751, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
-  - {fileID: 5566361970696322185, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  AllGameItems: []
 --- !u!114 &762060497
 MonoBehaviour:
   m_ObjectHideFlags: 0
