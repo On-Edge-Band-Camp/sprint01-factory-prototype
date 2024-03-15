@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameItem EmptyItem;
 
     public AllItems ItemList;
-    public List<GameItem> AllItems = new List<GameItem>();
+    public static List<GameItem> AllItems = new List<GameItem>();
 
     private GameItem GameItemsFolder;
 
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
     public void InitializeAllItem()
     {
         AllItems.Clear();
-        AllItems = ItemList.items;
+        AllItems = ItemList.AllGameItems;
 
         if(AllItems.Count > 0) 
         {

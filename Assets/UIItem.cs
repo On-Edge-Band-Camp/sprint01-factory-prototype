@@ -6,13 +6,29 @@ using TMPro;
 
 public class UIItem : MonoBehaviour
 {
+    public MachineDetails machineDetails;
     public GameItem Item;
     public Image image;
     public Animator ac;
     public TMP_Text text;
+
+    public bool HaveInitialItem;
     // Start is called before the first frame update
     void Start()
     {
+        if (HaveInitialItem)
+        {
+            switch (machineDetails.machine.machine_type)
+            {
+                case machine_types.Collector:
+                    //Get item from collector's collecting item.
+                    Collector collector = machineDetails.machine.GetComponent<Collector>();
+                    var CollectingItem = collector.CollectingItem;
+                    Item = CollectingItem;
+                    break;
+            }
+        }
+
         if (Item != null)
         {
             image.sprite = Item.Sprite;

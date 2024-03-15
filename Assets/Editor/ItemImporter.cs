@@ -12,37 +12,36 @@ public class ItemImporter : ScriptableObject
     public string ItemTexturePath = "Assets/Textures/Items/";
     public string TableName;
 
-    public List<GameItem> AllItems;
-
-
     public AllItems ItemList;
 
     [ContextMenu("Import")]
     public void Import()
     {
         //Reset list of objects
-        AllItems.Clear();
+        ItemList.AllGameItems.Clear();
 
         var excel = new ExcelImporter(excelFilePath);
 
         ImportItems(TableName, excel);
 
-        //Find all items in the Items folder
+        //Find all Gameobjects in the Items folder
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { "Assets/Items" });
         foreach (string guid in guids)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);
             GameObject newItem = AssetDatabase.LoadAssetAtPath<GameObject>(path);
-            AllItems.Add(newItem.GetComponent<GameItem>());
+            ItemList.AllGameItems.Add(newItem.GetComponent<GameItem>());
         }
-
-        ItemList.items = AllItems;
 
         ImportMadeOf(TableName, excel);
     }
 
+    /// <summary>
+    /// Find a table in the imported excel file and create a new prefab with the data.
+    /// </summary>
     void ImportItems(string TableName, ExcelImporter excel)
     {
+        //Find table in the excel file by name and save as refrence 'table'
         //If the table cannot be found, stop this method
         if(!excel.TryGetTable(TableName, out var table))
         {
@@ -50,36 +49,43 @@ public class ItemImporter : ScriptableObject
             return;
         }
 
+        //Iterate through all rows in the table
         for(int row = 1; row <= table.RowCount; row++)
         {
-            //Find the "Name" row of the table
+            //Find and save the "Name" row of the table
             string name = table.GetValue<string>(row, "Name");
 
             if (string.IsNullOrWhiteSpace(name)) continue;
 
-            //Add new item gameobject
-            GameObject go = new GameObject(name);
-            GameObject GO = PrefabUtility.SaveAsPrefabAsset(go, SaveItemsPath + name + ".prefab");
+            //CREATE A NEW PREFAB
+            //Create a temporary empty gameobject and keep a refrence of it
+            GameObject TempItem = new GameObject(name);
+            //Save the temporary object as a prefab, keep it as a seperate refrence
+            GameObject PrefabItem = PrefabUtility.SaveAsPrefabAsset(TempItem, SaveItemsPath + name + ".prefab");
 
-            //!!! Destroy the temperary game object refrence !!!
-            DestroyImmediate(go);
+            //!!! Destroy the temperary gameObject so it does not show up in scene(Or any other random places) !!!
+            DestroyImmediate(TempItem);
 
-            SpriteRenderer itemSr = GO.AddComponent<SpriteRenderer>();
-            GameItem itemVariable = GO.AddComponent<GameItem>();
+            //Give the prefab components, anything from rigidbody, colliders or custom scripts
+            SpriteRenderer itemSr = PrefabItem.AddComponent<SpriteRenderer>();
+            //This is my custom script, can be replaced with any other custom scripts
+            GameItem itemVariable = PrefabItem.AddComponent<GameItem>();
 
+            //Set variables on custom script with information in excel table.
             itemVariable.ItemName = name;
             itemVariable.Tier = table.GetValue<int>(row, "Tier");
 
-            //Find all items in the Textures/Item folder
+            //Find all imported sprites in the given path
             string[] guids = AssetDatabase.FindAssets("t:Texture2D", new[] { ItemTexturePath });
             foreach (string guid in guids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                Sprite newItem = AssetDatabase.LoadAssetAtPath<Sprite>(path);
-                if(itemVariable.ItemName == newItem.name)
+                Sprite newSprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+                //!!! Find the sprite by name, if the sprite name does not match with itemName, this will not work. !!!
+                if(itemVariable.ItemName == newSprite.name)
                 {
-                    itemVariable.Sprite = newItem;
-                    itemSr.sprite = newItem;
+                    itemVariable.Sprite = newSprite;
+                    itemSr.sprite = newSprite;
                 }
             }
         }
@@ -135,7 +141,7 @@ public class ItemImporter : ScriptableObject
         GameItem FindItemByName(string ItemName)
         {
             //iterate through all items and find a name that matches the name on the table.
-            foreach (GameItem item in AllItems)
+            foreach (GameItem item in ItemList.AllGameItems)
             {
                 if (item.ItemName == ItemName)
                 {

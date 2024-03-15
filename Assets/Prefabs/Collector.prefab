@@ -103,6 +103,7 @@ MonoBehaviour:
   grid_coord: {x: 0, y: 0}
   machine_type: 101
   process_time: 3
+  currentProcessInPercent: 0
   inventory_total: 0
   inventory_max: 10
   gameManager: {fileID: 0}
@@ -120,5 +121,5 @@ MonoBehaviour:
   - {x: -1, y: 0}
   processing: 0
   collected_item: Test
-  CollectingItem: {fileID: 2188398024510512288, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
+  CollectingItem: {fileID: -7767560854787679610, guid: daf7b3a6ae9a4d041b7bf2461b97c252, type: 3}
   CollectAmountPerTick: 1
