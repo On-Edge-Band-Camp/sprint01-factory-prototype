@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Splitter : Machine
 {
+    private int outputDirection = 0;
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
@@ -28,11 +29,22 @@ public class Splitter : Machine
     public override void process()
     {
 
+        List<GameObject> valid_outputs = validify_outputs();
+
         foreach (var item in MachineInventory)
         {
             if (item.Value > 0)
             {
-                Debug.Log(output_item(item.Key));
+                if (outputDirection >= valid_outputs.Count)
+                {
+                    outputDirection = 1;
+                }
+                else
+                {
+                    outputDirection++;
+                }
+                output_item(item.Key, outputDirection);
+
                 break;
             }
 

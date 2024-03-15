@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 
@@ -136,15 +138,57 @@ public abstract class Machine: MonoBehaviour
 
     }
 
-    //Check all output directions to see if a valid input is present OUTDATED
-    public bool output_item(GameItem item_type)
+    //Check all output directions to see if a valid input is present
+    
+    public bool output_item(GameItem item_type, [Optional] int specificOutput)
     {
 
-        //All valid outputs are stored to this list, then chosen randomly
+        List<GameObject> valid_outputs = validify_outputs();
+
+        //If list is empty, return false
+        if (valid_outputs.Count == 0)
+        {
+            return false;
+        }
+
+
+        //Randomize output if no specific output is given
+        if (specificOutput == 0)
+        {
+            foreach (GameObject target in valid_outputs)
+            {
+                //Generate random point in outputs list
+                int random_int = UnityEngine.Random.Range(0, valid_outputs.Count);
+
+                //check if random point successfullly handshaked
+                if (output_check(valid_outputs[random_int], item_type))
+                {
+                    return true;
+                }
+
+            }
+        }
+        else //Or uses specific output
+        {
+            specificOutput--;
+            if (output_check(valid_outputs[specificOutput], item_type))
+            {
+                return true;
+            }
+        }
+        
+
+        //If no output point is found, return false
+        return false;
+    }
+
+    //Iterate through all output directions, if potential connection, add it to the valid_outputs list
+    public List<GameObject> validify_outputs()
+    {
         List<GameObject> valid_outputs = new List<GameObject>();
 
-        //Iterate through all output directions, if potential connection, add it to the valid_outputs list
-        foreach (Vector2Int direction in output_directions) {
+        foreach (Vector2Int direction in output_directions)
+        {
 
             GameObject target = check_output_connnection(direction);
 
@@ -155,31 +199,10 @@ public abstract class Machine: MonoBehaviour
 
         }
 
-        //If list is empty, return false
-        if (valid_outputs.Count == 0)
-        {
-            return false;
-        }
-
-        //Randomize output OUTDATED
-        foreach (GameObject target in valid_outputs)
-        {
-            //Generate random point in outputs list
-            int random_int = UnityEngine.Random.Range(0, valid_outputs.Count);
-
-            //check if random point successfullly handshaked
-            if (output_check(valid_outputs[random_int], item_type))
-            {
-                return true;
-            }
-
-        }
-
-        //If no output point is found, return false
-        return false;
+        return valid_outputs;
     }
 
-    //Used to output an item to a nearby machine, calls input_item method on the inputting device.OUTDATED
+    //Used to output an item to a nearby machine, calls input_item method on the inputting device.
     public bool output_check(GameObject target, GameItem item_type)
     {
 
@@ -202,7 +225,7 @@ public abstract class Machine: MonoBehaviour
 
         }
 
-        //If machine is a transporter OUTDATED
+        //If machine is a transporter
         if (target.GetComponent<Machine>().input_item(grid_coord, item_type))
         {
             handle_output(item_type);
@@ -213,7 +236,7 @@ public abstract class Machine: MonoBehaviour
 
     }
 
-    //Checks if the inventory is currently full, if full return true OUTDATED
+    //Checks if the inventory is currently full, if full return true
     public bool check_inventory_full()
     {
         int inventory_count = 0;
