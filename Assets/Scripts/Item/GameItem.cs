@@ -9,6 +9,8 @@ public class GameItem : MonoBehaviour
     public List<GameItem> MadeOf = new List<GameItem>();
     [ColorfulIntAttribute]
     public int Tier;
+    [TextArea]
+    public string Description;
 
     SpriteRenderer sr;
 

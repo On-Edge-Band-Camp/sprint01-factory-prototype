@@ -48,7 +48,6 @@ public class UIItem : MonoBehaviour
 
     public void SetItem(GameItem item)
     {
-        Debug.Log("SetItem");
         image.enabled = true;
         Item = item;
         image.sprite = item.Sprite;
@@ -56,8 +55,6 @@ public class UIItem : MonoBehaviour
 
     public void updateCount(int itemCount)
     {
-        Debug.Log("updateCount");
-
         text.text = itemCount.ToString();
         Pop();
     }

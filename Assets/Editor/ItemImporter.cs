@@ -57,37 +57,10 @@ public class ItemImporter : ScriptableObject
 
             if (string.IsNullOrWhiteSpace(name)) continue;
 
-            //CREATE A NEW PREFAB
-            //Create a temporary empty gameobject and keep a refrence of it
-            GameObject TempItem = new GameObject(name);
-            //Save the temporary object as a prefab, keep it as a seperate refrence
-            GameObject PrefabItem = PrefabUtility.SaveAsPrefabAsset(TempItem, SaveItemsPath + name + ".prefab");
+            int Tier = table.GetValue<int>(row, "Tier");
+            string Description = table.GetValue<string>(row, "Description");
 
-            //!!! Destroy the temperary gameObject so it does not show up in scene(Or any other random places) !!!
-            DestroyImmediate(TempItem);
-
-            //Give the prefab components, anything from rigidbody, colliders or custom scripts
-            SpriteRenderer itemSr = PrefabItem.AddComponent<SpriteRenderer>();
-            //This is my custom script, can be replaced with any other custom scripts
-            GameItem itemVariable = PrefabItem.AddComponent<GameItem>();
-
-            //Set variables on custom script with information in excel table.
-            itemVariable.ItemName = name;
-            itemVariable.Tier = table.GetValue<int>(row, "Tier");
-
-            //Find all imported sprites in the given path
-            string[] guids = AssetDatabase.FindAssets("t:Texture2D", new[] { ItemTexturePath });
-            foreach (string guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                Sprite newSprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
-                //!!! Find the sprite by name, if the sprite name does not match with itemName, this will not work. !!!
-                if(itemVariable.ItemName == newSprite.name)
-                {
-                    itemVariable.Sprite = newSprite;
-                    itemSr.sprite = newSprite;
-                }
-            }
+            CreatePrefab(name, Tier, Description);          
         }
     }
 
@@ -152,6 +125,56 @@ public class ItemImporter : ScriptableObject
             return null;
         }
 
+    }
+
+    public void CreatePrefab(string name, int Tier, string Description)
+    {
+        //Create a temporary empty gameobject and keep a refrence of it
+        GameObject TempItem = new GameObject(name);
+        //Save the temporary object as a prefab, keep it as a seperate refrence
+        GameObject PrefabItem = PrefabUtility.SaveAsPrefabAsset(TempItem, SaveItemsPath + name + ".prefab");
+
+        //!!! Destroy the temperary gameObject so it does not show up in scene(Or any other random places) !!!
+        DestroyImmediate(TempItem);
+
+        //Check if item already have component added, if not, add one.
+        var itemSr = PrefabItem.GetComponent<SpriteRenderer>();
+        itemSr = itemSr != null ? itemSr : PrefabItem.AddComponent<SpriteRenderer>();
+
+        var itemVariable = PrefabItem.GetComponent<GameItem>();
+        itemVariable = itemVariable != null ? itemVariable : PrefabItem.AddComponent<GameItem>();
+
+        //Set variables on custom script with information in excel table.
+        itemVariable.ItemName = name;
+        itemVariable.Tier = Tier;
+        itemVariable.Description = Description;
+        ImportSprite(itemVariable, itemSr);
+    }
+
+    public void ImportSprite(GameItem item, SpriteRenderer sr)
+    {
+        //Find all imported sprites in the given path
+        string[] guids = AssetDatabase.FindAssets("t:Texture2D", new[] { ItemTexturePath });
+        foreach (string guid in guids)
+        {
+            var path = AssetDatabase.GUIDToAssetPath(guid);
+            Sprite newSprite = AssetDatabase.LoadAssetAtPath<Sprite>(path);
+
+            if(newSprite.name == "Unknown")
+            {
+                item.Sprite = newSprite;
+                sr.sprite = newSprite;
+            }
+
+            //!!! Find the sprite by name, if the sprite name does not match with itemName, this will not work. !!!
+            if (item.ItemName == newSprite.name)
+            {
+                item.Sprite = newSprite;
+                sr.sprite = newSprite;
+                return;
+            }
+        }
+        
     }
 }
 

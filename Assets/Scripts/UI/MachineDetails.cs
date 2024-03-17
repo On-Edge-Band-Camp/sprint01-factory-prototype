@@ -44,7 +44,6 @@ public class MachineDetails : MonoBehaviour
     }
     public void UpdateUIItem(GameItem item)
     {
-        Debug.Log("Updating Items");
         //Find all slots
         foreach (var uiitem in UIItems)
         {
@@ -54,14 +53,12 @@ public class MachineDetails : MonoBehaviour
                 //If the UI item is the same item type
                 if (uiitem.Item == item)
                 {
-                    Debug.Log("Found same item");
                     //Update that item's count
                     uiitem.updateCount(machine.FindItemCount(item));
                     return;
                 }
             }
         }
-        Debug.Log("No same item found, adding new instead");
         //If no matching item exist in the current UI, find a empty slot and create one
         foreach (UIItem uiitem in UIItems)
         {
