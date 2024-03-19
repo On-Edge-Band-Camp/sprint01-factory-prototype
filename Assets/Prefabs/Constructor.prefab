@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCost: 2
-  UIToUse: {fileID: 0}
+  UIToUse: {fileID: 3794074493844319682, guid: 380d3b1288aa66a43bdb04c3dad6c3cd, type: 3}
   EmptyItem: {fileID: 0}
   grid_coord: {x: 0, y: 0}
   machine_type: 103

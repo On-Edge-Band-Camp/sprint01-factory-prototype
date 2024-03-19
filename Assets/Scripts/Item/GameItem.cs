@@ -14,8 +14,16 @@ public class GameItem : MonoBehaviour
 
     SpriteRenderer sr;
 
-    private void Start()
+    public int ItemCount(GameItem CountingItem)
     {
-        
+        int Count = 0;
+        foreach(GameItem item in MadeOf)
+        {
+            if(CountingItem == item)
+            {
+                Count++;
+            }
+        }
+        return Count;
     }
 }

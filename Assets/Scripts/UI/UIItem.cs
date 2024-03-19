@@ -83,13 +83,45 @@ public class UIItem : MonoBehaviour
 
     public void SetItemInMachine()
     {
-        var collector = machineDetails.machine.GetComponent<Collector>();
-        if (collector != null)
+        machine_types MachineType = machineDetails.machine.machine_type;
+        switch (MachineType)
         {
-            collector.CollectingItem = Item;
-            SetUIItemInTarget(machineDetails.ItemSelectionUI);
-            DontCloseOnClick();
-        }       
+            case machine_types.Collector:
+                var collector = machineDetails.machine.GetComponent<Collector>();
+                collector.CollectingItem = Item;
+                SetUIItemInTarget(machineDetails.ItemSelectionUI);
+                DontCloseOnClick();
+                break;
+            case machine_types.Constructor:
+                var construtor = machineDetails.machine.GetComponent<Constructor>();
+                construtor.finalProduct = Item;
+                SetUIItemInTarget(machineDetails.ItemSelectionUI);
+                DontCloseOnClick();
+                //Set components
+                //Find all componets of a different type;
+                List<GameItem> ItemTypes = new List<GameItem>();
+                foreach(var item in construtor.finalProduct.MadeOf)
+                {
+                    if (!ItemTypes.Contains(item))
+                    {
+                        ItemTypes.Add(item);
+                        Debug.Log(item);
+                    }
+                }
+                //Find all UI item slot.
+                foreach (Transform child in machineDetails.ItemSelectionUI.transform)
+                {
+                    var ComponentUIItem = child.GetComponentInChildren<UIItem>();
+                    if(ComponentUIItem != null)
+                    {
+                        ComponentUIItem.SetItem(ItemTypes[0]);
+                        ComponentUIItem.updateCount(construtor.finalProduct.ItemCount(ItemTypes[0]));
+                        
+                        ItemTypes.Remove(ItemTypes[0]);
+                    }
+                }
+                    break;
+        }  
     }
 
     public void SetUIItemInTarget(UIItem Target)

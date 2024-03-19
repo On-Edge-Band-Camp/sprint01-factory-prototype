@@ -23,8 +23,12 @@ public class Constructor : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
 
-        //checks what we need to make this
-        SearchForInputs();
+        if (finalProduct != null)
+        {
+            //checks what we need to make this
+            SearchForInputs();
+        }
+
 
         //starts process once all needed mats are gathered
         if (inventoryCheck() && !isCrafting)

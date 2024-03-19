@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &554039901495836746
+--- !u!1 &3919744960867885331
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4592047493126466294}
-  - component: {fileID: 8841192145488721980}
-  - component: {fileID: -860156511869644530}
+  - component: {fileID: 5546081420824580009}
+  - component: {fileID: 1709332260296806244}
+  - component: {fileID: 2833981898964121866}
   m_Layer: 0
   m_Name: Florite
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4592047493126466294
+--- !u!4 &5546081420824580009
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554039901495836746}
+  m_GameObject: {fileID: 3919744960867885331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8841192145488721980
+--- !u!212 &1709332260296806244
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554039901495836746}
+  m_GameObject: {fileID: 3919744960867885331}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -85,13 +85,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-860156511869644530
+--- !u!114 &2833981898964121866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 554039901495836746}
+  m_GameObject: {fileID: 3919744960867885331}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bab05d5cffec73147913fcd7ac668667, type: 3}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Florite
   Sprite: {fileID: 21300000, guid: 633fb5efe80a45c4eb2204b60cdea366, type: 3}
   MadeOf:
-  - {fileID: -3267975647093337228, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
-  - {fileID: -1972376754721441936, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
+  - {fileID: -8351242901457999174, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
+  - {fileID: -1458467533405106625, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
   Tier: 3
   Description: Crystal of grass, the life energy in the wild crystal is restless,
     slowly growing as if it is a living being.
