@@ -22,8 +22,10 @@ public class GridController : MonoBehaviour
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
-    //
+    //Visual grid matrix for initial level setup. replace numbers with corresponding int of a machine.
     public static int[,] levelMap = 
+        //Currently have Collector = 1, Storage = 2, Transport Up = 3.
+        //Adding other machines happens in levelPlacer() in the MachinePlacer script
         {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
