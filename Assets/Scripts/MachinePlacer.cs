@@ -40,7 +40,9 @@ public class MachinePlacer : MonoBehaviour
     void Start()
     {
         grid_control = GetComponent<GridController>();
+        levelPlacer();
     }
+   
 
 
     void Update()
@@ -111,6 +113,46 @@ public class MachinePlacer : MonoBehaviour
                 current_selection = Instantiate(constructor_prefab, mousePos, Quaternion.identity);
             }
         }
+    }
+
+    public void levelPlacer()
+    {
+        Vector2Int grid_coord;
+        print(GridController.levelMap[8,12]);
+        int row = 9;
+        int col = 13;
+        for (int i = 0; i < row; i++)
+        {
+            for(int j = 0; j < col; j++)
+            {
+                if (GridController.levelMap[i,j] == 0)
+                {
+                    continue;
+                }
+                else if (GridController.levelMap[i,j] == 1)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, collector_prefab);
+                }
+                else if (GridController.levelMap[i,j] == 2)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, storage_prefab);
+                }
+                else if (GridController.levelMap[i, j] == 3)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, transporter_up_prefab);
+                }
+                //Add more machines to be placed on start
+                /*else if (GridController.levelMap[i, j] == 4)
+                {
+                    grid_coord = new Vector2Int(GridController.gridDim.y - i, j - 1);
+                    grid_control.add_machine(grid_coord, //DESIRED PREFAB HERE);
+                }*/
+
+            }
+        }   
     }
 
     //Method for snapping a selected, hovering machine to the grid as it moves with the mouse position.

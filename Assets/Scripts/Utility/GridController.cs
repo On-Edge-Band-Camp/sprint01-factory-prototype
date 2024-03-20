@@ -22,6 +22,18 @@ public class GridController : MonoBehaviour
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
+    //
+    public static int[,] levelMap = 
+        {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}   };
+
     //Deprecated, check and remove later.
     //Center positions restricted to camera size.
     //public Vector2[,] camera_odd_center_pos;
@@ -33,7 +45,7 @@ public class GridController : MonoBehaviour
     public static List<Vector2> oddCenterPosList = new List<Vector2>();
 
     //Initializer dimensions of the grid
-    public Vector2Int grid_dimensions = new Vector2Int(21, 25);
+    public Vector2Int grid_dimensions = new Vector2Int(13, 9);
     //Static grid dimension variable for use in machinePlacer.
     public static Vector2Int gridDim;
 
@@ -58,7 +70,7 @@ public class GridController : MonoBehaviour
     };
 
     //Initialize Grid
-    private void Start()
+    private void Awake()
     {
 
         gridDim = grid_dimensions;
