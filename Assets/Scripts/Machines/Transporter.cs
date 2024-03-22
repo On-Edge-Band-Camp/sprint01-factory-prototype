@@ -23,7 +23,7 @@ public class Transporter : Machine
 
         held_item = item_type;
         MachineInventory[item_type] += 1;
-
+        Debug.Log($"{item_type},{MachineInventory[item_type]}");
     }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.

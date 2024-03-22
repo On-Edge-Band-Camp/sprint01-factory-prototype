@@ -15,6 +15,10 @@ public class Storage : Machine
     public override void handle_input(Vector2Int input_direction, GameItem item_type) {
         
         MachineInventory[item_type] += 1;
+        if (UI != null)
+        {
+            UI.UpdateUIItem(item_type);
+        }
     }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.

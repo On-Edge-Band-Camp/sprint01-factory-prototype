@@ -90,6 +90,7 @@ public class MachineDetails : MonoBehaviour
                         uiitem.image.enabled = true;
                         uiitem.SetItem(item);
                         uiitem.updateCount(machine.FindItemCount(item));
+                        Debug.Log($"{machine.FindItemCount(item)}");
                     }
                     return;
                 }

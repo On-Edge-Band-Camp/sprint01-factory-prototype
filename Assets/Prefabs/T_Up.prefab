@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCost: 1
+  UIToUse: {fileID: 3794074493844319682, guid: c7ad2cf87c08f4046bf2b2ffe92ed80d, type: 3}
   EmptyItem: {fileID: 0}
   grid_coord: {x: 0, y: 0}
   machine_type: 102
   process_time: 1
+  currentProcessInPercent: 0
   inventory_total: 0
   inventory_max: 1
   gameManager: {fileID: 0}
   particleMaster: {fileID: 0}
+  UI: {fileID: 0}
   input_directions:
   - {x: 0, y: -1}
   output_directions:

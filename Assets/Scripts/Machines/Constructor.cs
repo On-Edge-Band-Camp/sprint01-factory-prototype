@@ -43,6 +43,11 @@ public class Constructor : Machine
     public override void handle_input(Vector2Int input_direction, GameItem item_type) {
         // imports item
         MachineInventory[item_type] += 1;
+        Debug.Log($"{item_type},{MachineInventory[item_type]}");
+        if(UI!=null)
+        {
+            UI.UpdateUIItem(item_type);
+        }
     }
 
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
@@ -52,6 +57,10 @@ public class Constructor : Machine
         foreach (GameItem item in neededMaterials.Keys)
         {
             MachineInventory[item] -= neededMaterials[item];
+            if (UI != null)
+            {
+                UI.UpdateUIItem(finalProduct);
+            }
             //Debug.Log("Removing 1 " + item.name + " from Inventry.");
         }
     }
@@ -59,8 +68,14 @@ public class Constructor : Machine
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
         //Debug.Log("Exporting " + finalProduct.name + "!"); //Debug
-        output_item(finalProduct);
-
+        if (finalProduct != null)
+        {
+            output_item(finalProduct);
+            if (UI != null)
+            {
+                UI.UpdateUIItem(finalProduct);
+            }
+        }
         isCrafting = false;
         
     }
