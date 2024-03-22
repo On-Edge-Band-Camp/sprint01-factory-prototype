@@ -12,10 +12,16 @@ public class UIItem : MonoBehaviour
     public Animator ac;
     public TMP_Text text;
 
+    public GameObject ToolTip;
+    public TMP_Text ToolTipName;
+    public TMP_Text TooltipDescription;
+
+
     public bool HaveInitialItem;
     // Start is called before the first frame update
     void Start()
     {
+        ToolTip.SetActive(false);
         if (HaveInitialItem)
         {
             switch (machineDetails.machine.machine_type)
@@ -32,7 +38,6 @@ public class UIItem : MonoBehaviour
         if (Item != null)
         {
             image.sprite = Item.Sprite;
-            text.text = " ";
         }
         else
         {
@@ -46,17 +51,39 @@ public class UIItem : MonoBehaviour
         
     }
 
+    public void ShowToolTip()
+    {
+        if(ToolTip!=null && Item != null)
+        {
+            ToolTip.SetActive(true);
+        }
+    }
+
+    public void HideToolTip()
+    {
+        ToolTip.SetActive(false);
+    }
+
     public void SetItem(GameItem item)
     {
         image.enabled = true;
         Item = item;
         image.sprite = item.Sprite;
+        ToolTipName.text = item.ItemName;
+        TooltipDescription.text = item.Description;
     }
 
     public void updateCount(int itemCount)
     {
-        text.text = itemCount.ToString();
-        Pop();
+        if (itemCount <= 0)
+        {
+            Clear();
+        }
+        else
+        {
+            text.text = itemCount.ToString();
+            Pop();
+        }
     }
 
     public void Pop()

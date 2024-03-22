@@ -25,6 +25,7 @@ public class MachinePlacer : MonoBehaviour
     //Index of the abstract grid to set the machine to when placed.
     Vector2Int new_grid_coord;
 
+    public AudioSource placementSFX;
 
     //All machine prefabs
     public GameObject collector_prefab;
@@ -43,8 +44,6 @@ public class MachinePlacer : MonoBehaviour
         levelPlacer();
     }
    
-
-
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -166,8 +165,16 @@ public class MachinePlacer : MonoBehaviour
         //If a machine is currently selected,
         if (current_selection != null)
         {
+            //Clear Selection on Right click while holding selection
+            if (Input.GetMouseButtonDown(1))
+            {
+                Destroy(current_selection.gameObject);
+                return;
+            }
+
+
             //Get new position for selected machine by simply flooring mousePos + 0.5 (half cell size). Would probably change to a varible when cells
-                //bigger than 1x1 are being implemented.
+            //bigger than 1x1 are being implemented.
             //Constrains within grid dimension bounds by using Clamp.
             new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2), 
                 Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
@@ -262,6 +269,7 @@ public class MachinePlacer : MonoBehaviour
             {
                 grid_control.add_machine(new_coord, current_selection);
                 resources.Energy -= current_selection.GetComponent<Machine>().energyCost;
+                placementSFX.Play();
                 Destroy(current_selection);
             }
             else

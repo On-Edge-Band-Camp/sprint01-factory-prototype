@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public AllItems ItemList;
     public List<GameItem> AllGameItems;
+
+    public GameObject PauseMenu;
+    bool pauseActive;
 
     private void Awake()
     {
@@ -34,6 +38,33 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         RuntimeTelemtry();
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseActive = !pauseActive;
+            PauseMenu.SetActive(pauseActive);
+        }
+
+        if (pauseActive)
+        {
+            Time.timeScale = 0;
+        }
+
+        if (pauseActive)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    public void Resume()
+    {
+        pauseActive = false;
+        PauseMenu.SetActive(pauseActive);
     }
 
     private void RuntimeTelemtry()

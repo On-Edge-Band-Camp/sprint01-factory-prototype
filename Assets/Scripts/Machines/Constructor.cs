@@ -27,15 +27,14 @@ public class Constructor : Machine
         {
             //checks what we need to make this
             SearchForInputs();
-        }
 
-
-        //starts process once all needed mats are gathered
-        if (inventoryCheck() && !isCrafting)
-        {
-            //Debug.Log("Starting Work!");
-            StartCoroutine("process_timer");
-            isCrafting = true;
+            //starts process once all needed mats are gathered
+            if (inventoryCheck() && !isCrafting)
+            {
+                //Debug.Log("Starting Work!");
+                StartCoroutine("process_timer");
+                isCrafting = true;
+            }
         }
     }
 
@@ -43,7 +42,6 @@ public class Constructor : Machine
     public override void handle_input(Vector2Int input_direction, GameItem item_type) {
         // imports item
         MachineInventory[item_type] += 1;
-        Debug.Log($"{item_type},{MachineInventory[item_type]}");
         if(UI!=null)
         {
             UI.UpdateUIItem(item_type);

@@ -13,9 +13,15 @@ public class MachineDetails : MonoBehaviour
     public GameObject emptyUIItem;
     public UIItem ItemSelectionUI;
 
+    AudioSource StartSound;
     // Start is called before the first frame update
     void Start()
     {
+        StartSound = GetComponent<AudioSource>();
+        if (StartSound != null)
+        {
+            StartSound.Play();
+        }
         InitializeSlots();
     }
 

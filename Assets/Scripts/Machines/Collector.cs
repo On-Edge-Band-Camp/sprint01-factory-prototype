@@ -11,12 +11,15 @@ public class Collector : Machine
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine() {
-        ProgressTimer();
-        if (!processing && !check_inventory_full()) { StartCoroutine("process_timer");}
-
-        if (check_inventory_amount() != 0)
+        if (CollectingItem != null)
         {
-            output_item(CollectingItem);
+            ProgressTimer();
+            if (!processing && !check_inventory_full()) { StartCoroutine("process_timer"); }
+
+            if (check_inventory_amount() != 0)
+            {
+                output_item(CollectingItem);
+            }
         }
     }
 

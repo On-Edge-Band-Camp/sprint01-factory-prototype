@@ -19,7 +19,6 @@ public class FloatingMenu : MonoBehaviour
     Vector2Int positionGridIndex;
     Vector2Int machineGridIndex;
 
-
     //Bool to be set to true the frame the menu is spawned so it doesn't get destroyed with mouse release. Set to false at the end of frame.
     bool spawnInstant;
 
