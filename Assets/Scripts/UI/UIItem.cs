@@ -69,8 +69,11 @@ public class UIItem : MonoBehaviour
         image.enabled = true;
         Item = item;
         image.sprite = item.Sprite;
-        ToolTipName.text = item.ItemName;
-        TooltipDescription.text = item.Description;
+        if(ToolTip != null)
+        {
+            ToolTipName.text = item.ItemName;
+            TooltipDescription.text = item.Description;
+        }
     }
 
     public void updateCount(int itemCount)
