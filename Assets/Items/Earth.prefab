@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4479452469014231686
+--- !u!1 &5038576410844560107
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2635236804756161988}
-  - component: {fileID: -6029193976936486110}
-  - component: {fileID: 6934221513563902600}
+  - component: {fileID: 4652116310319194705}
+  - component: {fileID: 4174769754293383766}
+  - component: {fileID: 8318085267442746827}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2635236804756161988
+--- !u!4 &4652116310319194705
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4479452469014231686}
+  m_GameObject: {fileID: 5038576410844560107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-6029193976936486110
+--- !u!212 &4174769754293383766
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4479452469014231686}
+  m_GameObject: {fileID: 5038576410844560107}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 633fb5efe80a45c4eb2204b60cdea366, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f94d34d5c8daa674d9df791804a8d9bf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,20 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6934221513563902600
+--- !u!114 &8318085267442746827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4479452469014231686}
+  m_GameObject: {fileID: 5038576410844560107}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bab05d5cffec73147913fcd7ac668667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ItemName: Earth
-  Sprite: {fileID: 21300000, guid: 633fb5efe80a45c4eb2204b60cdea366, type: 3}
+  Sprite: {fileID: 21300000, guid: f94d34d5c8daa674d9df791804a8d9bf, type: 3}
   MadeOf: []
   Tier: 5
-  Description: 
+  Description: A solid basic element, hard and strudy.

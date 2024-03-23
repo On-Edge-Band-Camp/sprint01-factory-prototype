@@ -3782,11 +3782,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7466565455034311033, guid: 43e4489f9eb20df4e9460990cd8c20fb, type: 3}
       propertyPath: TierFilter
-      value: 12
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 7466565455034311033, guid: 43e4489f9eb20df4e9460990cd8c20fb, type: 3}
       propertyPath: TypeFilter
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7804148450033819745, guid: 43e4489f9eb20df4e9460990cd8c20fb, type: 3}
       propertyPath: m_Pivot.x

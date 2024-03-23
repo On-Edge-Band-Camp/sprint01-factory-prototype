@@ -4202,7 +4202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7466565455034311033, guid: 43e4489f9eb20df4e9460990cd8c20fb, type: 3}
       propertyPath: TierFilter
-      value: 1
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 7466565455034311033, guid: 43e4489f9eb20df4e9460990cd8c20fb, type: 3}
       propertyPath: TypeFilter
