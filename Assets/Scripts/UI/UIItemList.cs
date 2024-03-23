@@ -31,11 +31,19 @@ public class UIItemList : MonoBehaviour
 
         ItemsList = ItemFilter.FilteredItems(GM.AllGameItems,TypeFilter, TierFilter);
 
-        for(int i = 0; i < ItemsList.Count; i++)
+        for(int i = 0; i < UI_Items.Count; i++)
         {
+            Debug.Log(i);
             if (UI_Items[i].Item == null)
             {
-                UI_Items[i].SetItem(ItemsList[i]);
+                if(i< ItemsList.Count)
+                {
+                    UI_Items[i].SetItem(ItemsList[i]);
+                }
+                else
+                {
+                    break;
+                }
             }
         }
     }

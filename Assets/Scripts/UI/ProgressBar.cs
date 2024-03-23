@@ -12,9 +12,5 @@ public class ProgressBar : MonoBehaviour
     void Update()
     {
         slider.value = MachineRefrence.machine.currentProcessInPercent;
-        if (slider.value >= 1 && UIItem != null)
-        {
-            UIItem.BigPop();
-        }
     }
 }

@@ -29,12 +29,20 @@ public class Constructor : Machine
             SearchForInputs();
 
             //starts process once all needed mats are gathered
-            if (inventoryCheck() && !isCrafting)
+            if (inventoryCheck()) 
             {
-                //Debug.Log("Starting Work!");
-                StartCoroutine("process_timer");
-                isCrafting = true;
-            }
+                if(!isCrafting)
+                {
+                    //Debug.Log("Starting Work!");
+                    StartCoroutine("process_timer");
+                    isCrafting = true;
+                }
+                else
+                {
+                    ProgressTimer();
+                }
+            } 
+ 
         }
     }
 
@@ -51,23 +59,27 @@ public class Constructor : Machine
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
     public override void handle_output(GameItem item_type) {
 
-        // delete component items on export
-        foreach (GameItem item in neededMaterials.Keys)
-        {
-            MachineInventory[item] -= neededMaterials[item];
-            if (UI != null)
-            {
-                UI.UpdateUIItem(finalProduct);
-            }
-            //Debug.Log("Removing 1 " + item.name + " from Inventry.");
-        }
+
     }
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
-        //Debug.Log("Exporting " + finalProduct.name + "!"); //Debug
+        currentProcessInSec = 0;
+        Debug.Log($"Exporting { finalProduct.name}, {MachineInventory[finalProduct]}"); //Debug
         if (finalProduct != null)
         {
+            // delete component items on export
+            foreach (GameItem item in neededMaterials.Keys)
+            {
+                MachineInventory[item] -= neededMaterials[item];
+                if (UI != null)
+                {
+                    UI.UpdateUIItem(item);
+                }
+                //Debug.Log("Removing 1 " + item.name + " from Inventry.");
+            }
+
+            MachineInventory[finalProduct]++;
             output_item(finalProduct);
             if (UI != null)
             {

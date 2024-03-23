@@ -30,7 +30,23 @@ public class UIItem : MonoBehaviour
                     //Get item from collector's collecting item.
                     Collector collector = machineDetails.machine.GetComponent<Collector>();
                     var CollectingItem = collector.CollectingItem;
-                    Item = CollectingItem;
+                    if (CollectingItem != null)
+                    {
+                        SetItem(CollectingItem);
+                    }
+                    break;
+                case machine_types.Constructor:
+                    //Get item from collector's collecting item.
+                    Constructor constructor = machineDetails.machine.GetComponent<Constructor>();
+                    var FinalProduct = constructor.finalProduct;
+                    if (FinalProduct != null)
+                    {
+                        SetItem(FinalProduct);
+                        SetComponents(FinalProduct);
+                    }
+
+                    //Find Components
+
                     break;
             }
         }
@@ -66,6 +82,7 @@ public class UIItem : MonoBehaviour
 
     public void SetItem(GameItem item)
     {
+        Clear();
         image.enabled = true;
         Item = item;
         image.sprite = item.Sprite;
@@ -117,40 +134,16 @@ public class UIItem : MonoBehaviour
         switch (MachineType)
         {
             case machine_types.Collector:
+                DontCloseOnClick();
                 var collector = machineDetails.machine.GetComponent<Collector>();
                 collector.CollectingItem = Item;
                 SetUIItemInTarget(machineDetails.ItemSelectionUI);
-                DontCloseOnClick();
                 break;
+
             case machine_types.Constructor:
-                var construtor = machineDetails.machine.GetComponent<Constructor>();
-                construtor.finalProduct = Item;
-                SetUIItemInTarget(machineDetails.ItemSelectionUI);
                 DontCloseOnClick();
-                //Set components
-                //Find all componets of a different type;
-                List<GameItem> ItemTypes = new List<GameItem>();
-                foreach(var item in construtor.finalProduct.MadeOf)
-                {
-                    if (!ItemTypes.Contains(item))
-                    {
-                        ItemTypes.Add(item);
-                        Debug.Log(item);
-                    }
-                }
-                //Find all UI item slot.
-                foreach (Transform child in machineDetails.ItemSelectionUI.transform)
-                {
-                    var ComponentUIItem = child.GetComponentInChildren<UIItem>();
-                    if(ComponentUIItem != null)
-                    {
-                        ComponentUIItem.SetItem(ItemTypes[0]);
-                        ComponentUIItem.updateCount(construtor.finalProduct.ItemCount(ItemTypes[0]));
-                        
-                        ItemTypes.Remove(ItemTypes[0]);
-                    }
-                }
-                    break;
+                SetConstructorRecipe();
+                break;
         }  
     }
 
@@ -162,5 +155,43 @@ public class UIItem : MonoBehaviour
     public void DontCloseOnClick()
     {
         machineDetails.gameObject.GetComponent<MachineSelectMenu>().DontCloseOnClick();
+    }
+
+    /// <summary>
+    /// Used by buttons to set the reciepe of constructor;
+    /// </summary>
+    public void SetConstructorRecipe()
+    {
+        var construtor = machineDetails.machine.GetComponent<Constructor>();
+        construtor.finalProduct = Item;
+        SetUIItemInTarget(machineDetails.ItemSelectionUI);
+        SetComponents(Item);
+    }
+
+    public void SetComponents(GameItem CraftableItem)
+    {
+        //Set components
+        //Find all componets of a different type;
+        List<GameItem> ItemTypes = new List<GameItem>();
+        foreach (var item in CraftableItem.MadeOf)
+        {
+            if (!ItemTypes.Contains(item))
+            {
+                ItemTypes.Add(item);
+                Debug.Log(item);
+            }
+        }
+        //Find all UI item slot.
+        foreach (Transform child in machineDetails.ItemSelectionUI.transform)
+        {
+            var ComponentUIItem = child.GetComponentInChildren<UIItem>();
+            if (ComponentUIItem != null)
+            {
+                ComponentUIItem.SetItem(ItemTypes[0]);
+                ComponentUIItem.updateCount(CraftableItem.ItemCount(ItemTypes[0]));
+
+                ItemTypes.Remove(ItemTypes[0]);
+            }
+        }
     }
 }

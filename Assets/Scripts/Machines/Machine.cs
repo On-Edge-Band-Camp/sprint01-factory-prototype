@@ -105,6 +105,7 @@ public abstract class Machine: MonoBehaviour
     //A timer for the process, only manipulated inventory in the process() function, custom to each machine.
     public IEnumerator process_timer()
     {
+        Debug.Log("Started Processing");
         processing = true;
         yield return new WaitForSeconds(process_time);
         process();
