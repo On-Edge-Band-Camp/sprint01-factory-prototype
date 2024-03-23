@@ -89,16 +89,16 @@ public class MachineDetails : MonoBehaviour
         {
             if (machine.MachineInventory[item] > 0)
             {
+                //Find Empty UIItem slot
                 foreach(var uiitem in UIItems)
                 {
                     if(uiitem.Item == null)
                     {
                         uiitem.image.enabled = true;
                         uiitem.SetItem(item);
-                        uiitem.updateCount(machine.FindItemCount(item));
-                        Debug.Log($"{machine.FindItemCount(item)}");
+                        uiitem.updateCount(machine.MachineInventory[item]);
+                        break;
                     }
-                    return;
                 }
             }
         }

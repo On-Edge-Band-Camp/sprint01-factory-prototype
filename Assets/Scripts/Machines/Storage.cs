@@ -8,7 +8,13 @@ public class Storage : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
     {
-
+        foreach(GameItem item in MachineInventory.Keys)
+        {
+            if (MachineInventory[item] > 0)
+            {
+                Debug.Log($"{item}  {MachineInventory[item]}");
+            }
+        }
     }
 
     //Activates when an input is sent to this machine, can be used to handle unique outcomes depending on input location. Optional.
