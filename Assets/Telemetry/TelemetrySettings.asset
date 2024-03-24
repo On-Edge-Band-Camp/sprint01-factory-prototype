@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: On Edge Band Camp
   secret: splurge leave
-  _version: V0.1Telemetry
+  _version: V1.0Telemetry
   _serverURL: https://dd-delemetry-1-2a4510835c2b.herokuapp.com/
   serverCommunication: 1
   debugLogging: 0

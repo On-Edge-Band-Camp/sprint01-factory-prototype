@@ -104,6 +104,19 @@ public class MachineDetails : MonoBehaviour
         }
     }
 
+    public void ClearItemSelection()
+    {
+        switch (machine.machine_type)
+        {
+            case machine_types.Collector:
+                machine.GetComponent<Collector>().CollectingItem = null;
+                break;
+            case machine_types.Constructor:
+                machine.GetComponent<Constructor>().finalProduct = null;
+                break;
+        }
+    }
+
     public void EnableSubUI(GameObject subui)
     {
         subui.GetComponent<UIItemList>().machineDetails = this;

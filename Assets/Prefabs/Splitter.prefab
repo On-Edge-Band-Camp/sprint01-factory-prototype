@@ -46,14 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyCost: 1
-  EmptyItem: {fileID: 0}
+  UIToUse: {fileID: 3794074493844319682, guid: 23edd1c0f5f22cf439024007315d2aeb, type: 3}
   grid_coord: {x: 0, y: 0}
   machine_type: 106
   process_time: 1
+  currentProcessInPercent: 0
   inventory_total: 0
   inventory_max: 1
   gameManager: {fileID: 0}
   particleMaster: {fileID: 0}
+  UI: {fileID: 0}
+  HighLight: {fileID: 0}
   input_directions:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
@@ -85,7 +88,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2b0bebccd2b234748a4f36b9b30eea5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

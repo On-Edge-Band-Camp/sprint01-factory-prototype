@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6171867086236025126}
-  - component: {fileID: -4623117416222892407}
-  - component: {fileID: 1078356395917082976}
+  - component: {fileID: 3862390961683390910}
+  - component: {fileID: 6896533501375291946}
   m_Layer: 0
   m_Name: Crystaqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-4623117416222892407
+--- !u!212 &3862390961683390910
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1078356395917082976
+--- !u!114 &6896533501375291946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Crystaqua
   Sprite: {fileID: 21300000, guid: 98d7edb8a8a23e84eaf72277cf75cad4, type: 3}
   MadeOf:
-  - {fileID: -607670888989950860, guid: 7c66a88861791a84ea12b18504da84cb, type: 3}
-  - {fileID: -3451378897019188908, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
+  - {fileID: -231809618884888274, guid: 7c66a88861791a84ea12b18504da84cb, type: 3}
+  - {fileID: 1667577114898762650, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
   Tier: 3
   Description: Matter between crystal and liquid, harvested from core of crystal
     bell, contains extreamely rich amount of magical energy.

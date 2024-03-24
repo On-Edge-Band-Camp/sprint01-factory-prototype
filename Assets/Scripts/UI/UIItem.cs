@@ -12,16 +12,13 @@ public class UIItem : MonoBehaviour
     public Animator ac;
     public TMP_Text text;
 
-    public GameObject ToolTip;
-    public TMP_Text ToolTipName;
-    public TMP_Text TooltipDescription;
-
+    public Tooltip ToolTip;
 
     public bool HaveInitialItem;
     // Start is called before the first frame update
     void Start()
     {
-        ToolTip.SetActive(false);
+        ToolTip = FindObjectOfType<GameManager>().Tooltip;
         if (HaveInitialItem)
         {
             switch (machineDetails.machine.machine_type)
@@ -71,13 +68,15 @@ public class UIItem : MonoBehaviour
     {
         if(ToolTip!=null && Item != null)
         {
-            ToolTip.SetActive(true);
+            ToolTip.gameObject.SetActive(true);
+            ToolTip.transform.position = Input.mousePosition;
+            ToolTip.WriteTooltipInfo(Item.name, Item.Description);
         }
     }
 
     public void HideToolTip()
     {
-        ToolTip.SetActive(false);
+        ToolTip.gameObject.SetActive(false);
     }
 
     public void SetItem(GameItem item)
@@ -86,11 +85,7 @@ public class UIItem : MonoBehaviour
         image.enabled = true;
         Item = item;
         image.sprite = item.Sprite;
-        if(ToolTip != null)
-        {
-            ToolTipName.text = item.ItemName;
-            TooltipDescription.text = item.Description;
-        }
+
     }
 
     public void updateCount(int itemCount)
@@ -123,8 +118,25 @@ public class UIItem : MonoBehaviour
         image.enabled = false;
         text.text = " ";
     }
+
     /// <summary>
-    /// Temerpory. upgrade to fit all machines later.
+    /// Used to clear ui item along with componenets bind to it.
+    /// </summary>
+    public void ClearComponents()
+    {
+        Clear();
+        //also clear components if this is a item 
+        foreach (Transform child in transform)
+        {
+            var componentui = child.GetComponentInChildren<UIItem>();
+            if(componentui != null)
+            {
+                componentui.Clear();
+            }
+        }
+    }
+    /// <summary>
+    /// Temerpory. upgrade to fit all machines later.Used by buttons to set item in machines
     /// </summary>
     /// 
 
@@ -187,10 +199,14 @@ public class UIItem : MonoBehaviour
             var ComponentUIItem = child.GetComponentInChildren<UIItem>();
             if (ComponentUIItem != null)
             {
-                ComponentUIItem.SetItem(ItemTypes[0]);
-                ComponentUIItem.updateCount(CraftableItem.ItemCount(ItemTypes[0]));
+                //Check if there is anything left in the recipe
+                if (ItemTypes.Count > 0)
+                {
+                    ComponentUIItem.SetItem(ItemTypes[0]);
+                    ComponentUIItem.updateCount(CraftableItem.ItemCount(ItemTypes[0]));
 
-                ItemTypes.Remove(ItemTypes[0]);
+                    ItemTypes.Remove(ItemTypes[0]);
+                }
             }
         }
     }

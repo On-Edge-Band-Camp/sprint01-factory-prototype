@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1871839076539085657}
-  - component: {fileID: -8175016579097615343}
-  - component: {fileID: -6071901395108038569}
+  - component: {fileID: 7839234813266701014}
+  - component: {fileID: -1907509433618499357}
   m_Layer: 0
   m_Name: Terraria
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-8175016579097615343
+--- !u!212 &7839234813266701014
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6071901395108038569
+--- !u!114 &-1907509433618499357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Terraria
   Sprite: {fileID: 21300000, guid: e9f37b6b28974b44f8882b0045f22b7e, type: 3}
   MadeOf:
-  - {fileID: -3451378897019188908, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
-  - {fileID: 8318085267442746827, guid: 3766b02f76ba2a245b222ed34a8cc275, type: 3}
+  - {fileID: 1667577114898762650, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
+  - {fileID: 7438213353020060771, guid: 3766b02f76ba2a245b222ed34a8cc275, type: 3}
   Tier: 3
   Description: A herb with the strength of the earth itself, proven to grant mighty
     strength to those who eats it, poplular amongst soilders.

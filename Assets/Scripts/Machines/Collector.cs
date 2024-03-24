@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Collector : Machine
 {
-
     public GameItem CollectingItem;
     public int CollectAmountPerTick;
 

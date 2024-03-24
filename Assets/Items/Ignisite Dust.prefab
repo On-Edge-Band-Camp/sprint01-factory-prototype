@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1780666066487014307}
-  - component: {fileID: -4558873446192521516}
-  - component: {fileID: -4104735301645990877}
+  - component: {fileID: -6571345324252033057}
+  - component: {fileID: 4150896872206769481}
   m_Layer: 0
   m_Name: Ignisite Dust
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-4558873446192521516
+--- !u!212 &-6571345324252033057
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4104735301645990877
+--- !u!114 &4150896872206769481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Ignisite Dust
   Sprite: {fileID: 21300000, guid: 5e5bcbe4531613242bb3544dfae8a0ef, type: 3}
   MadeOf:
-  - {fileID: -7163848025542879169, guid: 559d70dbdde45134a81a3f54a160c2d0, type: 3}
+  - {fileID: 497861207214661717, guid: 559d70dbdde45134a81a3f54a160c2d0, type: 3}
   Tier: 3
   Description: Dusted Ignisite, usually comes with a explosion when crushing. Fire
     energy quickly escapes after crushed, leaving usually only fractions of the energy.

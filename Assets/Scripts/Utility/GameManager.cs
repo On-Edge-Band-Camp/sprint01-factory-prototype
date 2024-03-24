@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public GameObject PauseMenu;
     bool pauseActive;
 
+    public Tooltip Tooltip;
+
     private void Awake()
     {
         gameRecipes = CSVReader.Read("Recipes");
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Tooltip.gameObject.SetActive(false);
         ItemConstructor();
         AllGameItems = ItemList.AllGameItems;
     }
@@ -61,10 +64,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [ContextMenu("LoadItems")]
+    public void LoadItems()
+    {
+        AllGameItems = ItemList.AllGameItems;
+    }
+
     public void Resume()
     {
         pauseActive = false;
         PauseMenu.SetActive(pauseActive);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     private void RuntimeTelemtry()

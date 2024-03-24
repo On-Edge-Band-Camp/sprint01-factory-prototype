@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7971046299158720507}
-  - component: {fileID: -215455300423184409}
-  - component: {fileID: 2892680518723978517}
+  - component: {fileID: -3277574152633364910}
+  - component: {fileID: -263949965300342241}
   m_Layer: 0
   m_Name: Florite Dust
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-215455300423184409
+--- !u!212 &-3277574152633364910
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2892680518723978517
+--- !u!114 &-263949965300342241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Florite Dust
   Sprite: {fileID: 21300000, guid: 8d6f8451d1dc4f94bb54ad1224f48e98, type: 3}
   MadeOf:
-  - {fileID: -7886233943974668846, guid: 3049ec379ba185a4b8c06bb990d3f795, type: 3}
+  - {fileID: 8195869181210380981, guid: 3049ec379ba185a4b8c06bb990d3f795, type: 3}
   Tier: 3
   Description: Dusted Florite, it is very difficult to prevent the life energy within
     from withering, or rapidly growing once it gets in your nose.

@@ -11,9 +11,13 @@ public class Transporter : Machine
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
     {
-        if (!processing && check_inventory_full() && held_item != null)
+        if (held_item != null)
         {
-            StartCoroutine("process_timer");
+            ProgressTimer();
+            if (!processing && check_inventory_full())
+            {
+                StartCoroutine("process_timer");
+            }
         }
     }
 
@@ -24,6 +28,10 @@ public class Transporter : Machine
         if (itemDisplayer != null)
         {
             itemDisplayer.updateSprite(held_item);
+        }
+        if (UI != null)
+        {
+            UI.UpdateUIItem(item_type);
         }
     }
 
@@ -37,6 +45,10 @@ public class Transporter : Machine
             if (itemDisplayer != null)
             {
                 itemDisplayer.updateSprite(held_item);
+            }
+            if (UI != null)
+            {
+                UI.UpdateUIItem(item_type);
             }
         }
     }

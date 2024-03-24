@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4947732502922325222}
-  - component: {fileID: 3726580888047564281}
-  - component: {fileID: 8813355108248266561}
+  - component: {fileID: -1446817593512084747}
+  - component: {fileID: -8278176940444217554}
   m_Layer: 0
   m_Name: Frostbloom
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3726580888047564281
+--- !u!212 &-1446817593512084747
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8813355108248266561
+--- !u!114 &-8278176940444217554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Frostbloom
   Sprite: {fileID: 21300000, guid: 3fe6bbd9ae437b1488c2a0c18eb10090, type: 3}
   MadeOf:
-  - {fileID: -3451378897019188908, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
-  - {fileID: -4287547774063496155, guid: 9fda51dc6a4336e46a7138bf87b9ebbc, type: 3}
+  - {fileID: 1667577114898762650, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
+  - {fileID: -7714309810701328247, guid: 9fda51dc6a4336e46a7138bf87b9ebbc, type: 3}
   Tier: 3
   Description: Herb which breaths out air as cold as winter storm, can easily give
     a frostbite if touched with bare hands.

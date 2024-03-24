@@ -12,8 +12,6 @@ public abstract class Machine: MonoBehaviour
     public int energyCost;
     public GameObject UIToUse;
 
-    public GameItem EmptyItem;
-
     public Vector2Int grid_coord;
 
     public machine_types machine_type;
@@ -33,6 +31,8 @@ public abstract class Machine: MonoBehaviour
 
     public Dictionary<GameItem, int> MachineInventory = new Dictionary<GameItem, int>();
     public MachineDetails UI;
+
+    public SpriteRenderer HighLight;
 
     //Input locations relative to center of machine, by default inputs from all 1x1 directions
     public Vector2Int[] input_directions = {
@@ -80,8 +80,7 @@ public abstract class Machine: MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
-        GameObject EmptyItemPrefab = Resources.Load("EmptyItem") as GameObject;
-        EmptyItem = EmptyItemPrefab.GetComponent<GameItem>();
+        DisableHighlight();
     }
 
     //idk why, but dictionaries need to be declared at runtime
@@ -105,13 +104,15 @@ public abstract class Machine: MonoBehaviour
     //A timer for the process, only manipulated inventory in the process() function, custom to each machine.
     public IEnumerator process_timer()
     {
-        Debug.Log("Started Processing");
         processing = true;
         yield return new WaitForSeconds(process_time);
         process();
         processing = false;
     }
 
+    /// <summary>
+    /// Progress Timmer used for UIs
+    /// </summary>
     public void ProgressTimer()
     {
         currentProcessInSec += Time.deltaTime;
@@ -326,5 +327,26 @@ public abstract class Machine: MonoBehaviour
             }
         }
         return 0;
+    }
+
+    private void OnMouseEnter()
+    {
+        EnableHighlight();
+    }
+
+    private void OnMouseExit()
+    {
+        DisableHighlight();
+    }
+
+    public void EnableHighlight()
+    {
+        Debug.Log("Enable Highlight");
+        GetComponent<Renderer>().material.SetFloat("_Thickness", 0.025f);
+    }
+
+    public void DisableHighlight()
+    {
+        GetComponent<Renderer>().material.SetFloat("_Thickness", 0f);
     }
 }

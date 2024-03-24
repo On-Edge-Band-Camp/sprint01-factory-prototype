@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5555371582190016638}
-  - component: {fileID: 6560592515481022092}
-  - component: {fileID: 2279238357677354141}
+  - component: {fileID: 286283875794110980}
+  - component: {fileID: -5262541780734724905}
   m_Layer: 0
   m_Name: Lifefruit
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6560592515481022092
+--- !u!212 &286283875794110980
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2279238357677354141
+--- !u!114 &-5262541780734724905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Lifefruit
   Sprite: {fileID: 21300000, guid: 25fe9a73bf3b8c246bfc89467e6bd5f3, type: 3}
   MadeOf:
-  - {fileID: -6071901395108038569, guid: a54c4e6cac264dd449d3ed03fb4678d4, type: 3}
-  - {fileID: -6915031592445011982, guid: b47bd9770a3605f42b99f581ac7e5e84, type: 3}
+  - {fileID: -1907509433618499357, guid: a54c4e6cac264dd449d3ed03fb4678d4, type: 3}
+  - {fileID: 1319902947407559096, guid: b47bd9770a3605f42b99f581ac7e5e84, type: 3}
   Tier: 2
   Description: A non-natural growing fruit, a mutation of Terraria when exposed in
     high density Florigen, very bitter but proven the capabilty to cure many deadly

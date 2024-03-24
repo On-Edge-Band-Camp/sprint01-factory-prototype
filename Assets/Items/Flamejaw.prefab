@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4664888107210484981}
-  - component: {fileID: -3252709769872864795}
-  - component: {fileID: 728838702889733887}
+  - component: {fileID: 2091275195911553138}
+  - component: {fileID: -1798071014965203242}
   m_Layer: 0
   m_Name: Flamejaw
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-3252709769872864795
+--- !u!212 &2091275195911553138
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &728838702889733887
+--- !u!114 &-1798071014965203242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Flamejaw
   Sprite: {fileID: 21300000, guid: 3b2fef5d32d4c8844bc0eeb3db44c6f6, type: 3}
   MadeOf:
-  - {fileID: -3451378897019188908, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
-  - {fileID: 2669485682331008014, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
+  - {fileID: 1667577114898762650, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
+  - {fileID: 573250202917494863, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
   Tier: 3
   Description: A herb neurished with raw fire element, grew a flower with flame as
     peddles.

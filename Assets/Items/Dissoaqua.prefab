@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7042818971401013324}
-  - component: {fileID: -2835249190307337833}
-  - component: {fileID: 206063696380402387}
+  - component: {fileID: 2142146481432789284}
+  - component: {fileID: 350323853639881133}
   m_Layer: 0
   m_Name: Dissoaqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-2835249190307337833
+--- !u!212 &2142146481432789284
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &206063696380402387
+--- !u!114 &350323853639881133
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Dissoaqua
   Sprite: {fileID: 21300000, guid: b01bbc936546e67478bf2bb7900d0d2f, type: 3}
   MadeOf:
-  - {fileID: 8689962582485330801, guid: ca0b85c79cc87ff46b817a435e9dbfea, type: 3}
-  - {fileID: 2669485682331008014, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
+  - {fileID: 1505536265700074407, guid: ca0b85c79cc87ff46b817a435e9dbfea, type: 3}
+  - {fileID: 573250202917494863, guid: 8ce733894e465e34ba6dfa4760432599, type: 3}
   Tier: 3
   Description: Water that dissolves, a liquid that acts like fire, melting materials
     tossed into it.

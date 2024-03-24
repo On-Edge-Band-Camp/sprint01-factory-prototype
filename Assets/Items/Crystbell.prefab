@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4176466632364515914}
-  - component: {fileID: 6118540004483127295}
-  - component: {fileID: -607670888989950860}
+  - component: {fileID: -2475784285746169556}
+  - component: {fileID: -231809618884888274}
   m_Layer: 0
   m_Name: Crystbell
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6118540004483127295
+--- !u!212 &-2475784285746169556
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-607670888989950860
+--- !u!114 &-231809618884888274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Crystbell
   Sprite: {fileID: 21300000, guid: ec186935df830c440b3595974831b5b8, type: 3}
   MadeOf:
-  - {fileID: 277639278922896484, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
-  - {fileID: -3451378897019188908, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
+  - {fileID: 3477278457807687334, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
+  - {fileID: 1667577114898762650, guid: 7fb0c2a1c311c0e478ed7d8b2d0a76bc, type: 3}
   Tier: 3
   Description: A crystal flower shaped like a bell, fragile yet beautiful.

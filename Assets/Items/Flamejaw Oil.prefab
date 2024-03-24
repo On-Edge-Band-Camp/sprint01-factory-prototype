@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7251019998558634006}
-  - component: {fileID: 464480850209509898}
-  - component: {fileID: -7316117536068615249}
+  - component: {fileID: 5403218306348538155}
+  - component: {fileID: -2611386349365381341}
   m_Layer: 0
   m_Name: Flamejaw Oil
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &464480850209509898
+--- !u!212 &5403218306348538155
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7316117536068615249
+--- !u!114 &-2611386349365381341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Flamejaw Oil
   Sprite: {fileID: 21300000, guid: a7e057075b0158342acc8847d2de72ac, type: 3}
   MadeOf:
-  - {fileID: 728838702889733887, guid: e5d59f4c2a7c67c4899048606d16af2a, type: 3}
+  - {fileID: -1798071014965203242, guid: e5d59f4c2a7c67c4899048606d16af2a, type: 3}
   Tier: 3
   Description: Oil extracted from Flamejaw, highly flamable, a drip of this can burn
     3 days and nights.
