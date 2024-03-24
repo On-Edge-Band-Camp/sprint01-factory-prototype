@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 438574728286093572}
-  - component: {fileID: -3281492847284068790}
-  - component: {fileID: -1946731334315173975}
+  - component: {fileID: -8054625821599519580}
+  - component: {fileID: 6152178671184505028}
   m_Layer: 0
   m_Name: Originisite Dust
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-3281492847284068790
+--- !u!212 &-8054625821599519580
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1946731334315173975
+--- !u!114 &6152178671184505028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Originisite Dust
   Sprite: {fileID: 21300000, guid: 981619016ad031d43b3741b9777dcb26, type: 3}
   MadeOf:
-  - {fileID: 4150896872206769481, guid: 039166ad954a3534e956292db13df7f8, type: 3}
-  - {fileID: -263949965300342241, guid: dbb1f0207adc49a45b0218407ad82f19, type: 3}
+  - {fileID: -5854604718868610559, guid: 039166ad954a3534e956292db13df7f8, type: 3}
+  - {fileID: -1342066621524281912, guid: dbb1f0207adc49a45b0218407ad82f19, type: 3}
   Tier: 3
   Description: Strange magical fusion happened when Ignisite and Florite dusts are
     compressed, the rapid burn and growth energy eventurely caused the two to intertwine

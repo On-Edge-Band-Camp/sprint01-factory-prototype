@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour
     {
         gameRecipes = CSVReader.Read("Recipes");
         itemInport = CSVReader.Read("Items");
+        AllGameItems = ItemList.AllGameItems;
+        ItemConstructor();
     }
 
     private void Start()
     {
         Tooltip.gameObject.SetActive(false);
-        ItemConstructor();
-        AllGameItems = ItemList.AllGameItems;
     }
 
     private void Update()

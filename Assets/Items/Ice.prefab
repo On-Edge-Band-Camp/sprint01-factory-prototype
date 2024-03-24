@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5013705484857458197}
-  - component: {fileID: 8085775782831919453}
-  - component: {fileID: -7714309810701328247}
+  - component: {fileID: 1296277417608004537}
+  - component: {fileID: 7479748667972857443}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8085775782831919453
+--- !u!212 &1296277417608004537
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7714309810701328247
+--- !u!114 &7479748667972857443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,6 +100,6 @@ MonoBehaviour:
   ItemName: Ice
   Sprite: {fileID: 21300000, guid: 160a339c3f6b34a4e9856734c9e035a3, type: 3}
   MadeOf:
-  - {fileID: 2770777342558019429, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: 5020085025255708136, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
   Tier: 4
   Description: Water frozen into solid form, emits cold energy, very fragile.

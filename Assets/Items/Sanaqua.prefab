@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2962627868759009890}
-  - component: {fileID: 7264133399280485259}
-  - component: {fileID: 1650650109921389090}
+  - component: {fileID: 6688878103017882921}
+  - component: {fileID: -1233005870962570072}
   m_Layer: 0
   m_Name: Sanaqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7264133399280485259
+--- !u!212 &6688878103017882921
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1650650109921389090
+--- !u!114 &-1233005870962570072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Sanaqua
   Sprite: {fileID: 21300000, guid: 3ab89a93a974126479da4b3fced91e71, type: 3}
   MadeOf:
-  - {fileID: 6896533501375291946, guid: cfd4a060f36845747b719fa5f674f2cf, type: 3}
-  - {fileID: -4930952360364216721, guid: ea3e87939ee9ebb48ad94176f813c862, type: 3}
+  - {fileID: 4056104096872152653, guid: cfd4a060f36845747b719fa5f674f2cf, type: 3}
+  - {fileID: -331170668714323153, guid: ea3e87939ee9ebb48ad94176f813c862, type: 3}
   Tier: 2
   Description: Water of health, also known as "Greater Healing Potion", cures wounds
     at very fast speed, very shiny.

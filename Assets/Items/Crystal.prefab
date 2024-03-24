@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3871502110852945787}
-  - component: {fileID: -8034102640561073202}
-  - component: {fileID: 3477278457807687334}
+  - component: {fileID: 7451913816667533373}
+  - component: {fileID: 5360841522828701086}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-8034102640561073202
+--- !u!212 &7451913816667533373
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3477278457807687334
+--- !u!114 &5360841522828701086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Crystal
   Sprite: {fileID: 21300000, guid: e18395c9a593b6e46adbbef0b915f30b, type: 3}
   MadeOf:
-  - {fileID: 4894081128057151583, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
-  - {fileID: 7438213353020060771, guid: 3766b02f76ba2a245b222ed34a8cc275, type: 3}
+  - {fileID: 2140245939380128634, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
+  - {fileID: 5499700806692687741, guid: 3766b02f76ba2a245b222ed34a8cc275, type: 3}
   Tier: 4
   Description: Condensed and crystalized magic energy, often used as power source
     or medium of casting.

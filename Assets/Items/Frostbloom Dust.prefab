@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8295223097528712748}
-  - component: {fileID: -7445777162488277768}
-  - component: {fileID: -4930952360364216721}
+  - component: {fileID: -572944092117879138}
+  - component: {fileID: -331170668714323153}
   m_Layer: 0
   m_Name: Frostbloom Dust
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-7445777162488277768
+--- !u!212 &-572944092117879138
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4930952360364216721
+--- !u!114 &-331170668714323153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Frostbloom Dust
   Sprite: {fileID: 21300000, guid: 0f57d717423d8bb45bcc072bc9391fef, type: 3}
   MadeOf:
-  - {fileID: -8278176940444217554, guid: 5d5583918e8033948887a1819d97fc3f, type: 3}
+  - {fileID: -3000660854128382663, guid: 5d5583918e8033948887a1819d97fc3f, type: 3}
   Tier: 3
   Description: Cold powder extracted from Frostblooms, very useful in condensation
     crafts.

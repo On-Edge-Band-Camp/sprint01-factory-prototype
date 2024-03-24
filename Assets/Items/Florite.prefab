@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481335371341618283}
-  - component: {fileID: -8344832005444386989}
-  - component: {fileID: 8195869181210380981}
+  - component: {fileID: -9037595099956411750}
+  - component: {fileID: 3944430990612918567}
   m_Layer: 0
   m_Name: Florite
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-8344832005444386989
+--- !u!212 &-9037595099956411750
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8195869181210380981
+--- !u!114 &3944430990612918567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Florite
   Sprite: {fileID: 21300000, guid: ca3560163c988c54693a66c4c8681b3b, type: 3}
   MadeOf:
-  - {fileID: 3477278457807687334, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
-  - {fileID: -5699216775486194405, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
+  - {fileID: 5360841522828701086, guid: d4c7ed4a89af4d9418c4cd5c059a9759, type: 3}
+  - {fileID: -4146472493912727010, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
   Tier: 3
   Description: Crystal of grass, the life energy in the wild crystal is restless,
     slowly growing as if it is a living being.

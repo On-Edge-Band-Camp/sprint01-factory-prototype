@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2241550463896998512}
-  - component: {fileID: 7471639971302863220}
-  - component: {fileID: -2669600206055589617}
+  - component: {fileID: -6165224751181433113}
+  - component: {fileID: -5279124944474664097}
   m_Layer: 0
   m_Name: Devoraqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7471639971302863220
+--- !u!212 &-6165224751181433113
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2669600206055589617
+--- !u!114 &-5279124944474664097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Devoraqua
   Sprite: {fileID: 21300000, guid: fc178381c9fea8b49ad6f4dd663640b8, type: 3}
   MadeOf:
-  - {fileID: 350323853639881133, guid: 95a01a3a006a8a84287b54a20d5c0aa9, type: 3}
-  - {fileID: -2611386349365381341, guid: c374a5e45cb6bc947b0da032f1f14e21, type: 3}
+  - {fileID: 4253862632541315878, guid: 95a01a3a006a8a84287b54a20d5c0aa9, type: 3}
+  - {fileID: 564774917120792926, guid: c374a5e45cb6bc947b0da032f1f14e21, type: 3}
   Tier: 2
   Description: Water that Devoures, feast and digests whatever that is thrown into
     it, very hard to contain, only used to process extreamly hard matters.

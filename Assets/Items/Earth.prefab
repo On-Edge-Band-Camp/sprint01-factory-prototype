@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4652116310319194705}
-  - component: {fileID: 1340306733427689850}
-  - component: {fileID: 7438213353020060771}
+  - component: {fileID: 3970821206555543647}
+  - component: {fileID: 5499700806692687741}
   m_Layer: 0
   m_Name: Earth
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1340306733427689850
+--- !u!212 &3970821206555543647
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7438213353020060771
+--- !u!114 &5499700806692687741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

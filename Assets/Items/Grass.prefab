@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4869889400462819922}
-  - component: {fileID: 7611746801677694906}
-  - component: {fileID: -5699216775486194405}
+  - component: {fileID: 4982312398133844460}
+  - component: {fileID: -4146472493912727010}
   m_Layer: 0
   m_Name: Grass
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7611746801677694906
+--- !u!212 &4982312398133844460
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5699216775486194405
+--- !u!114 &-4146472493912727010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

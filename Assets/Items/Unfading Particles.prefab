@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3977434826479269847}
-  - component: {fileID: -2083070208934595998}
-  - component: {fileID: -6320613069641853467}
+  - component: {fileID: 8870018053558788173}
+  - component: {fileID: -3812208347141389718}
   m_Layer: 0
   m_Name: Unfading Particles
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-2083070208934595998
+--- !u!212 &8870018053558788173
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-6320613069641853467
+--- !u!114 &-3812208347141389718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Unfading Particles
   Sprite: {fileID: 21300000, guid: 02c451b2b228ea64296bca63751fa9fd, type: 3}
   MadeOf:
-  - {fileID: -1946731334315173975, guid: b75a4bd59fb72b145980b108343eed9d, type: 3}
-  - {fileID: -2669600206055589617, guid: e3a256ccf9c035940be40496c7efb142, type: 3}
+  - {fileID: 6152178671184505028, guid: b75a4bd59fb72b145980b108343eed9d, type: 3}
+  - {fileID: -5279124944474664097, guid: e3a256ccf9c035940be40496c7efb142, type: 3}
   Tier: 1
   Description: Tiny particles that glows a dim light and never fades, repels with
     each other, extreamely hard to store.
