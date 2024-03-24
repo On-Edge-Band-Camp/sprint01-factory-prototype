@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437246212275591112}
-  - component: {fileID: -9179709575467847726}
-  - component: {fileID: 8676187664984301923}
+  - component: {fileID: 8617798864867004166}
+  - component: {fileID: 183238042486931805}
   m_Layer: 0
   m_Name: Floriaqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-9179709575467847726
+--- !u!212 &8617798864867004166
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8676187664984301923
+--- !u!114 &183238042486931805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Floriaqua
   Sprite: {fileID: 21300000, guid: e6abe6efa6482934ba314b4621938987, type: 3}
   MadeOf:
-  - {fileID: -1500630403735265822, guid: ca0b85c79cc87ff46b817a435e9dbfea, type: 3}
-  - {fileID: -4146472493912727010, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
+  - {fileID: 9084743888586849966, guid: ca0b85c79cc87ff46b817a435e9dbfea, type: 3}
+  - {fileID: 1171967435374945415, guid: 32ef40a775695f041bd586049ebaafe0, type: 3}
   Tier: 3
   Description: Water of florishment, a magical substance that gives life to almost
     any object or element.

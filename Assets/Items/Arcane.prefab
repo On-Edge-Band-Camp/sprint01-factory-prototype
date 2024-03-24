@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7200885678244013174}
-  - component: {fileID: 1108125416456035200}
-  - component: {fileID: 6944283087769585860}
+  - component: {fileID: 5010114898573367782}
+  - component: {fileID: 4836843439975804386}
   m_Layer: 0
   m_Name: Arcane
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1108125416456035200
+--- !u!212 &5010114898573367782
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6944283087769585860
+--- !u!114 &4836843439975804386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Arcane
   Sprite: {fileID: 21300000, guid: e97a0512de28be048aba608a84657a6a, type: 3}
   MadeOf:
-  - {fileID: 2140245939380128634, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
-  - {fileID: 3512854264937724107, guid: cf7ba3f773dd7754cb5dd1e5bf4341f7, type: 3}
+  - {fileID: 229171452578787819, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
+  - {fileID: 5177909598880425526, guid: cf7ba3f773dd7754cb5dd1e5bf4341f7, type: 3}
   Tier: 4
   Description: Energy of raw magic power, often harvested by sourcerers for spells
     and experiments.

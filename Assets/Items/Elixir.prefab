@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3763918999431088999}
-  - component: {fileID: -1465948055530410174}
-  - component: {fileID: -1500630403735265822}
+  - component: {fileID: 7138646211628213062}
+  - component: {fileID: 9084743888586849966}
   m_Layer: 0
   m_Name: Elixir
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-1465948055530410174
+--- !u!212 &7138646211628213062
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1500630403735265822
+--- !u!114 &9084743888586849966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Elixir
   Sprite: {fileID: 21300000, guid: f608cbbc9dce2d44ca051e8bf6987540, type: 3}
   MadeOf:
-  - {fileID: 2140245939380128634, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
-  - {fileID: 5020085025255708136, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
+  - {fileID: 229171452578787819, guid: 1b43fd3651efd6145968c058f77d2654, type: 3}
+  - {fileID: -8168246874180560026, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
   Tier: 4
   Description: Liquid magic, some also refer to it as mana. Tastes like bitter honey.

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6735013004966361368}
-  - component: {fileID: -3083146280789511482}
-  - component: {fileID: -3859031946384561242}
+  - component: {fileID: 9060995632079959959}
+  - component: {fileID: 5197894771860762366}
   m_Layer: 0
   m_Name: Elixir of Life
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-3083146280789511482
+--- !u!212 &9060995632079959959
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3859031946384561242
+--- !u!114 &5197894771860762366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   ItemName: Elixir of Life
   Sprite: {fileID: 21300000, guid: 2e0adb06c3f2fb243a4ba1f1843c31a5, type: 3}
   MadeOf:
-  - {fileID: -8012465839030155200, guid: 92daf7ab250f9a04ba7c3bbeec1044a3, type: 3}
-  - {fileID: -3812208347141389718, guid: c25fe252f32617945a8ec0fbef5396da, type: 3}
+  - {fileID: 3701500616234019512, guid: 92daf7ab250f9a04ba7c3bbeec1044a3, type: 3}
+  - {fileID: 2489274552149436034, guid: c25fe252f32617945a8ec0fbef5396da, type: 3}
   Tier: 0
   Description: Eradicate diseases, maintain youth,  Immortality within reach.

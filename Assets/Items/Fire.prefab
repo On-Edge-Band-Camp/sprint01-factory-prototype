@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4931525719329943842}
-  - component: {fileID: 6787911995614545313}
-  - component: {fileID: 1075047692259582964}
+  - component: {fileID: 3217653053404599729}
+  - component: {fileID: -5953832050866120804}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6787911995614545313
+--- !u!212 &3217653053404599729
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1075047692259582964
+--- !u!114 &-5953832050866120804
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -30,6 +30,7 @@ public class MachineSelectMenu : MonoBehaviour
 
     public void DontCloseOnClick()
     {
+        buttonClicked = true;
         floatingMenuClicked = true;
     }
 

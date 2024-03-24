@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5300418381345620318}
-  - component: {fileID: 5298883472562007779}
-  - component: {fileID: 3512854264937724107}
+  - component: {fileID: -5647140741110923545}
+  - component: {fileID: 5177909598880425526}
   m_Layer: 0
   m_Name: Air
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5298883472562007779
+--- !u!212 &-5647140741110923545
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3512854264937724107
+--- !u!114 &5177909598880425526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

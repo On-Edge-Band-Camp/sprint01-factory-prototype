@@ -26,6 +26,9 @@ public class ItemImporter : ScriptableObject
 
         //Find all Gameobjects in the Items folder
         string[] guids = AssetDatabase.FindAssets("t:GameObject", new[] { "Assets/Items" });
+
+        EditorUtility.SetDirty(ItemList);
+
         foreach (string guid in guids)
         {
             var path = AssetDatabase.GUIDToAssetPath(guid);

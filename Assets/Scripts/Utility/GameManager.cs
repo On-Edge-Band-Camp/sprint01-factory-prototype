@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour
     {
         gameRecipes = CSVReader.Read("Recipes");
         itemInport = CSVReader.Read("Items");
-        AllGameItems = ItemList.AllGameItems;
+
+        AllGameItems.Clear();
+        LoadItems();
+
         ItemConstructor();
     }
 
@@ -67,7 +70,10 @@ public class GameManager : MonoBehaviour
     [ContextMenu("LoadItems")]
     public void LoadItems()
     {
-        AllGameItems = ItemList.AllGameItems;
+        foreach (GameItem item in ItemList.AllGameItems)
+        {
+            AllGameItems.Add(item);
+        }
     }
 
     public void Resume()

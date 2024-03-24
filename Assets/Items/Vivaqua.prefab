@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 900642475500764705}
-  - component: {fileID: 1557463803619565487}
-  - component: {fileID: -8012465839030155200}
+  - component: {fileID: 5795382885801050961}
+  - component: {fileID: 3701500616234019512}
   m_Layer: 0
   m_Name: Vivaqua
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1557463803619565487
+--- !u!212 &5795382885801050961
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8012465839030155200
+--- !u!114 &3701500616234019512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,8 +100,8 @@ MonoBehaviour:
   ItemName: Vivaqua
   Sprite: {fileID: 21300000, guid: 692f9fda4e2027748ad5ef9906ee34d3, type: 3}
   MadeOf:
-  - {fileID: -1233005870962570072, guid: 1c603e6306e5c014685067855e6afc44, type: 3}
-  - {fileID: 8256937733010817704, guid: 1aa6e45f541a60749a760682e0541c83, type: 3}
+  - {fileID: -461430354444007676, guid: 1c603e6306e5c014685067855e6afc44, type: 3}
+  - {fileID: -3475077135764853609, guid: 1aa6e45f541a60749a760682e0541c83, type: 3}
   Tier: 1
   Description: Water of life, mere drops of it  can cure all wounds and diseases.
     A war was started, countless dead for that which promises life.
