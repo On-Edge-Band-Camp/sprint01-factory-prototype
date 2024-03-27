@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class MachinePlacer : MonoBehaviour
 {
+    public GameObject checkTestSquare;
+
     //Gameobject set to the currently selected machine. Follows the mouse until set on the grid.
     GameObject current_selection;
 
@@ -140,7 +142,6 @@ public class MachinePlacer : MonoBehaviour
             {
                 even_placer();
             }
-            print(new_grid_coords.Count);
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
             if (MachineSelectMenu.buttonClicked == false) 
@@ -170,10 +171,10 @@ public class MachinePlacer : MonoBehaviour
             } 
             else
             {
-                for(int i = 0; i < 4; i++)
-                {
+                //for(int i = 0; i < 4; i++)
+                //{
                     grid_control.add_machine(new_coord, current_selection);
-                }
+                //}
                 Destroy(current_selection);
             }
         }
@@ -294,6 +295,7 @@ public class MachinePlacer : MonoBehaviour
         //Calculation of converting the list index to the 2D array index. Matches the index of entire_even_center_pos
         center_pos_index = new Vector2Int(listIndex % (grid_control.grid_dimensions.x - 1), ((listIndex - (listIndex % (grid_control.grid_dimensions.x - 1))) / (grid_control.grid_dimensions.x - 1)));
         evenPlacementPos = GridController.entire_even_center_pos[center_pos_index.x, center_pos_index.y];
+
         for(int i = 0; i < 2; i++)
         {
             for(int j = 0; j < 2; j++)
@@ -321,62 +323,84 @@ public class MachinePlacer : MonoBehaviour
             //If a machine already exists at the current potential placement position,
             if (GridController.grid[new_grid_coords[i].x, new_grid_coords[i].y] != null)
             {
-                print(prevPos);
-
-                current_selection.transform.position = prevPos;
+                //current_selection.transform.position = prevPos;
                 
-                /*///To be used as calculated index of a neighbouring cell in 3x3 grid around the current potential position.
+                ///To be used as calculated index of a neighbouring cell in 3x3 grid around the current potential position.
 
                  //Nested loop going over the 3x3 grid surrounding the current potential position that is already occupied.
                  for (int j = 0; j < 3; j++)
                  {
                      for (int k = 0; k < 3; k++)
                      {
-                         //1 is for cell size. Would probably work with a variable of other cell sizes. Check later.
-                         int xIncrement = -1;
-                         int yIncrement = -1;
+                        //1 is for cell size. Would probably work with a variable of other cell sizes. Check later.
+                        int xIncrement = -2;
+                        int yIncrement = -2;
+                        int listIncrement = 0;
+                        bool occupied = false;
 
-                         //Skip iteration if both i,j = 0, since it changes nothing.
-                         if (j == 0 && k == 0)
-                             continue;
+                        //Skip iteration if both i,j = 0, since it changes nothing.
+                        if (j == 0 && k == 0)
+                            continue;
 
-                         //Loop calculations doing combinations of +x, -x, +y, -y, +0 to index.
-                         //Set current calculated position as checkingIndex.
-                         if (j == 0)
-                             xIncrement *= j;
-                         else
-                             xIncrement = (int)Mathf.Pow(-1, j);
-                         if (k == 0)
-                             yIncrement *= k;
-                         else
-                             yIncrement = (int)Mathf.Pow(-1, k);
-
-                         checkingIndex = new Vector2Int(Mathf.Clamp(world_pos_indeces[i].x + xIncrement, 0, GridController.gridDim.x - 1),
-                             Mathf.Clamp(world_pos_indeces[i].y + yIncrement, 0, GridController.gridDim.y - 1));
-                         checkingIndeces.Add(checkingIndex);
-
-                         for (int l = 0; l < 4; l++)
-                         {
-                             //If that index is occupied, skip iteration and keep checking.
-                             if (GridController.grid[checkingIndeces[l].x, GridController.gridDim.y - (checkingIndeces[l].y + 1)] != null)
-                                 continue;
-                         }
-
-                         //Once unoccupied cell is found, get distance between mousePos and that cell.
-                         float distance = Vector2.Distance(mousePos, GridController.entire_even_center_pos[checkingIndex.x, checkingIndex.y]);
-
-                         //If current closestDist is 0 or above distance is less than current closestDist, set closestDist to distance and 
-                         //center_pos_index to the new index of checkingIndex.
-                         if (closestDistance == 0 || distance < closestDistance)
-                         {
-                             closestDistance = distance;
-                             center_pos_index = checkingIndex;
-                         }
+                        List<GameObject> checkerList = new List<GameObject>();
+                        for (int l = 0; l < 4; l++) 
+                        {
+                            
+                            //Loop calculations doing combinations of +x, -x, +y, -y, +0 to index.
+                            //Set current calculated position as checkingIndex.
+                            if (j == 0)
+                                xIncrement *= j;
+                            else
+                                xIncrement *= (int)Mathf.Pow(-1, j);
+                            if (k == 0)
+                                yIncrement *= k;
+                            else
+                                yIncrement *= (int)Mathf.Pow(-1, k);
+                            checkingIndex = new Vector2Int(Mathf.Clamp(new_grid_coords[l].x + xIncrement, 0, GridController.gridDim.x - 1),
+                                Mathf.Clamp(new_grid_coords[l].y + yIncrement, 0, GridController.gridDim.y - 1));
+                            checkingIndeces.Add(checkingIndex);
 
 
+                            //If that index is occupied, skip iteration and keep checking.
+                            if (GridController.grid[checkingIndeces[l].x, checkingIndeces[l].y] != null)
+                                occupied = true;
+                            //listIncrement++;
+                        }
+                        if (checkingIndeces[0].x == 0)
+                        {
+                            Vector2Int checkingToWorldIndex = new Vector2Int(0, Mathf.Abs(checkingIndeces[0].y - (GridController.gridDim.y - 1)) + 1);
+                        }
+                        if (occupied)
+                        {
+                            Vector2Int checkingToWorldIndex = new Vector2Int(checkingIndeces[0].x + 1, Mathf.Abs(checkingIndeces[0].y - (GridController.gridDim.y - 1)) + 1);
+                            Instantiate(checkTestSquare, GridController.entire_even_center_pos[checkingToWorldIndex.x, checkingToWorldIndex.y], Quaternion.identity);
+                            checkingIndeces.RemoveRange(0, 4);
+                            occupied = false;
+                            continue;                  
+                        }
+                        else
+                        {
+                            //checkerList[]
+                            Vector2Int checkingToWorldIndex = new Vector2Int (checkingIndeces[0].x + 1, Mathf.Abs(checkingIndeces[0].y - (GridController.gridDim.y - 1)) + 1);
+                            //Calculation of converting entire_even_center_pos' index to gameObject grid index.
+                            //checkingIndex = new Vector2Int(new_grid_coord.x, GridController.gridDim.y - (new_grid_coord.y + 1));
+                            //Once unoccupied cell is found, get distance between mousePos and that cell.
+                            float distance = Vector2.Distance(mousePos,
+                                GridController.entire_even_center_pos[checkingToWorldIndex.x, checkingToWorldIndex.y]);
+
+                            //If current closestDist is 0 or above distance is less than current closestDist, set closestDist to distance and 
+                            //center_pos_index to the new index of checkingIndex.
+                            if (closestDistance == 0 || distance < closestDistance)
+                            {
+                                closestDistance = distance;
+                                center_pos_index = checkingToWorldIndex;
+                            }
+                            checkingIndeces.RemoveRange(0, 4);
+
+                        }
                      }
                  }
-                 new_world_pos = GridController.entire_even_center_pos[center_pos_index.x, center_pos_index.y];*/
+                 new_world_pos = GridController.entire_even_center_pos[center_pos_index.x, center_pos_index.y] - Vector2.one;
             }
             //If cell unoccupied, simply set calculated new world pos as position.
             else
