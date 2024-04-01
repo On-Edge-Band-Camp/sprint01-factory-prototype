@@ -10,9 +10,12 @@ public class Storage : Machine
     {
         foreach(GameItem item in MachineInventory.Keys)
         {
+ 
             if (MachineInventory[item] > 0)
             {
-                Debug.Log($"{item}  {MachineInventory[item]}");
+                //Debug.Log($"{item}  {MachineInventory[item]}");
+                if (!processing) { StartCoroutine("process_timer"); }
+                return;
             }
         }
     }
@@ -30,12 +33,23 @@ public class Storage : Machine
     //Activates when an output occurs, can be used to handle unique outcomes depending on the output location. Optional.
     public override void handle_output(GameItem item_type)
     {
-
+        MachineInventory[item_type] -= 1;
+        if (UI != null)
+        {
+            UI.UpdateUIItem(item_type);
+        }
     }
 
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process()
     {
-
+        foreach (var item in MachineInventory.Keys)
+        {
+            if (MachineInventory[item] > 0)
+            {
+                output_item(item);
+                return;
+            }
+        }
     }
 }

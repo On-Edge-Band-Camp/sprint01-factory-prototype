@@ -119,7 +119,7 @@ public abstract class Machine: MonoBehaviour
         currentProcessInPercent = currentProcessInSec / process_time;
     }
 
-    //Called when an intem is being input to this machine. OUTDATED
+    //Called when an intem is being input to this machine.
     public bool input_item(Vector2Int output_machine_coord, GameItem item_type)
     {
 
@@ -144,12 +144,12 @@ public abstract class Machine: MonoBehaviour
     
     public bool output_item(GameItem item_type, [Optional] int specificOutput)
     {
-
         List<GameObject> valid_outputs = validify_outputs();
 
         //If list is empty, return false
         if (valid_outputs.Count == 0)
         {
+            Debug.LogWarning("NO VALID OUTPUT ON: " + gameObject.name);
             return false;
         }
 
@@ -167,8 +167,8 @@ public abstract class Machine: MonoBehaviour
                 {
                     return true;
                 }
-
             }
+            Debug.LogWarning("OUTPUT CHECK FAILED ON: " + gameObject.name);
         }
         else //Or uses specific output
         {
@@ -177,8 +177,9 @@ public abstract class Machine: MonoBehaviour
             {
                 return true;
             }
+            Debug.LogWarning("OUTPUT CHECK FAILED ON: " + gameObject.name);
         }
-        
+
 
         //If no output point is found, return false
         return false;
@@ -191,10 +192,20 @@ public abstract class Machine: MonoBehaviour
 
         foreach (Vector2Int direction in output_directions)
         {
-
+            bool validInputOnTarget = false;
             GameObject target = check_output_connnection(direction);
 
-            if (target != null)
+            try
+            {
+                validInputOnTarget = target.GetComponent<Machine>().check_input_connection(grid_coord) != new Vector2Int();
+            }
+            catch
+            {
+
+            }
+
+
+            if (target != null && validInputOnTarget)
             {
                 valid_outputs.Add(target);
             }

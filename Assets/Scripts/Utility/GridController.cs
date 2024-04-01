@@ -84,11 +84,12 @@ public class GridController : MonoBehaviour
     private void Update()
     {
         machine_types[] update_order = {
-            
+
             machine_types.Transporter,
             machine_types.Splitter,
             machine_types.Collector,
-            machine_types.Constructor
+            machine_types.Constructor,
+            machine_types.Storage
         
         };
 

@@ -65,26 +65,31 @@ public class Constructor : Machine
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
         currentProcessInSec = 0;
-        Debug.Log($"Exporting { finalProduct.name}, {MachineInventory[finalProduct]}"); //Debug
-        if (finalProduct != null)
+        try
         {
             // delete component items on export
             foreach (GameItem item in neededMaterials.Keys)
             {
                 MachineInventory[item] -= neededMaterials[item];
-                if (UI != null)
+                try
                 {
                     UI.UpdateUIItem(item);
                 }
-                //Debug.Log("Removing 1 " + item.name + " from Inventry.");
+                catch
+                {
+                    
+                }
             }
-
-            MachineInventory[finalProduct]++;
             output_item(finalProduct);
+
             if (UI != null)
             {
                 UI.UpdateUIItem(finalProduct);
             }
+        }
+        catch
+        {
+            Debug.LogWarning("NO FINAL ITEM FOUND ON " + gameObject.name);
         }
         isCrafting = false;
         
