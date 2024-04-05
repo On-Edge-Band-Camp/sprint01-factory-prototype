@@ -242,7 +242,9 @@ public class MachinePlacer : MonoBehaviour
                 }
                 new_world_pos = GridController.entire_odd_center_pos[center_pos_index.x, center_pos_index.y];
                 new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
+                current_selection.transform.position = GridController.entire_odd_center_pos[new_grid_coord.x, GridController.gridDim.y - (new_grid_coord.y + 1)];
             }
+
             //If cell unoccupied, simply set calculated new world pos as position.
             else
             {
@@ -250,7 +252,7 @@ public class MachinePlacer : MonoBehaviour
                 current_selection.transform.position = new_world_pos;
             }
 
-            print(new_grid_coord);
+            print(center_pos_index);
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
             if (MachineSelectMenu.buttonClicked == false) 
