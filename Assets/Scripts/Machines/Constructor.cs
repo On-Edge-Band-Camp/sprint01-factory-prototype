@@ -8,13 +8,12 @@ using UnityEngine;
 ---------------- BUGS TO FIX ----------------
 
 ----------------------------------------------
-
-
 */
 
 public class Constructor : Machine
 {
     public GameItem finalProduct;
+    private GameItem craftingProduct;
 
     private bool isCrafting = false;
 
@@ -36,13 +35,15 @@ public class Constructor : Machine
                     //Debug.Log("Starting Work!");
                     StartCoroutine("process_timer");
                     isCrafting = true;
-                }
-                else
-                {
-                    ProgressTimer();
+                    craftingProduct = finalProduct;
                 }
             } 
  
+        }
+
+        if (isCrafting) 
+        {
+            ProgressTimer();
         }
     }
 
@@ -65,6 +66,12 @@ public class Constructor : Machine
     //The process that occurs once the process timer is finished counting, for example the combining of two items and outputting them
     public override void process() {
         currentProcessInSec = 0;
+
+        if (finalProduct != craftingProduct)
+        {
+            craftingProduct = null;
+        }
+
         try
         {
             // delete component items on export
@@ -80,7 +87,7 @@ public class Constructor : Machine
                     
                 }
             }
-            output_item(finalProduct);
+            output_item(craftingProduct);
 
             if (UI != null)
             {
@@ -91,6 +98,7 @@ public class Constructor : Machine
         {
             Debug.LogWarning("NO FINAL ITEM FOUND ON " + gameObject.name);
         }
+        craftingProduct = null;
         isCrafting = false;
         
     }
@@ -132,7 +140,7 @@ public class Constructor : Machine
     }
 
     /* <Summary>
-     * checks if the mechine has the materials needed to craft its product. Returns false if it does not, returns true if it does. 
+     * checks if the machine has the materials needed to craft its product. Returns false if it does not, returns true if it does. 
      * Also returns true if the inventru doesn't know what the item is.
      * <Summary>
      */ 
