@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public enum machine_types
@@ -143,9 +144,9 @@ public class GridController : MonoBehaviour
     }
 
     //Remove a machine from the grid using coordinate
-    void remove_machine(Vector2Int coord)
+    public void remove_machine(Vector2Int coord, GameObject removed_machine)
     {
-
+        machines[removed_machine.GetComponent<Machine>().machine_type].Remove(coord);
     }
 
     //Remove a machine from the grid using GameObject

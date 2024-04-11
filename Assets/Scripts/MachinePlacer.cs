@@ -349,6 +349,7 @@ public class MachinePlacer : MonoBehaviour
                 lastMachine.GetComponent<SpriteRenderer>().color = Color.red;
                 if (Input.GetMouseButtonDown(0))
                 {
+                    grid_control.remove_machine(new_grid_coord, GridController.grid[new_grid_coord.x, new_grid_coord.y].gameObject);
                     GameObject.Destroy(GridController.grid[new_grid_coord.x, new_grid_coord.y]);
                 }
             }
