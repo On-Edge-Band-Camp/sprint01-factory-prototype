@@ -56,6 +56,7 @@ public class MachineDetails : MonoBehaviour
             if (uiitem.Item != null)
             {
                 Debug.Log(uiitem.Item);
+                
                 //If the UI item is the same item type
                 if (uiitem.Item == item)
                 {

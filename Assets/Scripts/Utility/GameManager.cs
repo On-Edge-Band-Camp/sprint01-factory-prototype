@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public Tooltip Tooltip;
     public Tooltip MachineTooltip;
 
+
     private void Awake()
     {
         gameRecipes = CSVReader.Read("Recipes");
@@ -40,7 +41,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Tooltip.gameObject.SetActive(false);
-        MachineTooltip.gameObject.SetActive(false);
+        if(MachineTooltip != null)
+        {
+            MachineTooltip.gameObject.SetActive(false);
+        }
+        
     }
 
     private void Update()

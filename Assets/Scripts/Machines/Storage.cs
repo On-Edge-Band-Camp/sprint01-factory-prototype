@@ -6,11 +6,11 @@ public class Storage : Machine
 {
 
     //Activates when grid_handler sends and update call to this machine
+    public static int winningItemAmount;
     public override void update_machine()
     {
         foreach(GameItem item in MachineInventory.Keys)
         {
- 
             if (MachineInventory[item] > 0)
             {
                 //Debug.Log($"{item}  {MachineInventory[item]}");
@@ -24,6 +24,10 @@ public class Storage : Machine
     public override void handle_input(Vector2Int input_direction, GameItem item_type) {
         
         MachineInventory[item_type] += 1;
+        if(item_type.name == GridController.winningItem1)
+        {
+            winningItemAmount++;
+        }
         if (UI != null)
         {
             UI.UpdateUIItem(item_type);

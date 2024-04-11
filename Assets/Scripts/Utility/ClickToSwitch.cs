@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class SceneMaster : MonoBehaviour
+public class ClickToSwitch : MonoBehaviour
 {
-    public Object LevelToLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +13,9 @@ public class SceneMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    public static void GoToLevel ()
-    {
-        SceneManager.LoadScene(1);
+        if(Input.GetMouseButtonDown(0))
+        {
+            SceneMaster.GoToLevel();
+        }
     }
 }

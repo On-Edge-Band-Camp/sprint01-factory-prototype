@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
@@ -23,13 +24,21 @@ public class GridController : MonoBehaviour
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
+    public static string winningItem1 = "Water";
+    public static int winItem1Amount = 3;
+
+    public GameObject winScreen;
+    public GameObject UICanvas;
+    GameObject winScrn;
+    bool winState;
+
     //Visual grid matrix for initial level setup. replace numbers with corresponding int of a machine.
     public static int[,] levelMap = 
         //Currently have Collector = 1, Storage = 2, Transport Up = 3.
         //Adding other machines happens in levelPlacer() in the MachinePlacer script
         {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -96,6 +105,17 @@ public class GridController : MonoBehaviour
 
         update_machines(update_order);
 
+        if(Storage.winningItemAmount == winItem1Amount)
+        {
+            winState = true;
+            SceneMaster.GoToLevel();
+            if(winScrn == null)
+            {
+                //winScrn = Instantiate(winScreen, UICanvas.transform);
+            }
+        }
+
+        //print(grid[6, 6].GetComponent<MachineDetails>().);
     }
 
     //Initializes the grid on startup
