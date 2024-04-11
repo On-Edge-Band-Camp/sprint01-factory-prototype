@@ -46,7 +46,7 @@ public class FloatingMenu : MonoBehaviour
         //If machine exists at current mouse grid position and mouse is clicked and released, spawn menu.
         if (GridController.grid[machineGridIndex.x, machineGridIndex.y] != null)
         {
-            if (Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonUp(0))
             {
                 if(menu != null)
                 {
