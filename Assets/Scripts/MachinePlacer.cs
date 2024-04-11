@@ -323,8 +323,7 @@ public class MachinePlacer : MonoBehaviour
                 Vector3 pos = new Vector3(0, 500, 0);
                 removeScreen = Instantiate(removalScreen, MachineSelectMenu.uiObject.transform);
             }
-            print(Mathf.Sin(Time.deltaTime));
-            removeScreen.transform.localScale = new Vector3(Mathf.Sin(Time.deltaTime) * 15 + 1, Mathf.Sin(Time.deltaTime) * 10 + 1, 1);
+            removeScreen.transform.localScale = new Vector3(Mathf.Sin(Time.deltaTime) * 20 + 1, Mathf.Sin(Time.deltaTime) * 10 + 1, 1);
 
             new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2),
                 Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
@@ -337,9 +336,6 @@ public class MachinePlacer : MonoBehaviour
 
             //Calculation of converting entire_odd_center_pos' index to gameObject grid index.
             new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
-
-
-
 
 
             if (lastMachine != null && GridController.grid[new_grid_coord.x, new_grid_coord.y] != lastMachine)
@@ -355,6 +351,12 @@ public class MachinePlacer : MonoBehaviour
                 {
                     GameObject.Destroy(GridController.grid[new_grid_coord.x, new_grid_coord.y]);
                 }
+            }
+
+            if(Input.GetKeyDown(KeyCode.N))
+            {
+                GameObject.Destroy(removeScreen);
+                deleteState = false;
             }
         }
     }
