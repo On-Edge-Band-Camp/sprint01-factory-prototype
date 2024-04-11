@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneMaster : MonoBehaviour
 {
-    public Object LevelToLoad;
+    //public Object LevelToLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +18,8 @@ public class SceneMaster : MonoBehaviour
         
     }
 
-    public static void GoToLevel ()
+    public static void GoToLevel (int index)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
     }
 }

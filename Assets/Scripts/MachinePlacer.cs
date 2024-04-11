@@ -132,7 +132,6 @@ public class MachinePlacer : MonoBehaviour
     public void levelPlacer()
     {
         Vector2Int grid_coord;
-        print(GridController.levelMap[8,12]);
         int row = 9;
         int col = 13;
         for (int i = 0; i < row; i++)
@@ -147,16 +146,19 @@ public class MachinePlacer : MonoBehaviour
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, collector_prefab);
+                    GridController.numberOfMachines++;
                 }
                 else if (GridController.levelMap[i,j] == 2)
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, storage_prefab);
+                    GridController.numberOfMachines++;
                 }
                 else if (GridController.levelMap[i, j] == 3)
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, transporter_up_prefab);
+                    GridController.numberOfMachines++;
                 }
                 //Add more machines to be placed on start
                 /*else if (GridController.levelMap[i, j] == 4)
@@ -267,7 +269,6 @@ public class MachinePlacer : MonoBehaviour
                 current_selection.transform.position = new_world_pos;
             }
 
-            print(center_pos_index);
             //To place a machine down, send the new grid coordinate (index) to the method.
             //Only called when menu buttonclick is false to not conflict with resetting selection.
             if (MachineSelectMenu.buttonClicked == false) 
@@ -283,7 +284,8 @@ public class MachinePlacer : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if(resources.Energy >= current_selection.GetComponent<Machine>().energyCost)
+            GridController.numberOfMachines++;
+            if (resources.Energy >= current_selection.GetComponent<Machine>().energyCost)
             {
                 grid_control.add_machine(new_coord, current_selection);
                 resources.Energy -= current_selection.GetComponent<Machine>().energyCost;
@@ -351,6 +353,7 @@ public class MachinePlacer : MonoBehaviour
                 {
                     grid_control.remove_machine(new_grid_coord, GridController.grid[new_grid_coord.x, new_grid_coord.y].gameObject);
                     GameObject.Destroy(GridController.grid[new_grid_coord.x, new_grid_coord.y]);
+                    GridController.numberOfMachines--;
                 }
             }
 

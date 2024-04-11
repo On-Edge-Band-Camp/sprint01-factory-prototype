@@ -1,9 +1,11 @@
 using System.Collections;
+using UnityEditor;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
-using UnityEditor.ShaderGraph.Internal;
+//using UnityEditor.SearchService;
+//using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum machine_types
 {
@@ -23,14 +25,18 @@ public class GridController : MonoBehaviour
 {
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
+    Machine machineScript;
 
     public static string winningItem1 = "Water";
+    public static string winningItem2 = "Crystal";
     public static int winItem1Amount = 3;
+    public static int winItem2Amount = 3;
+    public static int currentStage;
 
     public GameObject winScreen;
     public GameObject UICanvas;
     GameObject winScrn;
-    bool winState;
+    public static bool winState;
 
     //Visual grid matrix for initial level setup. replace numbers with corresponding int of a machine.
     public static int[,] levelMap = 
@@ -68,6 +74,8 @@ public class GridController : MonoBehaviour
     //How large cells appear in the scene
     public Vector2 cell_dimensions = new Vector2(1,1);
 
+    public static int numberOfMachines;
+
     //List dictionary for each individual type of machines coordinates, sorted by machine type
     //see machine class for machine type id reference
     Dictionary<machine_types, List<Vector2Int>> machines = new Dictionary<machine_types, List<Vector2Int>>()
@@ -84,10 +92,14 @@ public class GridController : MonoBehaviour
     //Initialize Grid
     private void Awake()
     {
-
         gridDim = grid_dimensions;
         init_grid();
         odd_worldspace_center();
+    }
+
+    private void Start()
+    {
+        machineScript = FindObjectOfType<Machine>();
     }
 
     //Runs each frame
@@ -103,16 +115,40 @@ public class GridController : MonoBehaviour
         
         };
 
-        update_machines(update_order);
-
-        if(Storage.winningItemAmount == winItem1Amount)
+        if (numberOfMachines > 0)
         {
-            winState = true;
-            SceneMaster.GoToLevel();
-            if(winScrn == null)
+            update_machines(update_order);
+        }
+        print(Storage.winningItemAmount);
+        if (SceneManager.GetActiveScene().name == "Level0")
+        {
+            if (Storage.winningItemAmount == winItem1Amount)
             {
-                //winScrn = Instantiate(winScreen, UICanvas.transform);
+                winState = true;
+                for (int i = 0; i < GridController.gridDim.x; i++)
+                {
+                    for (int j = 0; j < GridController.gridDim.y; j++)
+                    {
+                        machineScript.MachineInventory.Clear();
+                        GameObject.Destroy(grid[i, j]);
+                        numberOfMachines = 0;
+                    }
+                }
             }
+        }
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            if (Storage.winningItemAmount == winItem2Amount)
+            {
+                SceneMaster.GoToLevel(2);
+            }
+        }
+        if (winState)
+        {
+            currentStage++;
+            print(currentStage);
+            winState = false;
+            SceneMaster.GoToLevel(2);
         }
 
         //print(grid[6, 6].GetComponent<MachineDetails>().);

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Storage : Machine
 {
@@ -24,9 +25,19 @@ public class Storage : Machine
     public override void handle_input(Vector2Int input_direction, GameItem item_type) {
         
         MachineInventory[item_type] += 1;
-        if(item_type.name == GridController.winningItem1)
+        if (SceneManager.GetActiveScene().name == "Level0")
         {
-            winningItemAmount++;
+            if (item_type.name == GridController.winningItem1)
+            {
+                winningItemAmount++;
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            if (item_type.name == GridController.winningItem2)
+            {
+                winningItemAmount++;
+            }
         }
         if (UI != null)
         {
