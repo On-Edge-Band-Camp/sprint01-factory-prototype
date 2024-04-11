@@ -357,6 +357,7 @@ public class MachinePlacer : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.N))
             {
                 GameObject.Destroy(removeScreen);
+                lastMachine.GetComponent<SpriteRenderer>().color = Color.white;
                 deleteState = false;
             }
         }

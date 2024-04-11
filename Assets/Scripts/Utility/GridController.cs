@@ -35,7 +35,7 @@ public class GridController : MonoBehaviour
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}   };
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
 
     //Deprecated, check and remove later.
     //Center positions restricted to camera size.
