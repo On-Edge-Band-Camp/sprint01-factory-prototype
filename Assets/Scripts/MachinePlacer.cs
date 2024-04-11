@@ -7,6 +7,8 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MachinePlacer : MonoBehaviour
 {
+    public GameObject removalScreen;
+    GameObject removeScreen;
     public PlayerResources resources;
 
     public TMP_Text NotEnoughEnergy;
@@ -38,6 +40,11 @@ public class MachinePlacer : MonoBehaviour
     public GameObject constructor_prefab;
 
     public Vector2 worldposcheck;
+
+    bool deleteState;
+    Vector2Int lastMachineCoord;
+    GameObject lastMachine;
+
     void Start()
     {
         grid_control = GetComponent<GridController>();
@@ -47,6 +54,7 @@ public class MachinePlacer : MonoBehaviour
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        MachineRemover();
         machine_select();
         machine_placer();
         //setting menu's buttonclick to false after click is resolved.
@@ -110,6 +118,13 @@ public class MachinePlacer : MonoBehaviour
             {
                 Destroy(current_selection);
                 current_selection = Instantiate(constructor_prefab, mousePos, Quaternion.identity);
+            }
+
+            //
+            if (MachineSelectMenu.selectionName == "DeleteButton")
+            {
+                deleteState = true;
+                current_selection = null;
             }
         }
     }
@@ -297,6 +312,51 @@ public class MachinePlacer : MonoBehaviour
         public string name;
         public Vector2Int location;
         public int cost;
+    }
+
+    void MachineRemover()
+    {
+        if (deleteState)
+        {
+            if(removeScreen == null)
+            {
+                Vector3 pos = new Vector3(0, 500, 0);
+                removeScreen = Instantiate(removalScreen, MachineSelectMenu.uiObject.transform);
+            }
+            print(Mathf.Sin(Time.deltaTime));
+            removeScreen.transform.localScale = new Vector3(Mathf.Sin(Time.deltaTime) * 15 + 1, Mathf.Sin(Time.deltaTime) * 10 + 1, 1);
+
+            new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2),
+                Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
+
+            //Matches current calculated new position with that same position stored in the odd center position list.
+            int listIndex = GridController.oddCenterPosList.IndexOf(new_world_pos);
+
+            //Calculation of converting the list index to the 2D array index. Matches the index of entire_odd_center_pos
+            center_pos_index = new Vector2Int(listIndex % grid_control.grid_dimensions.x, ((listIndex - (listIndex % grid_control.grid_dimensions.x)) / grid_control.grid_dimensions.x));
+
+            //Calculation of converting entire_odd_center_pos' index to gameObject grid index.
+            new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
+
+
+
+
+
+            if (lastMachine != null && GridController.grid[new_grid_coord.x, new_grid_coord.y] != lastMachine)
+            {
+                lastMachine.GetComponent<SpriteRenderer>().color = Color.white;
+            }
+            if (GridController.grid[new_grid_coord.x, new_grid_coord.y] != null)
+            {
+                lastMachineCoord = new Vector2Int(new_grid_coord.x, new_grid_coord.y);
+                lastMachine = GridController.grid[new_grid_coord.x, new_grid_coord.y].gameObject;
+                lastMachine.GetComponent<SpriteRenderer>().color = Color.red;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    GameObject.Destroy(GridController.grid[new_grid_coord.x, new_grid_coord.y]);
+                }
+            }
+        }
     }
 }
 
