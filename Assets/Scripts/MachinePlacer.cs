@@ -367,7 +367,8 @@ public class MachinePlacer : MonoBehaviour
                 Vector3 pos = new Vector3(0, 500, 0);
                 removeScreen = Instantiate(removalScreen, MachineSelectMenu.uiObject.transform);
             }
-            removeScreen.transform.localScale = new Vector3(Mathf.Sin(Time.deltaTime) * 20 + 1, Mathf.Sin(Time.deltaTime) * 10 + 1, 1);
+            removeScreen.transform.localScale = new Vector3(Mathf.Abs(Mathf.Sin(Time.time * Random.Range(1, 20))) * Random.Range(0.01f, 0.04f) + 1, 
+                Mathf.Abs(Mathf.Cos(Time.time * Random.Range(1, 50))) * Random.Range(0.01f, 0.05f) + 1, 1);
 
             new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2),
                 Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
@@ -402,7 +403,10 @@ public class MachinePlacer : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.N))
             {
                 GameObject.Destroy(removeScreen);
-                lastMachine.GetComponent<SpriteRenderer>().color = Color.white;
+                if (lastMachine != null)
+                {
+                    lastMachine.GetComponent<SpriteRenderer>().color = Color.white;
+                }
                 deleteState = false;
             }
         }

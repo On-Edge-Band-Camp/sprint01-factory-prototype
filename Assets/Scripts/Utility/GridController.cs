@@ -27,16 +27,21 @@ public class GridController : MonoBehaviour
     public static GameObject[,] grid;
 
     public static string winningItem1 = "Water";
+    public static string winningItem102 = "Air";
+
     public static string winningItem2 = "Crystal";
-    public static int winItem1Amount = 3;
-    public static int winItem2Amount = 3;
+
+    public static int winItem1Amount = 5;
+    public static int winItem102Amount = 5;
+
+    public static int winItem2Amount = 5;
     public static int currentStage;
 
     public static bool winState;
 
     //Visual grid matrix for initial level setup. replace numbers with corresponding int of a machine.
     public static int[,] level0Map = 
-        //Currently have Collector = 1, Storage = 2, Transport Up = 3.
+        //Currently have Collector = 1, Storage = 2, Constructor = 3, Splitter = 4, Transport Up, Down, Left, Right = 5, 6, 7, 8.
         //Adding other machines happens in levelPlacer() in the MachinePlacer script
         {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -52,20 +57,20 @@ public class GridController : MonoBehaviour
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 8, 8, 4, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0},
+            {0, 0, 0, 2, 0, 0, 0, 0, 0, 3, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
     public static int[,] level2Map =
        {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 6, 0, 3, 0, 0, 0, 4, 7, 7, 1, 0},
+            {0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
 
     //Deprecated, check and remove later.
@@ -133,7 +138,7 @@ public class GridController : MonoBehaviour
         print(Storage.winningItemAmount);
         if (SceneManager.GetActiveScene().name == "Level0")
         {
-            if (Storage.winningItemAmount == winItem1Amount)
+            if (Storage.winningItemAmount >= winItem1Amount && Storage.winningItem2Amount >= winItem102Amount)
             {
                 winState = true;
                 FindObjectOfType<Machine>().inventory_total = 0;
@@ -168,6 +173,7 @@ public class GridController : MonoBehaviour
             currentStage++;
             print(currentStage);
             Storage.winningItemAmount = 0;
+            Storage.winningItem2Amount = 0;
             winState = false;
             SceneMaster.GoToLevel(2);
         }

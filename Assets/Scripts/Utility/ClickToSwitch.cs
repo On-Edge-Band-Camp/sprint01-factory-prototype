@@ -19,7 +19,7 @@ public class ClickToSwitch : MonoBehaviour
         {
             SceneMaster.GoToLevel(levelSelect);
         }
-        if(Input.GetMouseButtonDown(0) && GridController.currentStage == 1)
+        if(Input.GetMouseButtonDown(0) && GridController.currentStage > 0)
         {
             SceneMaster.GoToLevel(GridController.currentStage + 2);
         }

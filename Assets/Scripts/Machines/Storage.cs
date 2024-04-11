@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Storage : Machine
 {
+    public static int winningItemAmount;
+    public static int winningItem2Amount;
 
     //Activates when grid_handler sends and update call to this machine
-    public static int winningItemAmount;
     public override void update_machine()
     {
         foreach(GameItem item in MachineInventory.Keys)
@@ -30,6 +31,10 @@ public class Storage : Machine
             if (item_type.name == GridController.winningItem1)
             {
                 winningItemAmount++;
+            }
+            if (item_type.name == GridController.winningItem102)
+            {
+                winningItem2Amount++;
             }
         }
         if (SceneManager.GetActiveScene().name == "Level1")
