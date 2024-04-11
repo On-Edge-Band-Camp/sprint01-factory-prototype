@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     bool pauseActive;
 
     public Tooltip Tooltip;
+    public Tooltip MachineTooltip;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Tooltip.gameObject.SetActive(false);
+        MachineTooltip.gameObject.SetActive(false);
     }
 
     private void Update()
