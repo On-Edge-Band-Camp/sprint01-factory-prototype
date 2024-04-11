@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using static UnityEngine.RuleTile.TilingRuleOutput;
+using UnityEngine.SceneManagement;
 
 public class MachinePlacer : MonoBehaviour
 {
@@ -48,7 +49,18 @@ public class MachinePlacer : MonoBehaviour
     void Start()
     {
         grid_control = GetComponent<GridController>();
-        levelPlacer();
+        if (SceneManager.GetActiveScene().name == "Level0")
+        {
+            levelPlacer(GridController.level0Map);
+        }
+        else if (SceneManager.GetActiveScene().name == "Level1")
+        {
+            levelPlacer(GridController.level1Map);
+        }
+        else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            levelPlacer(GridController.level2Map);
+        }
     }
    
     void Update()
@@ -129,7 +141,7 @@ public class MachinePlacer : MonoBehaviour
         }
     }
 
-    public void levelPlacer()
+    public void levelPlacer(int[,] levelmap)
     {
         Vector2Int grid_coord;
         int row = 9;
@@ -138,26 +150,56 @@ public class MachinePlacer : MonoBehaviour
         {
             for(int j = 0; j < col; j++)
             {
-                if (GridController.levelMap[i,j] == 0)
+                if (levelmap[i,j] == 0)
                 {
                     continue;
                 }
-                else if (GridController.levelMap[i,j] == 1)
+                else if (levelmap[i, j] == 1)
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, collector_prefab);
                     GridController.numberOfMachines++;
                 }
-                else if (GridController.levelMap[i,j] == 2)
+                else if (levelmap[i, j] == 2)
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, storage_prefab);
                     GridController.numberOfMachines++;
                 }
-                else if (GridController.levelMap[i, j] == 3)
+                else if (levelmap[i, j] == 3)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, constructor_prefab);
+                    GridController.numberOfMachines++;
+                }
+                else if (levelmap[i, j] == 4)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, splitter_prefab);
+                    GridController.numberOfMachines++;
+                }
+                else if (levelmap[i, j] == 5)
                 {
                     grid_coord = new Vector2Int(j, row - (i + 1));
                     grid_control.add_machine(grid_coord, transporter_up_prefab);
+                    GridController.numberOfMachines++;
+                }
+                else if (levelmap[i, j] == 6)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, transporter_down_prefab);
+                    GridController.numberOfMachines++;
+                }
+                else if (levelmap[i, j] == 7)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, transporter_left_prefab);
+                    GridController.numberOfMachines++;
+                }
+                else if (levelmap[i, j] == 8)
+                {
+                    grid_coord = new Vector2Int(j, row - (i + 1));
+                    grid_control.add_machine(grid_coord, transporter_right_prefab);
                     GridController.numberOfMachines++;
                 }
                 //Add more machines to be placed on start

@@ -25,7 +25,6 @@ public class GridController : MonoBehaviour
 {
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
-    Machine machineScript;
 
     public static string winningItem1 = "Water";
     public static string winningItem2 = "Crystal";
@@ -33,22 +32,39 @@ public class GridController : MonoBehaviour
     public static int winItem2Amount = 3;
     public static int currentStage;
 
-    public GameObject winScreen;
-    public GameObject UICanvas;
-    GameObject winScrn;
     public static bool winState;
 
     //Visual grid matrix for initial level setup. replace numbers with corresponding int of a machine.
-    public static int[,] levelMap = 
+    public static int[,] level0Map = 
         //Currently have Collector = 1, Storage = 2, Transport Up = 3.
         //Adding other machines happens in levelPlacer() in the MachinePlacer script
         {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0},
+            {0, 0, 0, 0, 2, 7, 4, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
+    public static int[,] level1Map =
+        {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
+    public static int[,] level2Map =
+       {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
 
@@ -97,11 +113,6 @@ public class GridController : MonoBehaviour
         odd_worldspace_center();
     }
 
-    private void Start()
-    {
-        machineScript = FindObjectOfType<Machine>();
-    }
-
     //Runs each frame
     private void Update()
     {
@@ -125,11 +136,11 @@ public class GridController : MonoBehaviour
             if (Storage.winningItemAmount == winItem1Amount)
             {
                 winState = true;
+                FindObjectOfType<Machine>().inventory_total = 0;
                 for (int i = 0; i < GridController.gridDim.x; i++)
                 {
                     for (int j = 0; j < GridController.gridDim.y; j++)
-                    {
-                        machineScript.MachineInventory.Clear();
+                    {                     
                         GameObject.Destroy(grid[i, j]);
                         numberOfMachines = 0;
                     }
@@ -140,13 +151,23 @@ public class GridController : MonoBehaviour
         {
             if (Storage.winningItemAmount == winItem2Amount)
             {
-                SceneMaster.GoToLevel(2);
+                winState = true;
+                FindObjectOfType<Machine>().inventory_total = 0;
+                for (int i = 0; i < GridController.gridDim.x; i++)
+                {
+                    for (int j = 0; j < GridController.gridDim.y; j++)
+                    {
+                        GameObject.Destroy(grid[i, j]);
+                        numberOfMachines = 0;
+                    }
+                }
             }
         }
         if (winState)
         {
             currentStage++;
             print(currentStage);
+            Storage.winningItemAmount = 0;
             winState = false;
             SceneMaster.GoToLevel(2);
         }
