@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MachineSelectMenu : MonoBehaviour
@@ -10,6 +11,8 @@ public class MachineSelectMenu : MonoBehaviour
     public static bool floatingMenuClicked;
     //Name string to be sent to placer script
     public static string selectionName;
+
+    public static GameObject uiObject;
 
     void Start()
     {
@@ -22,6 +25,7 @@ public class MachineSelectMenu : MonoBehaviour
     {
         buttonClicked = true;
         selectionName = name;
+        uiObject = this.gameObject;
         if (name == "FloatingMenu")
         {
             floatingMenuClicked = true;
@@ -34,4 +38,8 @@ public class MachineSelectMenu : MonoBehaviour
         floatingMenuClicked = true;
     }
 
+    public void ThisObject()
+    {
+        //uiObject = this.gameObject;
+    }
 }

@@ -388,8 +388,6 @@ GameObject:
   - component: {fileID: 44219113}
   - component: {fileID: 44219112}
   - component: {fileID: 44219115}
-  - component: {fileID: 44219116}
-  - component: {fileID: 44219117}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -618,66 +616,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &44219116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44219110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 44219117}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 44219117}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &44219117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 44219110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Storage
-  Description: A machine with a large amount of storage space.
 --- !u!1 &49787893
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,8 +864,6 @@ GameObject:
   - component: {fileID: 58474913}
   - component: {fileID: 58474912}
   - component: {fileID: 58474915}
-  - component: {fileID: 58474917}
-  - component: {fileID: 58474916}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1156,67 +1092,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &58474916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58474910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 58474917}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 58474917}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &58474917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58474910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Transporter (Right)
-  Description: A transporter that machines can output to, transports items to the
-    right.
 --- !u!1 &77178039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,6 +1477,140 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &133464490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 133464491}
+  - component: {fileID: 133464493}
+  - component: {fileID: 133464492}
+  m_Layer: 5
+  m_Name: Text (TMP) (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &133464491
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133464490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1921410734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 882, y: -122}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &133464492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133464490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: onedgebandcamp.org
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -181.4469, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &133464493
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133464490}
+  m_CullTransparentMesh: 1
 --- !u!1 &141402104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,7 +2087,6 @@ RectTransform:
   - {fileID: 174714211}
   - {fileID: 888193775}
   - {fileID: 1247670908}
-  - {fileID: 8012436532888729828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2272,8 +2280,6 @@ GameObject:
   - component: {fileID: 193037457}
   - component: {fileID: 193037456}
   - component: {fileID: 193037459}
-  - component: {fileID: 193037461}
-  - component: {fileID: 193037460}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2502,67 +2508,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &193037460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193037454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 193037461}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 193037461}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &193037461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 193037454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Transporter (Left)
-  Description: A transporter that machines can output to, transports items to the
-    left.
 --- !u!1 &195362381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,8 +2915,6 @@ GameObject:
   - component: {fileID: 299575706}
   - component: {fileID: 299575705}
   - component: {fileID: 299575708}
-  - component: {fileID: 299575710}
-  - component: {fileID: 299575711}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3200,67 +3143,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &299575710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299575703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Splitter
-  Description: A machine used to split items into different directions, must be connected
-    by transporters.
---- !u!114 &299575711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299575703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 299575710}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 299575710}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &335599271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,8 +3489,6 @@ GameObject:
   - component: {fileID: 432925422}
   - component: {fileID: 432925421}
   - component: {fileID: 432925424}
-  - component: {fileID: 432925426}
-  - component: {fileID: 432925425}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3837,66 +3717,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &432925425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432925419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 432925426}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 432925426}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &432925426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432925419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Constructor
-  Description: A machine used to combine different items into a more powerful item.
 --- !u!1 &451518113
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,7 +4446,7 @@ MonoBehaviour:
   m_Intensity: 0.2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e69
+  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e692319a3d9
   m_LightCookieSprite: {fileID: 21300000, guid: 01cf0fd05bc780a40ae8a5f010a280eb, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -5062,6 +4882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b0d0ceefb12d8740823807b536a9a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  removalScreen: {fileID: 4448381833080587631, guid: a87e66d585d1bf34a8117b7cde3837fc, type: 3}
   resources: {fileID: 770083988}
   NotEnoughEnergy: {fileID: 5839119847252070215, guid: 5719c47b4487c5e4f82f2bdf94ec98d4, type: 3}
   placementSFX: {fileID: 762060500}
@@ -5160,7 +4981,7 @@ MonoBehaviour:
   - {fileID: 1030479033837750031, guid: 27311f2c30687cd4eaf749f650be2f2e, type: 3}
   PauseMenu: {fileID: 888193774}
   Tooltip: {fileID: 1247670905}
-  MachineTooltip: {fileID: 8717020337643324360}
+  MachineTooltip: {fileID: 0}
 --- !u!114 &762060497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,8 +6137,6 @@ GameObject:
   - component: {fileID: 985417033}
   - component: {fileID: 985417032}
   - component: {fileID: 985417035}
-  - component: {fileID: 985417037}
-  - component: {fileID: 985417036}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -6546,66 +6365,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &985417036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985417030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 985417037}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 985417037}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &985417037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 985417030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Transporter (Up)
-  Description: A transporter that machines can output to, transports items upwards.
 --- !u!1 &1005959703
 GameObject:
   m_ObjectHideFlags: 0
@@ -6912,7 +6671,6 @@ GameObject:
   - component: {fileID: 1115474895}
   - component: {fileID: 1115474897}
   - component: {fileID: 1115474896}
-  - component: {fileID: 1115474898}
   m_Layer: 5
   m_Name: ConstructorButton
   m_TagString: Untagged
@@ -6979,21 +6737,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115474894}
   m_CullTransparentMesh: 1
---- !u!114 &1115474898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115474894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: 
-  Description: 
 --- !u!224 &1127561679 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5886624766998386024, guid: d8977cba825295d4498551712b67d49e, type: 3}
@@ -9083,7 +8826,7 @@ MonoBehaviour:
   m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e69
+  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e692319a3d9
   m_LightCookieSprite: {fileID: 21300000, guid: a8923588ba05cbe4483ada2a89ce463d, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -9889,7 +9632,7 @@ GameObject:
   - component: {fileID: 1732223083}
   - component: {fileID: 1732223082}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: RemoveMachines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9911,8 +9654,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 882, y: -122}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 1008, y: -46.439}
+  m_SizeDelta: {x: 74.2668, y: 92.877}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732223082
 MonoBehaviour:
@@ -9934,10 +9677,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: onedgebandcamp.org
+  m_text: 'Remove
+
+    Machines'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9961,14 +9706,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10108,8 +9853,6 @@ GameObject:
   - component: {fileID: 1803121036}
   - component: {fileID: 1803121035}
   - component: {fileID: 1803121038}
-  - component: {fileID: 1803121040}
-  - component: {fileID: 1803121039}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -10338,66 +10081,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1803121039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803121033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1803121040}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1803121040}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &1803121040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803121033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Transporter (Down)
-  Description: A transporter that machines can output to, transports items downwards.
 --- !u!1 &1814636976
 GameObject:
   m_ObjectHideFlags: 0
@@ -10632,7 +10315,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e69
+  m_ApplyToSortingLayers: 00000000afec0ffe1b50ec7a5181b77829df8e692319a3d9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -10928,6 +10611,7 @@ RectTransform:
   - {fileID: 718376744}
   - {fileID: 1115474895}
   - {fileID: 1732223081}
+  - {fileID: 133464491}
   - {fileID: 779842675}
   - {fileID: 762060495}
   - {fileID: 1341347069}
@@ -11412,8 +11096,6 @@ GameObject:
   - component: {fileID: 2034635302}
   - component: {fileID: 2034635301}
   - component: {fileID: 2034635304}
-  - component: {fileID: 2034635306}
-  - component: {fileID: 2034635305}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -11642,66 +11324,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2034635305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034635299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2034635306}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: ShowTooltip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2034635306}
-          m_TargetAssemblyTypeName: MachineSelectButton, Assembly-CSharp
-          m_MethodName: HideToolTip
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &2034635306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2034635299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3679ae103e3af784c934547d3d9d1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MachineTooltip: {fileID: 0}
-  MachineName: Collector
-  Description: A machine used to collect basic ingrident items.
 --- !u!1 &2065519493
 GameObject:
   m_ObjectHideFlags: 0
@@ -11951,7 +11573,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2124360721}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187755139}
+        m_TargetAssemblyTypeName: MachineSelectMenu, Assembly-CSharp
+        m_MethodName: SelectionName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DeleteButton
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2124360721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12141,103 +11775,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142070386}
   m_CullTransparentMesh: 1
---- !u!1001 &42008955588067362
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 187755138}
-    m_Modifications:
-    - target: {fileID: 623273140056996797, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_Name
-      value: Machine Tooltip
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -378.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -318
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
 --- !u!1001 &2608663221285423056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12378,22 +11915,6 @@ PrefabInstance:
       addedObject: {fileID: 1590077480}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8977cba825295d4498551712b67d49e, type: 3}
---- !u!224 &8012436532888729828 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8532224439021397332, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-  m_PrefabInstance: {fileID: 42008955588067362}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8717020337643324360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2069525408213279526, guid: 9c2d9c9ff92754d4fbb5ce5155a274cb, type: 3}
-  m_PrefabInstance: {fileID: 42008955588067362}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4da221b0b3bd6a4991ebfbcc24f6385, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
