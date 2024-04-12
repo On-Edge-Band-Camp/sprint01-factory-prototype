@@ -143,9 +143,19 @@ public class MachinePlacer : MonoBehaviour
 
     public void levelPlacer(int[,] levelmap)
     {
+        int row;
+        int col;
         Vector2Int grid_coord;
-        int row = 9;
-        int col = 13;
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            row = 15;
+            col = 19;
+        }
+        else
+        {
+            row = 11;
+            col = 15;
+        }
         for (int i = 0; i < row; i++)
         {
             for(int j = 0; j < col; j++)
@@ -235,8 +245,8 @@ public class MachinePlacer : MonoBehaviour
             //Get new position for selected machine by simply flooring mousePos + 0.5 (half cell size). Would probably change to a varible when cells
             //bigger than 1x1 are being implemented.
             //Constrains within grid dimension bounds by using Clamp.
-            new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2), 
-                Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
+            new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2 + 1, GridController.gridDim.x / 2 - 1), 
+                Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2 + 1, GridController.gridDim.y / 2 - 1));
 
             //Matches current calculated new position with that same position stored in the odd center position list.
             int listIndex = GridController.oddCenterPosList.IndexOf(new_world_pos);

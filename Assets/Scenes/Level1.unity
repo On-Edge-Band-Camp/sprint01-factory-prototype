@@ -4896,7 +4896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77557709928114e4b8375f3ce77d2ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid_dimensions: {x: 13, y: 9}
+  grid_dimensions: {x: 15, y: 11}
   camera_grid: {x: 21, y: 11}
   cell_dimensions: {x: 1, y: 1}
 --- !u!4 &739948234
@@ -8780,6 +8780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44948ef768b8b6843b5d6428474d29a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectChoice: 0
 --- !u!114 &1509978190
 MonoBehaviour:
   m_ObjectHideFlags: 0
