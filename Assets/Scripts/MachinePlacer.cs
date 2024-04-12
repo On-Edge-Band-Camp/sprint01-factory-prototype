@@ -78,7 +78,7 @@ public class MachinePlacer : MonoBehaviour
     //If a machine is currently selected and button is pressed again, destroy current selection
     void machine_select()
     {
-        if (MachineSelectMenu.buttonClicked == true) 
+        if (MachineSelectMenu.buttonClicked == true && MachineSelectMenu.selectionName != "FloatingMenu") 
         { 
             //Collector Selection
             if (MachineSelectMenu.selectionName == "Collector")

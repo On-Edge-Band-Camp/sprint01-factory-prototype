@@ -7,6 +7,7 @@ public class Storage : Machine
 {
     public static int winningItemAmount;
     public static int winningItem2Amount;
+    public static int winningItem3Amount;
 
     //Activates when grid_handler sends and update call to this machine
     public override void update_machine()
@@ -42,6 +43,21 @@ public class Storage : Machine
             if (item_type.name == GridController.winningItem2)
             {
                 winningItemAmount++;
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            if (item_type.name == GridController.winningItem3)
+            {
+                winningItemAmount++;
+            }
+            if (item_type.name == GridController.winningItem302)
+            {
+                winningItem2Amount++;
+            }
+            if (item_type.name == GridController.winningItem303)
+            {
+                winningItem3Amount++;
             }
         }
         if (UI != null)

@@ -31,10 +31,19 @@ public class GridController : MonoBehaviour
 
     public static string winningItem2 = "Crystal";
 
+    public static string winningItem3 = "Originisite Dust";
+    public static string winningItem302 = "Frostbloom";
+    public static string winningItem303 = "Lifefruit";
+
     public static int winItem1Amount = 5;
     public static int winItem102Amount = 5;
 
     public static int winItem2Amount = 5;
+
+    public static int winItem3Amount = 23;
+    public static int winItem302Amount = 32;
+    public static int winItem303Amount = 42;
+
     public static int currentStage;
 
     public static bool winState;
@@ -168,14 +177,38 @@ public class GridController : MonoBehaviour
                 }
             }
         }
+        if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            if (Storage.winningItemAmount >= winItem3Amount && Storage.winningItem2Amount >= winItem302Amount && Storage.winningItem3Amount >= winItem303Amount)
+            {
+                winState = true;
+                FindObjectOfType<Machine>().inventory_total = 0;
+                for (int i = 0; i < GridController.gridDim.x; i++)
+                {
+                    for (int j = 0; j < GridController.gridDim.y; j++)
+                    {
+                        GameObject.Destroy(grid[i, j]);
+                        numberOfMachines = 0;
+                    }
+                }
+            }
+        }
         if (winState)
         {
             currentStage++;
             print(currentStage);
             Storage.winningItemAmount = 0;
             Storage.winningItem2Amount = 0;
+            Storage.winningItem3Amount = 0;
             winState = false;
-            SceneMaster.GoToLevel(2);
+            if(SceneManager.GetActiveScene().name == "Level2")
+            {
+                SceneMaster.GoToLevel(5);
+            }
+            else
+            {
+                SceneMaster.GoToLevel(2);
+            }
         }
 
         //print(grid[6, 6].GetComponent<MachineDetails>().);
