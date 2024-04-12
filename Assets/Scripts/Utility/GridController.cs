@@ -31,7 +31,7 @@ public class GridController : MonoBehaviour
     public static string winningItem1 = "Water";
     public static string winningItem102 = "Air";
 
-    public static string winningItem2 = "Air";
+    public static string winningItem2 = "Crystal";
 
     public static string winningItem3 = "Frostbloom";
     public static string winningItem302 = "Originisite Dust";
