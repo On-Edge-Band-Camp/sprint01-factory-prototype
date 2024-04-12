@@ -4505,7 +4505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now make 23 Frostbloom, 32 Originisite Dust, and 42.245 Lifefruits.
+  m_text: 'Now make 23 Frostbloom, 32 Originisite Dust, and 42.245 Florigens.
 
 '
   m_isRightToLeft: 0
@@ -5083,7 +5083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77557709928114e4b8375f3ce77d2ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grid_dimensions: {x: 19, y: 15}
+  grid_dimensions: {x: 15, y: 11}
   camera_grid: {x: 21, y: 11}
   cell_dimensions: {x: 1, y: 1}
 --- !u!4 &739948234

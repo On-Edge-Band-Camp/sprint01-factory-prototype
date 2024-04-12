@@ -26,14 +26,16 @@ public class GridController : MonoBehaviour
     //Grid which stores gameobject references of any machines placed within it
     public static GameObject[,] grid;
 
+    public static int Lev2FirstFrame = 0;
+
     public static string winningItem1 = "Water";
     public static string winningItem102 = "Air";
 
-    public static string winningItem2 = "Crystal";
+    public static string winningItem2 = "Air";
 
-    public static string winningItem3 = "Originisite Dust";
-    public static string winningItem302 = "Frostbloom";
-    public static string winningItem303 = "Lifefruit";
+    public static string winningItem3 = "Frostbloom";
+    public static string winningItem302 = "Originisite Dust";
+    public static string winningItem303 = "Florigen";
 
     public static int winItem1Amount = 5;
     public static int winItem102Amount = 5;
@@ -76,21 +78,17 @@ public class GridController : MonoBehaviour
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
     public static int[,] level2Map =
-       {    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 1, 8, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 6, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 7, 1, 0},
-            {0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}    };
+        {   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 7, 1, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}   };
 
     //Deprecated, check and remove later.
     //Center positions restricted to camera size.
@@ -103,7 +101,7 @@ public class GridController : MonoBehaviour
     public static List<Vector2> oddCenterPosList = new List<Vector2>();
 
     //Initializer dimensions of the grid
-    public Vector2Int grid_dimensions = new Vector2Int(13, 9);
+    public Vector2Int grid_dimensions = new Vector2Int(15, 11);
     //Static grid dimension variable for use in machinePlacer.
     public static Vector2Int gridDim;
 
@@ -154,7 +152,6 @@ public class GridController : MonoBehaviour
         {
             update_machines(update_order);
         }
-        print(Storage.winningItemAmount);
         if (SceneManager.GetActiveScene().name == "Level0")
         {
             if (Storage.winningItemAmount >= winItem1Amount && Storage.winningItem2Amount >= winItem102Amount)
@@ -286,13 +283,16 @@ public class GridController : MonoBehaviour
     public void odd_worldspace_center()
     {
 
+        int x = grid_dimensions.x;
+        int y = grid_dimensions.y;
+
         //The return variable. An array of world space center positions for odd-grid machines (center of grid cell). Identical in size to base grid array.
-        entire_odd_center_pos = new Vector2[grid_dimensions.x, grid_dimensions.y];
+        entire_odd_center_pos = new Vector2[x, y];
 
 
         //worldspace width and height of the entire grid
-        float grid_width = grid_dimensions.x * cell_dimensions.x;
-        float grid_height = grid_dimensions.y * cell_dimensions.y;
+        float grid_width = x * cell_dimensions.x;
+        float grid_height = y * cell_dimensions.y;
 
         //Position of top left corner center position to begin calculations from.
         Vector2 odd_center_top_left = new Vector2(-(grid_width - cell_dimensions.x) / 2, (grid_height - cell_dimensions.y) / 2);
@@ -300,9 +300,9 @@ public class GridController : MonoBehaviour
 
         //Calculating and setting odd center positions for every cell.
             //Begins from top left, increases X by cell width, decreases Y by cell height.
-        for (int i = 0; i < grid_dimensions.y; i++)
+        for (int i = 0; i < y; i++)
         {
-            for (int j = 0; j < grid_dimensions.x; j++)
+            for (int j = 0; j < x; j++)
             {
 
                 //Iterates through a row first (X is j) and proceeds down on the column (Y is i) through the array.

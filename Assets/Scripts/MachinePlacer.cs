@@ -78,65 +78,71 @@ public class MachinePlacer : MonoBehaviour
     //If a machine is currently selected and button is pressed again, destroy current selection
     void machine_select()
     {
-        if (MachineSelectMenu.buttonClicked == true && MachineSelectMenu.selectionName != "FloatingMenu") 
-        { 
-            //Collector Selection
-            if (MachineSelectMenu.selectionName == "Collector")
+        if (MachineSelectMenu.buttonClicked == true) 
+        {
+            if (MachineSelectMenu.selectionName == "Collector" || MachineSelectMenu.selectionName == "TransporterLeft"
+            || MachineSelectMenu.selectionName == "TransporterRight" || MachineSelectMenu.selectionName == "TransporterUp" || MachineSelectMenu.selectionName == "TransporterDown"
+            || MachineSelectMenu.selectionName == "Storage" || MachineSelectMenu.selectionName == "Splitter" || MachineSelectMenu.selectionName == "Constuctor"
+            || MachineSelectMenu.selectionName == "DeleteButton") 
             {
-                Destroy(current_selection);
-                current_selection = Instantiate(collector_prefab, mousePos, Quaternion.identity);
-            }
+                //Collector Selection
+                if (MachineSelectMenu.selectionName == "Collector")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(collector_prefab, mousePos, Quaternion.identity);
+                }
 
-            //Transporter Selection
-            if (MachineSelectMenu.selectionName == "TransporterLeft")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(transporter_left_prefab, mousePos, Quaternion.identity);
-            }
+                //Transporter Selection
+                if (MachineSelectMenu.selectionName == "TransporterLeft")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(transporter_left_prefab, mousePos, Quaternion.identity);
+                }
 
-            if (MachineSelectMenu.selectionName == "TransporterRight")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(transporter_right_prefab, mousePos, Quaternion.identity);
-            }
+                if (MachineSelectMenu.selectionName == "TransporterRight")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(transporter_right_prefab, mousePos, Quaternion.identity);
+                }
 
-            if (MachineSelectMenu.selectionName == "TransporterUp")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(transporter_up_prefab, mousePos, Quaternion.identity);
-            }
+                if (MachineSelectMenu.selectionName == "TransporterUp")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(transporter_up_prefab, mousePos, Quaternion.identity);
+                }
 
-            if (MachineSelectMenu.selectionName == "TransporterDown")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(transporter_down_prefab, mousePos, Quaternion.identity);
-            }
+                if (MachineSelectMenu.selectionName == "TransporterDown")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(transporter_down_prefab, mousePos, Quaternion.identity);
+                }
 
-            //Storage Selection
-            if (MachineSelectMenu.selectionName == "Storage")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(storage_prefab, mousePos, Quaternion.identity);
-            }
+                //Storage Selection
+                if (MachineSelectMenu.selectionName == "Storage")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(storage_prefab, mousePos, Quaternion.identity);
+                }
 
-            //Splitter Selection
-            if (MachineSelectMenu.selectionName == "Splitter")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(splitter_prefab, mousePos, Quaternion.identity);
-            }
+                //Splitter Selection
+                if (MachineSelectMenu.selectionName == "Splitter")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(splitter_prefab, mousePos, Quaternion.identity);
+                }
 
-            if (MachineSelectMenu.selectionName == "Constuctor")
-            {
-                Destroy(current_selection);
-                current_selection = Instantiate(constructor_prefab, mousePos, Quaternion.identity);
-            }
+                if (MachineSelectMenu.selectionName == "Constuctor")
+                {
+                    Destroy(current_selection);
+                    current_selection = Instantiate(constructor_prefab, mousePos, Quaternion.identity);
+                }
 
-            //
-            if (MachineSelectMenu.selectionName == "DeleteButton")
-            {
-                deleteState = true;
-                current_selection = null;
+                //
+                if (MachineSelectMenu.selectionName == "DeleteButton")
+                {
+                    deleteState = true;
+                    current_selection = null;
+                }
             }
         }
     }
@@ -146,16 +152,9 @@ public class MachinePlacer : MonoBehaviour
         int row;
         int col;
         Vector2Int grid_coord;
-        if (SceneManager.GetActiveScene().name == "Level2")
-        {
-            row = 15;
-            col = 19;
-        }
-        else
-        {
             row = 11;
             col = 15;
-        }
+
         for (int i = 0; i < row; i++)
         {
             for(int j = 0; j < col; j++)
@@ -380,17 +379,19 @@ public class MachinePlacer : MonoBehaviour
             removeScreen.transform.localScale = new Vector3(Mathf.Abs(Mathf.Sin(Time.time * Random.Range(1, 20))) * Random.Range(0.01f, 0.04f) + 1, 
                 Mathf.Abs(Mathf.Cos(Time.time * Random.Range(1, 50))) * Random.Range(0.01f, 0.05f) + 1, 1);
 
-            new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2),
-                Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
+            int listIndex;
 
-            //Matches current calculated new position with that same position stored in the odd center position list.
-            int listIndex = GridController.oddCenterPosList.IndexOf(new_world_pos);
+                new_world_pos = new Vector2(Mathf.Clamp(Mathf.Floor(mousePos.x + 0.5f), -GridController.gridDim.x / 2, GridController.gridDim.x / 2),
+                    Mathf.Clamp(Mathf.Floor(mousePos.y + 0.5f), -GridController.gridDim.y / 2, GridController.gridDim.y / 2));
 
-            //Calculation of converting the list index to the 2D array index. Matches the index of entire_odd_center_pos
-            center_pos_index = new Vector2Int(listIndex % grid_control.grid_dimensions.x, ((listIndex - (listIndex % grid_control.grid_dimensions.x)) / grid_control.grid_dimensions.x));
+                //Matches current calculated new position with that same position stored in the odd center position list.
+                listIndex = GridController.oddCenterPosList.IndexOf(new_world_pos);
 
-            //Calculation of converting entire_odd_center_pos' index to gameObject grid index.
-            new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
+                //Calculation of converting the list index to the 2D array index. Matches the index of entire_odd_center_pos
+                center_pos_index = new Vector2Int(listIndex % grid_control.grid_dimensions.x, ((listIndex - (listIndex % grid_control.grid_dimensions.x)) / grid_control.grid_dimensions.x));
+
+                //Calculation of converting entire_odd_center_pos' index to gameObject grid index.
+                new_grid_coord = new Vector2Int(center_pos_index.x, GridController.gridDim.y - (center_pos_index.y + 1));
 
 
             if (lastMachine != null && GridController.grid[new_grid_coord.x, new_grid_coord.y] != lastMachine)
